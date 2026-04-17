@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liam's Full Routine</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b14;
+    --card: #0e1220;
+    --card2: #141928;
+    --accent: #7df4fc;
+    --accent2: #a78bfa;
+    --accent3: #f472b6;
+    --accent4: #60a5fa;
+    --muted: #3a3f5c;
+    --text: #e2e8f0;
+    --subtext: #6b7a99;
+    --border: #1a2038;
+    --border2: #222840;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,11,20,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px; display: flex; align-items: center; gap: 0;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--accent);
+    letter-spacing: 2px; padding: 14px 20px 14px 0;
+    border-right: 1px solid var(--border); margin-right: 4px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  nav a {
+    color: var(--subtext); text-decoration: none; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+    padding: 16px 14px; white-space: nowrap; transition: color 0.2s;
+    flex-shrink: 0; cursor: pointer;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* QUOTE BANNER */
+  .quote-banner {
+    background: linear-gradient(135deg, rgba(125,244,252,0.06) 0%, rgba(167,139,250,0.06) 100%);
+    border-bottom: 1px solid rgba(125,244,252,0.12);
+    padding: 20px 24px; position: relative; overflow: hidden;
+  }
+  .quote-banner::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(125,244,252,0.02) 80px, rgba(125,244,252,0.02) 81px);
+    pointer-events: none;
+  }
+  .quote-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: flex-start; gap: 16px; }
+  .quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); opacity: 0.4; flex-shrink: 0; margin-top: -4px; }
+  .quote-text-wrap { flex: 1; }
+  .quote-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; opacity: 0.7; }
+  #quote-text { font-size: 15px; color: var(--text); line-height: 1.6; font-weight: 400; font-style: italic; transition: opacity 0.4s ease; }
+  #quote-author { font-size: 11px; color: var(--subtext); margin-top: 6px; letter-spacing: 0.5px; transition: opacity 0.4s ease; }
+  .quote-refresh {
+    background: none; border: 1px solid var(--border2); border-radius: 8px;
+    color: var(--subtext); font-size: 16px; padding: 6px 10px; cursor: pointer;
+    transition: all 0.3s; flex-shrink: 0; align-self: center;
+  }
+  .quote-refresh:hover { border-color: var(--accent); color: var(--accent); transform: rotate(180deg); }
+
+  .hero { padding: 64px 24px 52px; max-width: 720px; margin: 0 auto; text-align: center; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 14vw, 100px); line-height: 0.9; letter-spacing: 2px; color: #fff; margin-bottom: 20px; }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { font-size: 14px; color: var(--subtext); line-height: 1.7; max-width: 420px; margin: 0 auto; }
+
+  .wrapper { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
+  .section { margin-bottom: 56px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1.5px; color: #fff; }
+  .section-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+  .tag-school { background: rgba(125,244,252,0.1); color: var(--accent); }
+  .tag-weekend { background: rgba(167,139,250,0.1); color: var(--accent2); }
+  .tag-break { background: rgba(244,114,182,0.1); color: var(--accent3); }
+  .tag-food { background: rgba(96,165,250,0.1); color: var(--accent4); }
+  .tag-outdoor { background: rgba(125,244,252,0.1); color: var(--accent); }
+  .tag-workout { background: rgba(167,139,250,0.1); color: var(--accent2); }
+  .section-sub { font-size: 12px; color: var(--subtext); margin-bottom: 20px; letter-spacing: 0.3px; }
+  .divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+  .timeline { display: grid; gap: 3px; }
+  .tl-row { display: grid; grid-template-columns: 80px 1fr; gap: 0; position: relative; }
+  .tl-time { font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--accent); letter-spacing: 1px; padding: 12px 12px 12px 0; text-align: right; border-right: 1px solid var(--border2); line-height: 1.2; }
+  .tl-row.muted .tl-time { color: var(--muted); }
+  .tl-row.alt-color .tl-time { color: var(--accent2); }
+  .tl-row.warn-color .tl-time { color: var(--accent3); }
+  .tl-row.chore-color .tl-time { color: var(--accent4); }
+  .tl-dot { position: absolute; left: 80px; top: 50%; transform: translate(-50%, -50%); width: 7px; height: 7px; border-radius: 50%; background: var(--accent); z-index: 1; }
+  .tl-row.muted .tl-dot { background: var(--muted); }
+  .tl-row.alt-color .tl-dot { background: var(--accent2); }
+  .tl-row.warn-color .tl-dot { background: var(--accent3); }
+  .tl-row.chore-color .tl-dot { background: var(--accent4); }
+  .tl-content { padding: 10px 0 10px 20px; }
+  .tl-content h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .tl-content p { font-size: 12px; color: var(--subtext); line-height: 1.5; }
+  .tl-row.muted .tl-content h4 { color: var(--muted); }
+  .tl-row.chore-color .tl-content h4 { color: var(--accent4); }
+
+  .tab-bar { display: flex; gap: 4px; margin-bottom: 20px; background: var(--card); padding: 4px; border-radius: 10px; border: 1px solid var(--border); }
+  .tab-btn { flex: 1; padding: 8px 10px; background: none; border: none; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: var(--subtext); cursor: pointer; transition: all 0.2s; }
+  .tab-btn.active { background: var(--accent); color: #0d0d0d; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 10px; }
+  .card h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .card p, .card li { font-size: 12px; color: var(--subtext); line-height: 1.6; }
+  .card ul { padding-left: 0; list-style: none; }
+  .card ul li { padding: 2px 0; padding-left: 14px; position: relative; }
+  .card ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 4px; }
+  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .card-row .card { margin-bottom: 0; }
+  .card.highlight { border-color: rgba(125,244,252,0.25); background: rgba(125,244,252,0.04); }
+  .card.highlight h4 { color: var(--accent); }
+  .card.warn { border-color: rgba(244,114,182,0.25); background: rgba(244,114,182,0.04); }
+  .card.warn h4 { color: var(--accent3); }
+  .card.friday-vibe { border-color: rgba(167,139,250,0.25); background: rgba(167,139,250,0.04); }
+  .card.friday-vibe h4 { color: var(--accent2); }
+
+  .meal-grid { display: grid; gap: 10px; }
+  .meal-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: start; }
+  .meal-label { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; line-height: 1; padding-top: 2px; }
+  .meal-label.breakfast { color: var(--accent3); }
+  .meal-label.lunch { color: var(--accent2); }
+  .meal-label.dinner { color: var(--accent); }
+  .meal-label.snack { color: var(--accent4); }
+  .meal-options h5 { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+  .meal-option { font-size: 12px; color: var(--subtext); padding: 4px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+  .meal-option:last-child { border-bottom: none; }
+  .meal-option strong { color: var(--text); font-weight: 500; }
+
+  .route-grid { display: grid; gap: 10px; }
+  .route-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
+  .route-icon { font-size: 24px; flex-shrink: 0; padding-top: 2px; }
+  .route-info h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .route-info p { font-size: 12px; color: var(--subtext); line-height: 1.5; margin-bottom: 6px; }
+  .route-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .route-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 20px; background: rgba(200,245,66,0.1); color: var(--accent); }
+  .route-tag.bike { background: rgba(66,245,200,0.1); color: var(--accent2); }
+  .route-tag.run { background: rgba(245,163,66,0.1); color: var(--accent3); }
+
+  .note { background: rgba(125,244,252,0.04); border: 1px solid rgba(125,244,252,0.18); border-radius: 12px; padding: 18px 20px; margin-top: 16px; }
+  .note h5 { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+  .note p { font-size: 12px; color: var(--subtext); line-height: 1.7; }
+
+  .week-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
+  .week-btn { padding: 6px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--subtext); cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
+  .week-btn.active { background: var(--accent); color: #0d0d0d; border-color: var(--accent); }
+  .week-panel { display: none; }
+  .week-panel.active { display: block; }
+  .break-grid { display: grid; gap: 10px; }
+
+  .footer { text-align: center; padding: 40px 0 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .section { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .section.visible { opacity: 1; transform: translateY(0); }
+  .hero { animation: fadeIn 0.8s ease both; }
+  .tl-row { opacity: 0; transform: translateX(-10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .tl-row.visible { opacity: 1; transform: translateX(0); }
+  .card { transition: border-color 0.2s, transform 0.15s; }
+  .card:hover { border-color: #2a3050; transform: translateY(-1px); }
+
+  .edit-toggle { position: fixed; bottom: 24px; right: 24px; z-index: 200; background: var(--accent2); color: #0d0d0d; border: none; border-radius: 50px; padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; box-shadow: 0 4px 24px rgba(167,139,250,0.4); transition: all 0.2s; }
+  .edit-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(167,139,250,0.5); }
+  .edit-toggle.active { background: var(--accent3); box-shadow: 0 4px 24px rgba(244,114,182,0.4); }
+  body.editing [contenteditable] { outline: 1px dashed rgba(167,139,250,0.4); border-radius: 4px; cursor: text; padding: 1px 3px; margin: -1px -3px; }
+  body.editing [contenteditable]:focus { outline: 1px solid var(--accent2); background: rgba(167,139,250,0.06); }
+  .edit-hint { position: fixed; bottom: 64px; right: 24px; background: rgba(14,18,32,0.95); border: 1px solid var(--border2); border-radius: 10px; padding: 10px 14px; font-size: 11px; color: var(--subtext); z-index: 199; display: none; max-width: 200px; line-height: 1.5; }
+  body.editing .edit-hint { display: block; }
+
+  .section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; cursor: pointer; user-select: none; }
+  .section-header:hover .collapse-btn { color: var(--accent); }
+  .collapse-btn { margin-left: auto; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 0 4px; transition: color 0.2s, transform 0.3s; flex-shrink: 0; line-height: 1; }
+  .section.collapsed .collapse-btn { transform: rotate(-90deg); }
+  .section-body { overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease; max-height: 9999px; opacity: 1; }
+  .section.collapsed .section-body { max-height: 0 !important; opacity: 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">LIAM</div>
+  <a onclick="navScrollTo('school')">School Week</a>
+  <a onclick="navScrollTo('harlequins')">Harlequins</a>
+  <a onclick="navScrollTo('sibn')">SIBN</a>
+  <a onclick="navScrollTo('weekend')">Weekend</a>
+  <a onclick="navScrollTo('breaks')">Breaks</a>
+  <a onclick="navScrollTo('workouts')">Workouts</a>
+  <a onclick="navScrollTo('meals')">Meals</a>
+  <a onclick="navScrollTo('outdoor')">Outdoor</a>
+  <a onclick="navScrollTo('care')">Care Routine</a>
+  <a onclick="navScrollTo('phone')">Phone &amp; Apps</a>
+  <a onclick="navScrollTo('mentalhealth')">Mental Health</a>
+  <a onclick="navScrollTo('style')">Style</a>
+  <a onclick="navScrollTo('sleep')">Sleep</a>
+  <a onclick="navScrollTo('room')">Room</a>
+  <a onclick="navScrollTo('social')">Social</a>
+  <a onclick="navScrollTo('weekly')">Weekly Review</a>
+  <a onclick="navScrollTo('sidequests')">Side Quests</a>
+</nav>
+
+<div class="quote-banner">
+  <div class="quote-inner">
+    <div class="quote-mark">"</div>
+    <div class="quote-text-wrap">
+      <div class="quote-label">Today's Quote</div>
+      <div id="quote-text">Loading...</div>
+      <div id="quote-author"></div>
+    </div>
+    <button class="quote-refresh" onclick="newQuote()" title="New quote">&#8635;</button>
+  </div>
+</div>
+
+<button class="edit-toggle" id="editBtn" onclick="toggleEdit()">&#9999;&#65039; EDIT MODE</button>
+<div class="edit-hint">Click any text to edit it. Changes save automatically to your browser.</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Built For You &middot; Brooklyn, OH</div>
+  <h1>YOUR<br><em>FULL</em><br>ROUTINE</h1>
+  <p>School weeks, Harlequins season, SIBN games, weekends, breaks, meals, and outdoor routes &mdash; all in one place.</p>
+</div>
+
+<div class="wrapper">
+
+  <!-- SCHOOL WEEK -->
+  <div class="section" id="school">
+    <div class="section-header">
+      <div class="section-title">School Week</div>
+      <span class="section-tag tag-school">Mon &ndash; Fri</span>
+    </div>
+    <div class="section-sub">Standard week &mdash; no Harlequins, no SIBN game</div>
+
+    <div class="week-tabs">
+      <button class="week-btn active" onclick="switchWeek('mwf', this)">Mon / Thu</button>
+      <button class="week-btn" onclick="switchWeek('fri', this)">Friday</button>
+      <button class="week-btn" onclick="switchWeek('wed', this)">Wednesday</button>
+      <button class="week-btn" onclick="switchWeek('tth', this)">Tuesday</button>
+    </div>
+
+    <!-- MON/THU -->
+    <div class="week-panel active" id="week-mwf">
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up</h4><p>Glass of water first. Wash face, get dressed, eat something before leaving.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Feed the cats &mdash; that's your anchor. While they eat, open How We Feel. 60-second check-in. Tap what you're feeling, move on. Day started.</p></div></div>
+        <div class="tl-row"><div class="tl-time">6:40</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Before you leave the house. This is your streak. Protect it. 5 minutes is enough to keep it alive on busy mornings.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:25</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>On the bus, open Globo. 15 minutes of passive learning instead of doom scrolling.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:40</div><div class="tl-dot"></div><div class="tl-content"><h4>Arrive at SIHS</h4><p>Use time before 8:20 to get organized, look over anything due that day.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">8:20</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes Begin</h4><p>5 periods. Stay present, take notes. Easier to retain than cramming later.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">MID-DAY</div><div class="tl-dot"></div><div class="tl-content"><h4>Formation &mdash; 40 Minutes</h4><p>Use this. Knock out at least one assignment every single formation. This is your secret weapon for keeping evenings light.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Work While You Wait</h4><p>Mom gets off at 4:30 so you're waiting anyway. Use this time &mdash; knock out more homework or review notes. Anything you finish here means less to do tonight.</p></div></div>
+        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Decompress + Feed Cats</h4><p>30 min to eat, chill, reset. Feed Lincoln and Batman their evening meal. Don't let this stretch into the whole evening.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework Block</h4><p>1&ndash;1.5 hours. You already knocked something out at formation &mdash; finish the rest now while your brain still works.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Workout (Evening)</h4><p>20&ndash;30 min bodyweight session. Follow the push/pull/legs split in the Workouts section.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Skin Routine</h4><p>Shower after workout, wash face, moisturize. Make it automatic.</p></div></div>
+        <div class="tl-row chore-color"><div class="tl-time">8:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Rinse or wash whatever's from dinner. Takes 5&ndash;10 minutes. Do it now so it doesn't pile up overnight.</p></div></div>
+        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Time</h4><p>Gaming, music, whatever. This is yours &mdash; you've earned it.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">9:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wind Down &mdash; Podcast On</h4><p>Phone face down. Put on Woe.Begone or whatever you're into. Dim the lights. No scrolling &mdash; story podcasts only from here.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">9:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Apple Journal &mdash; 2 Minutes</h4><p>One or two sentences before sleep. What happened, how you feel, one thing for tomorrow. Close the loop on the day.</p></div></div>
+        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>8+ hours sleep target. Growth hormone peaks during deep sleep &mdash; this matters.</p></div></div>
+      </div>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="week-panel" id="week-fri">
+      <div class="card friday-vibe" style="margin-bottom:14px;">
+        <h4>&#127829; Friday &mdash; Pizza Movie Night. You're Off.</h4>
+        <p>Friday after school is yours. No work period, no homework block, no obligations. Get home, relax, eat, enjoy the weekend. You earned it every single week. Dishes still happen because that's just a quick 10 minutes.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up</h4><p>Same morning routine. It's Friday &mdash; that alone is good enough.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Morning anchor. Cats first, 60-second check-in, done.</p></div></div>
+        <div class="tl-row"><div class="tl-time">6:40</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Protect the streak even on Fridays. It's quick.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:25</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>Last ride of the week. Globo on, enjoy the commute.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">8:20</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes</h4><p>5 periods. Push through &mdash; you're almost there.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">MID-DAY</div><div class="tl-dot"></div><div class="tl-content"><h4>Formation &mdash; 40 Minutes</h4><p>Use it to knock out anything due next week so you don't have to think about school all weekend.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Weekend Starts</h4><p>Head home. No work period. No homework. You're done for the week.</p></div></div>
+        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Feed Cats, Decompress</h4><p>Feed Lincoln and Batman. Change clothes. Switch off school mode entirely.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>&#127829; Pizza Movie Night</h4><p>Friday tradition. Eat, watch something, be a human being. This is the reward for the whole week.</p></div></div>
+        <div class="tl-row chore-color"><div class="tl-time">AFTER</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Quick 10 minutes after the meal. Even on Friday. Then you're completely free.</p></div></div>
+        <div class="tl-row"><div class="tl-time">REST</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Evening &mdash; No Schedule</h4><p>Gaming, music, shows, whatever. No wind-down deadline tonight. Just don't wreck your sleep schedule too badly.</p></div></div>
+      </div>
+    </div>
+
+    <!-- WEDNESDAY -->
+    <div class="week-panel" id="week-wed">
+      <div class="card warn" style="margin-bottom:14px;"><h4>&#9889; Wednesday Schedule</h4><p>Late start &mdash; school begins at 8:50 instead of 8:20. Bus is at 7:55 instead of 7:25. Day still ends at 3:05. Formation is only about 15 minutes &mdash; treat it as a quick review or single small task, not a full homework block.</p></div>
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up &mdash; Same Time</h4><p>Don't sleep in just because school starts late. Consistent wake time is the foundation of good sleep.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Same morning anchor as always. Feed the cats, 60-second How We Feel check-in while they eat.</p></div></div>
+        <div class="tl-row"><div class="tl-time">6:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Protect the streak. Wednesday morning has the most breathing room &mdash; use it.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Use the Extra Time &mdash; Breakfast + Homework</h4><p>You've got about 50 extra minutes before the bus. Eat a proper breakfast, knock out any homework due today, or just decompress.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:55</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>Bus is at 7:55 on Wednesdays. Globo on the ride in.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">8:50</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes Begin</h4><p>5 periods, slightly compressed. Day ends at 3:05 same as every other day.</p></div></div>
+        <div class="tl-row muted"><div class="tl-time">MID-DAY</div><div class="tl-dot"></div><div class="tl-content"><h4>Formation &mdash; ~15 Minutes</h4><p>Too short for a full assignment. Use it to review notes, check what's due this week, or start something small.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Wait for Mom</h4><p>Use this time productively &mdash; finish any remaining homework, review notes, or get ahead on something due later in the week.</p></div></div>
+        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Decompress + Feed Cats</h4><p>30 min to eat, chill, reset. Feed Lincoln and Batman their evening meal.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework Block</h4><p>Wednesday formation is short so this block matters. Give it a solid hour &mdash; finish everything so Thursday is clean.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Workout (Evening)</h4><p>20&ndash;30 min bodyweight session. Follow the push/pull/legs split.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Care Routine</h4><p>Shower, then evening skin and care routine. See Care Routine section for the full order.</p></div></div>
+        <div class="tl-row chore-color"><div class="tl-time">8:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Quick wash after dinner. 5&ndash;10 minutes. Done before free time.</p></div></div>
+        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Time</h4><p>Gaming, music, whatever. You've earned it.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">9:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wind Down &mdash; Podcast On</h4><p>Phone face down. Story podcast. Dim the lights.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">9:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Apple Journal &mdash; 2 Minutes</h4><p>One or two sentences. Close the loop on the day.</p></div></div>
+        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>8+ hours. Same target every night.</p></div></div>
+      </div>
+    </div>
+
+    <!-- TUESDAY -->
+    <div class="week-panel" id="week-tth">
+      <div class="card" style="margin-bottom:14px;"><h4>Tuesday &mdash; No Formation</h4><p>No formation on Tuesday. Straight school day, 8:20&ndash;3:05. Use the wait for mom time productively, then evening block is your main homework window.</p></div>
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up</h4><p>Same morning routine. Water, face wash, food before bus.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Morning anchor. Feed cats, 60-second check-in, done.</p></div></div>
+        <div class="tl-row"><div class="tl-time">6:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Protect the streak before you leave.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:25</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>Globo on the ride in. Passive learning, no pressure.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">8:20</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes &mdash; No Formation Break</h4><p>Straight through to 3:05. Stay on top of notes &mdash; no mid-day catch-up today.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Work While You Wait</h4><p>Mom gets off at 4:30 so you've got time to kill. Use it &mdash; start your homework now so the evening block is shorter. Even 30&ndash;45 minutes here makes a real difference on Tuesdays.</p></div></div>
+        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Decompress + Feed Cats</h4><p>30 min to eat, reset, feed Lincoln and Batman.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework &mdash; Finish the Rest</h4><p>You started during wait time &mdash; finish it now. Tuesday has no formation so this is your most important homework block of the week.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Workout</h4><p>20&ndash;30 min. Don't skip &mdash; Tuesday is Cardio + Core day.</p></div></div>
+        <div class="tl-row"><div class="tl-time">7:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Care Routine</h4><p>Shower after workout, then evening skin routine.</p></div></div>
+        <div class="tl-row chore-color"><div class="tl-time">8:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Rinse and wash what's from dinner. Quick, then you're free.</p></div></div>
+        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Time</h4><p>Gaming, music, whatever. Earned it.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">9:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wind Down &mdash; Podcast On</h4><p>Phone face down, story podcast, dim lights.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">9:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Apple Journal &mdash; 2 Minutes</h4><p>One or two sentences. Close the loop.</p></div></div>
+        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>Stay consistent even on long days.</p></div></div>
+      </div>
+    </div>
+
+    <div class="note"><h5>Formation Strategy &mdash; The Real Deal</h5><p>Mon, Thu, Fri you have 40 min &mdash; that's enough for one solid assignment or two small ones. Use it every time, no exceptions. Wednesday's 15 min is just for quick stuff. Tuesday has nothing, so the evening block is your only shot. Plan accordingly.</p></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HARLEQUINS -->
+  <div class="section" id="harlequins">
+    <div class="section-header">
+      <div class="section-title">Harlequins Season</div>
+      <span class="section-tag tag-school">Fall &amp; Spring</span>
+    </div>
+    <div class="section-sub">Rehearsal weeks, tech week, and show weekends &mdash; each handled differently</div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('harlequins', 'rehearsal')">Rehearsal Nights</button>
+      <button class="tab-btn" onclick="switchTab('harlequins', 'tech')">Tech Week</button>
+      <button class="tab-btn" onclick="switchTab('harlequins', 'show')">Show Weekend</button>
+    </div>
+    <div class="tab-panel active" id="harlequins-rehearsal">
+      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">Mon &amp; Thu &middot; 3:30&ndash;6:30 &middot; Home ~7pm &middot; 2&ndash;3 months</div>
+      <div class="timeline">
+        <div class="tl-row"><div class="tl-time">3:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Rehearsal at Breen Center &mdash; Crew &amp; Props</h4><p>Right across the street. You're running crew and props &mdash; set pieces, prop tracking, stage setup. Stay on top of what's needed before it's asked for.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Rehearsal Ends</h4><p>Home around 6:50&ndash;7. Eat something if you haven't.</p></div></div>
+        <div class="tl-row warn-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework (shortened block)</h4><p>45 min max. Prioritize what's due tomorrow first. Use formation blocks to pre-emptively get ahead.</p></div></div>
+        <div class="tl-row alt-color"><div class="tl-time">7:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Light Workout or Walk</h4><p>On rehearsal nights, go easy &mdash; 15 min walk outside or a quick core circuit. Don't skip entirely.</p></div></div>
+        <div class="tl-row chore-color"><div class="tl-time">8:10</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Quick rinse of whatever's from dinner. 5 minutes on rehearsal nights &mdash; keep it fast.</p></div></div>
+        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Skin + Wind Down</h4><p>Keep it tight so you hit 10pm.</p></div></div>
+        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>Rehearsal days are long &mdash; sleep is recovery.</p></div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="harlequins-tech">
+      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">3:30&ndash;9pm &middot;
