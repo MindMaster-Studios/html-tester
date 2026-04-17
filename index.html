@@ -22,83 +22,220 @@
     --border: #1a2038;
     --border2: #222840;
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
 
+  /* NAV */
   nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(8,11,20,0.97); backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,11,20,0.97);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 20px; display: flex; align-items: center; gap: 0;
-    overflow-x: auto; scrollbar-width: none;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
   nav::-webkit-scrollbar { display: none; }
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--accent);
-    letter-spacing: 2px; padding: 14px 20px 14px 0;
-    border-right: 1px solid var(--border); margin-right: 4px;
-    white-space: nowrap; flex-shrink: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    padding: 14px 20px 14px 0;
+    border-right: 1px solid var(--border);
+    margin-right: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   nav a {
-    color: var(--subtext); text-decoration: none; font-size: 11px;
-    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
-    padding: 16px 14px; white-space: nowrap; transition: color 0.2s;
-    flex-shrink: 0; cursor: pointer;
+    color: var(--subtext);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 16px 14px;
+    white-space: nowrap;
+    transition: color 0.2s;
+    flex-shrink: 0;
+    cursor: pointer;
   }
   nav a:hover { color: var(--accent); }
 
-  /* QUOTE BANNER */
+  /* QUOTE CARD */
   .quote-banner {
-    background: linear-gradient(135deg, rgba(125,244,252,0.06) 0%, rgba(167,139,250,0.06) 100%);
-    border-bottom: 1px solid rgba(125,244,252,0.12);
-    padding: 20px 24px; position: relative; overflow: hidden;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 0;
   }
-  .quote-banner::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(125,244,252,0.02) 80px, rgba(125,244,252,0.02) 81px);
+  .quote-card {
+    background: linear-gradient(135deg, rgba(125,244,252,0.06) 0%, rgba(167,139,250,0.06) 100%);
+    border: 1px solid rgba(125,244,252,0.2);
+    border-radius: 16px;
+    padding: 22px 26px;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(125,244,252,0.07);
+    line-height: 1;
     pointer-events: none;
   }
-  .quote-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: flex-start; gap: 16px; }
-  .quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: var(--accent); opacity: 0.4; flex-shrink: 0; margin-top: -4px; }
-  .quote-text-wrap { flex: 1; }
-  .quote-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; opacity: 0.7; }
-  #quote-text { font-size: 15px; color: var(--text); line-height: 1.6; font-weight: 400; font-style: italic; transition: opacity 0.4s ease; }
-  #quote-author { font-size: 11px; color: var(--subtext); margin-top: 6px; letter-spacing: 0.5px; transition: opacity 0.4s ease; }
-  .quote-refresh {
-    background: none; border: 1px solid var(--border2); border-radius: 8px;
-    color: var(--subtext); font-size: 16px; padding: 6px 10px; cursor: pointer;
-    transition: all 0.3s; flex-shrink: 0; align-self: center;
+  .quote-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
   }
-  .quote-refresh:hover { border-color: var(--accent); color: var(--accent); transform: rotate(180deg); }
+  .quote-author {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .quote-refresh {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: 1px solid rgba(125,244,252,0.2);
+    border-radius: 8px;
+    color: var(--subtext);
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .quote-refresh:hover { color: var(--accent); border-color: var(--accent); }
+  .quote-day {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
 
-  .hero { padding: 64px 24px 52px; max-width: 720px; margin: 0 auto; text-align: center; }
-  .hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 14vw, 100px); line-height: 0.9; letter-spacing: 2px; color: #fff; margin-bottom: 20px; }
+  /* HERO */
+  .hero {
+    padding: 48px 24px 52px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 14vw, 100px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
   .hero h1 em { color: var(--accent); font-style: normal; }
-  .hero p { font-size: 14px; color: var(--subtext); line-height: 1.7; max-width: 420px; margin: 0 auto; }
+  .hero p {
+    font-size: 14px;
+    color: var(--subtext);
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
+  }
 
+  /* WRAPPER */
   .wrapper { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
+
+  /* SECTION */
   .section { margin-bottom: 56px; }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1.5px; color: #fff; }
-  .section-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1.5px;
+    color: #fff;
+  }
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
   .tag-school { background: rgba(125,244,252,0.1); color: var(--accent); }
   .tag-weekend { background: rgba(167,139,250,0.1); color: var(--accent2); }
   .tag-break { background: rgba(244,114,182,0.1); color: var(--accent3); }
   .tag-food { background: rgba(96,165,250,0.1); color: var(--accent4); }
   .tag-outdoor { background: rgba(125,244,252,0.1); color: var(--accent); }
   .tag-workout { background: rgba(167,139,250,0.1); color: var(--accent2); }
-  .section-sub { font-size: 12px; color: var(--subtext); margin-bottom: 20px; letter-spacing: 0.3px; }
+  .section-sub {
+    font-size: 12px;
+    color: var(--subtext);
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
   .divider { height: 1px; background: var(--border); margin: 48px 0; }
 
+  /* TIMELINE */
   .timeline { display: grid; gap: 3px; }
-  .tl-row { display: grid; grid-template-columns: 80px 1fr; gap: 0; position: relative; }
-  .tl-time { font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--accent); letter-spacing: 1px; padding: 12px 12px 12px 0; text-align: right; border-right: 1px solid var(--border2); line-height: 1.2; }
+  .tl-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .tl-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    padding: 12px 12px 12px 0;
+    text-align: right;
+    border-right: 1px solid var(--border2);
+    line-height: 1.2;
+  }
   .tl-row.muted .tl-time { color: var(--muted); }
   .tl-row.alt-color .tl-time { color: var(--accent2); }
   .tl-row.warn-color .tl-time { color: var(--accent3); }
   .tl-row.chore-color .tl-time { color: var(--accent4); }
-  .tl-dot { position: absolute; left: 80px; top: 50%; transform: translate(-50%, -50%); width: 7px; height: 7px; border-radius: 50%; background: var(--accent); z-index: 1; }
+  .tl-dot {
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    z-index: 1;
+  }
   .tl-row.muted .tl-dot { background: var(--muted); }
   .tl-row.alt-color .tl-dot { background: var(--accent2); }
   .tl-row.warn-color .tl-dot { background: var(--accent3); }
@@ -107,15 +244,43 @@
   .tl-content h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
   .tl-content p { font-size: 12px; color: var(--subtext); line-height: 1.5; }
   .tl-row.muted .tl-content h4 { color: var(--muted); }
-  .tl-row.chore-color .tl-content h4 { color: var(--accent4); }
 
-  .tab-bar { display: flex; gap: 4px; margin-bottom: 20px; background: var(--card); padding: 4px; border-radius: 10px; border: 1px solid var(--border); }
-  .tab-btn { flex: 1; padding: 8px 10px; background: none; border: none; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: var(--subtext); cursor: pointer; transition: all 0.2s; }
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: var(--card);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--subtext);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
   .tab-btn.active { background: var(--accent); color: #0d0d0d; }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 10px; }
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
   .card h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 8px; }
   .card p, .card li { font-size: 12px; color: var(--subtext); line-height: 1.6; }
   .card ul { padding-left: 0; list-style: none; }
@@ -127,66 +292,213 @@
   .card.highlight h4 { color: var(--accent); }
   .card.warn { border-color: rgba(244,114,182,0.25); background: rgba(244,114,182,0.04); }
   .card.warn h4 { color: var(--accent3); }
-  .card.friday-vibe { border-color: rgba(167,139,250,0.25); background: rgba(167,139,250,0.04); }
-  .card.friday-vibe h4 { color: var(--accent2); }
 
+  /* MEAL GRID */
   .meal-grid { display: grid; gap: 10px; }
-  .meal-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: start; }
-  .meal-label { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; line-height: 1; padding-top: 2px; }
+  .meal-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .meal-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding-top: 2px;
+  }
   .meal-label.breakfast { color: var(--accent3); }
   .meal-label.lunch { color: var(--accent2); }
   .meal-label.dinner { color: var(--accent); }
   .meal-label.snack { color: var(--accent4); }
-  .meal-options h5 { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
-  .meal-option { font-size: 12px; color: var(--subtext); padding: 4px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+  .meal-options h5 {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .meal-option {
+    font-size: 12px;
+    color: var(--subtext);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
   .meal-option:last-child { border-bottom: none; }
   .meal-option strong { color: var(--text); font-weight: 500; }
 
+  /* ROUTE CARDS */
   .route-grid { display: grid; gap: 10px; }
-  .route-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
+  .route-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
   .route-icon { font-size: 24px; flex-shrink: 0; padding-top: 2px; }
   .route-info h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
   .route-info p { font-size: 12px; color: var(--subtext); line-height: 1.5; margin-bottom: 6px; }
   .route-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .route-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 20px; background: rgba(200,245,66,0.1); color: var(--accent); }
+  .route-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(200,245,66,0.1);
+    color: var(--accent);
+  }
   .route-tag.bike { background: rgba(66,245,200,0.1); color: var(--accent2); }
   .route-tag.run { background: rgba(245,163,66,0.1); color: var(--accent3); }
 
-  .note { background: rgba(125,244,252,0.04); border: 1px solid rgba(125,244,252,0.18); border-radius: 12px; padding: 18px 20px; margin-top: 16px; }
-  .note h5 { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+  /* NOTE BOX */
+  .note {
+    background: rgba(125,244,252,0.04);
+    border: 1px solid rgba(125,244,252,0.18);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 16px;
+  }
+  .note h5 {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
   .note p { font-size: 12px; color: var(--subtext); line-height: 1.7; }
 
+  /* WEEK TOGGLE */
   .week-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
-  .week-btn { padding: 6px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; color: var(--subtext); cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
+  .week-btn {
+    padding: 6px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--subtext);
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
   .week-btn.active { background: var(--accent); color: #0d0d0d; border-color: var(--accent); }
   .week-panel { display: none; }
   .week-panel.active { display: block; }
+
+  /* BREAK CARDS */
   .break-grid { display: grid; gap: 10px; }
 
+  /* FOOTER */
   .footer { text-align: center; padding: 40px 0 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
 
+  /* Animations */
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .section { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+
+  .section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
   .section.visible { opacity: 1; transform: translateY(0); }
   .hero { animation: fadeIn 0.8s ease both; }
-  .tl-row { opacity: 0; transform: translateX(-10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .quote-banner { animation: fadeIn 0.6s ease both; }
+  .tl-row {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
   .tl-row.visible { opacity: 1; transform: translateX(0); }
   .card { transition: border-color 0.2s, transform 0.15s; }
   .card:hover { border-color: #2a3050; transform: translateY(-1px); }
 
-  .edit-toggle { position: fixed; bottom: 24px; right: 24px; z-index: 200; background: var(--accent2); color: #0d0d0d; border: none; border-radius: 50px; padding: 10px 20px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; box-shadow: 0 4px 24px rgba(167,139,250,0.4); transition: all 0.2s; }
+  /* Edit mode */
+  .edit-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    background: var(--accent2);
+    color: #0d0d0d;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(167,139,250,0.4);
+    transition: all 0.2s;
+  }
   .edit-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(167,139,250,0.5); }
   .edit-toggle.active { background: var(--accent3); box-shadow: 0 4px 24px rgba(244,114,182,0.4); }
-  body.editing [contenteditable] { outline: 1px dashed rgba(167,139,250,0.4); border-radius: 4px; cursor: text; padding: 1px 3px; margin: -1px -3px; }
+  body.editing [contenteditable] {
+    outline: 1px dashed rgba(167,139,250,0.4);
+    border-radius: 4px;
+    cursor: text;
+    padding: 1px 3px;
+    margin: -1px -3px;
+  }
   body.editing [contenteditable]:focus { outline: 1px solid var(--accent2); background: rgba(167,139,250,0.06); }
-  .edit-hint { position: fixed; bottom: 64px; right: 24px; background: rgba(14,18,32,0.95); border: 1px solid var(--border2); border-radius: 10px; padding: 10px 14px; font-size: 11px; color: var(--subtext); z-index: 199; display: none; max-width: 200px; line-height: 1.5; }
+  .edit-hint {
+    position: fixed;
+    bottom: 64px;
+    right: 24px;
+    background: rgba(14,18,32,0.95);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 11px;
+    color: var(--subtext);
+    z-index: 199;
+    display: none;
+    max-width: 200px;
+    line-height: 1.5;
+  }
   body.editing .edit-hint { display: block; }
 
-  .section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; cursor: pointer; user-select: none; }
+  /* Collapsible sections */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    user-select: none;
+  }
   .section-header:hover .collapse-btn { color: var(--accent); }
-  .collapse-btn { margin-left: auto; background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 0 4px; transition: color 0.2s, transform 0.3s; flex-shrink: 0; line-height: 1; }
+  .collapse-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: color 0.2s, transform 0.3s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
   .section.collapsed .collapse-btn { transform: rotate(-90deg); }
-  .section-body { overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease; max-height: 9999px; opacity: 1; }
+  .section-body {
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+    max-height: 9999px;
+    opacity: 1;
+  }
   .section.collapsed .section-body { max-height: 0 !important; opacity: 0; }
 </style>
 </head>
@@ -203,7 +515,7 @@
   <a onclick="navScrollTo('meals')">Meals</a>
   <a onclick="navScrollTo('outdoor')">Outdoor</a>
   <a onclick="navScrollTo('care')">Care Routine</a>
-  <a onclick="navScrollTo('phone')">Phone &amp; Apps</a>
+  <a onclick="navScrollTo('phone')">Phone & Apps</a>
   <a onclick="navScrollTo('mentalhealth')">Mental Health</a>
   <a onclick="navScrollTo('style')">Style</a>
   <a onclick="navScrollTo('sleep')">Sleep</a>
@@ -213,36 +525,34 @@
   <a onclick="navScrollTo('sidequests')">Side Quests</a>
 </nav>
 
+<button class="edit-toggle" id="editBtn" onclick="toggleEdit()">✏️ EDIT MODE</button>
+<div class="edit-hint">Click any text to edit it. Changes save automatically to your browser.</div>
+
+<!-- DAILY QUOTE -->
 <div class="quote-banner">
-  <div class="quote-inner">
-    <div class="quote-mark">"</div>
-    <div class="quote-text-wrap">
-      <div class="quote-label">Today's Quote</div>
-      <div id="quote-text">Loading...</div>
-      <div id="quote-author"></div>
-    </div>
-    <button class="quote-refresh" onclick="newQuote()" title="New quote">&#8635;</button>
+  <div class="quote-card">
+    <button class="quote-refresh" onclick="newQuote()" title="New quote">↻ NEW</button>
+    <div class="quote-text" id="quoteText">Loading...</div>
+    <div class="quote-author" id="quoteAuthor"></div>
+    <div class="quote-day" id="quoteDay"></div>
   </div>
 </div>
 
-<button class="edit-toggle" id="editBtn" onclick="toggleEdit()">&#9999;&#65039; EDIT MODE</button>
-<div class="edit-hint">Click any text to edit it. Changes save automatically to your browser.</div>
-
 <div class="hero">
-  <div class="hero-eyebrow">Built For You &middot; Brooklyn, OH</div>
+  <div class="hero-eyebrow">Built For You · Brooklyn, OH</div>
   <h1>YOUR<br><em>FULL</em><br>ROUTINE</h1>
-  <p>School weeks, Harlequins season, SIBN games, weekends, breaks, meals, and outdoor routes &mdash; all in one place.</p>
+  <p>School weeks, Harlequins season, SIBN games, weekends, breaks, meals, and outdoor routes — all in one place.</p>
 </div>
 
 <div class="wrapper">
 
-  <!-- SCHOOL WEEK -->
+  <!-- ===== SCHOOL WEEK ===== -->
   <div class="section" id="school">
     <div class="section-header">
       <div class="section-title">School Week</div>
-      <span class="section-tag tag-school">Mon &ndash; Fri</span>
+      <span class="section-tag tag-school">Mon – Fri</span>
     </div>
-    <div class="section-sub">Standard week &mdash; no Harlequins, no SIBN game</div>
+    <div class="section-sub">Standard week — no Harlequins, no SIBN game</div>
 
     <div class="week-tabs">
       <button class="week-btn active" onclick="switchWeek('mwf', this)">Mon / Thu</button>
@@ -251,124 +561,2870 @@
       <button class="week-btn" onclick="switchWeek('tth', this)">Tuesday</button>
     </div>
 
-    <!-- MON/THU -->
+    <!-- MON / THU -->
     <div class="week-panel active" id="week-mwf">
       <div class="timeline">
-        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up</h4><p>Glass of water first. Wash face, get dressed, eat something before leaving.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Feed the cats &mdash; that's your anchor. While they eat, open How We Feel. 60-second check-in. Tap what you're feeling, move on. Day started.</p></div></div>
-        <div class="tl-row"><div class="tl-time">6:40</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Before you leave the house. This is your streak. Protect it. 5 minutes is enough to keep it alive on busy mornings.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:25</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>On the bus, open Globo. 15 minutes of passive learning instead of doom scrolling.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:40</div><div class="tl-dot"></div><div class="tl-content"><h4>Arrive at SIHS</h4><p>Use time before 8:20 to get organized, look over anything due that day.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">8:20</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes Begin</h4><p>5 periods. Stay present, take notes. Easier to retain than cramming later.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">MID-DAY</div><div class="tl-dot"></div><div class="tl-content"><h4>Formation &mdash; 40 Minutes</h4><p>Use this. Knock out at least one assignment every single formation. This is your secret weapon for keeping evenings light.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Work While You Wait</h4><p>Mom gets off at 4:30 so you're waiting anyway. Use this time &mdash; knock out more homework or review notes. Anything you finish here means less to do tonight.</p></div></div>
-        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Decompress + Feed Cats</h4><p>30 min to eat, chill, reset. Feed Lincoln and Batman their evening meal. Don't let this stretch into the whole evening.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework Block</h4><p>1&ndash;1.5 hours. You already knocked something out at formation &mdash; finish the rest now while your brain still works.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Workout (Evening)</h4><p>20&ndash;30 min bodyweight session. Follow the push/pull/legs split in the Workouts section.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Skin Routine</h4><p>Shower after workout, wash face, moisturize. Make it automatic.</p></div></div>
-        <div class="tl-row chore-color"><div class="tl-time">8:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Rinse or wash whatever's from dinner. Takes 5&ndash;10 minutes. Do it now so it doesn't pile up overnight.</p></div></div>
-        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Time</h4><p>Gaming, music, whatever. This is yours &mdash; you've earned it.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">9:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wind Down &mdash; Podcast On</h4><p>Phone face down. Put on Woe.Begone or whatever you're into. Dim the lights. No scrolling &mdash; story podcasts only from here.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">9:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Apple Journal &mdash; 2 Minutes</h4><p>One or two sentences before sleep. What happened, how you feel, one thing for tomorrow. Close the loop on the day.</p></div></div>
-        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>8+ hours sleep target. Growth hormone peaks during deep sleep &mdash; this matters.</p></div></div>
+        <div class="tl-row">
+          <div class="tl-time">6:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wake Up</h4>
+            <p>Glass of water first. Wash face, get dressed, eat something before leaving.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">6:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Feed Lincoln & Batman → How We Feel</h4>
+            <p>Feed the cats — that's your anchor. While they eat, open How We Feel. 60-second check-in. Tap what you're feeling, move on. Day started.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">6:40</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Busuu — Spanish (5–10 min)</h4>
+            <p>Before you leave the house. This is your streak. Protect it. 5 minutes is enough to keep it alive on busy mornings.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:25</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Bus → Globo</h4>
+            <p>On the bus, open Globo. 15 minutes of passive learning instead of doom scrolling. No pressure, just explore.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:40</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Arrive at SIHS</h4>
+            <p>Use time before 8:20 to get organized, look over anything due that day.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">8:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Classes Begin</h4>
+            <p>5 periods. Stay present, take notes. Easier to retain than cramming later.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">MID-DAY</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Formation — 40 Minutes</h4>
+            <p>Use this. Knock out at least one assignment every single formation. This is your secret weapon for keeping evenings light.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">3:05</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>School Ends — Work While You Wait</h4>
+            <p>Mom gets off at 4:30 so you're waiting anyway. Use this time — knock out more homework or review notes. Anything you finish here means less to do tonight.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">5:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Home — Decompress + Feed Cats</h4>
+            <p>30 min to eat, chill, reset. Feed Lincoln and Batman their evening meal. Don't let this stretch into the whole evening.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">5:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Homework Block</h4>
+            <p>1–1.5 hours. You already knocked something out at formation — finish the rest now while your brain still works.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">7:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Workout (Evening)</h4>
+            <p>20–30 min bodyweight session. Follow the push/pull/legs split in the Workouts section.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Shower + Skin Routine</h4>
+            <p>Shower after workout, wash face, moisturize. Make it automatic.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">8:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes</h4>
+            <p>Quick clean after dinner — rinse and wash any dishes from the evening. Takes 5–10 min. Don't let them pile up.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">8:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Free Time</h4>
+            <p>Gaming, music, whatever. This is yours — you've earned it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">9:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wind Down — Podcast On</h4>
+            <p>Phone face down. Put on Woe.Begone or whatever you're into. Dim the lights. No scrolling — story podcasts only from here.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">9:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Apple Journal — 2 Minutes</h4>
+            <p>One or two sentences before sleep. What happened, how you feel, one thing for tomorrow. Close the loop on the day.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lights Out</h4>
+            <p>8+ hours sleep target. Growth hormone peaks during deep sleep — this matters.</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- FRIDAY -->
     <div class="week-panel" id="week-fri">
-      <div class="card friday-vibe" style="margin-bottom:14px;">
-        <h4>&#127829; Friday &mdash; Pizza Movie Night. You're Off.</h4>
-        <p>Friday after school is yours. No work period, no homework block, no obligations. Get home, relax, eat, enjoy the weekend. You earned it every single week. Dishes still happen because that's just a quick 10 minutes.</p>
+      <div class="card highlight" style="margin-bottom:14px;">
+        <h4>🍕 Friday — Pizza Movie Night</h4>
+        <p>No work period after school on Fridays. You get home, it's pizza movie night, and the rest of the evening is yours. You earned it all week — take the full night off.</p>
       </div>
       <div class="timeline">
-        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up</h4><p>Same morning routine. It's Friday &mdash; that alone is good enough.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Morning anchor. Cats first, 60-second check-in, done.</p></div></div>
-        <div class="tl-row"><div class="tl-time">6:40</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Protect the streak even on Fridays. It's quick.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:25</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>Last ride of the week. Globo on, enjoy the commute.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">8:20</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes</h4><p>5 periods. Push through &mdash; you're almost there.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">MID-DAY</div><div class="tl-dot"></div><div class="tl-content"><h4>Formation &mdash; 40 Minutes</h4><p>Use it to knock out anything due next week so you don't have to think about school all weekend.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Weekend Starts</h4><p>Head home. No work period. No homework. You're done for the week.</p></div></div>
-        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Feed Cats, Decompress</h4><p>Feed Lincoln and Batman. Change clothes. Switch off school mode entirely.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>&#127829; Pizza Movie Night</h4><p>Friday tradition. Eat, watch something, be a human being. This is the reward for the whole week.</p></div></div>
-        <div class="tl-row chore-color"><div class="tl-time">AFTER</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Quick 10 minutes after the meal. Even on Friday. Then you're completely free.</p></div></div>
-        <div class="tl-row"><div class="tl-time">REST</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Evening &mdash; No Schedule</h4><p>Gaming, music, shows, whatever. No wind-down deadline tonight. Just don't wreck your sleep schedule too badly.</p></div></div>
+        <div class="tl-row">
+          <div class="tl-time">6:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wake Up</h4>
+            <p>Glass of water. Wash face, get dressed, eat something before leaving.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">6:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Feed Lincoln & Batman → How We Feel</h4>
+            <p>Morning anchor. Feed the cats, 60-second check-in while they eat.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">6:40</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Busuu — Spanish (5–10 min)</h4>
+            <p>Friday morning Busuu. Keep that streak alive going into the weekend.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:25</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Bus → Globo</h4>
+            <p>Globo on the ride in. Last school day of the week — coast a little.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">8:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Classes Begin</h4>
+            <p>5 periods. Friday energy is different — still show up and stay present.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">MID-DAY</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Formation — 40 Minutes</h4>
+            <p>Use it. Knock out anything due Monday now so the weekend is fully free.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">3:05</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>School Ends — Head Home</h4>
+            <p>No work period today. It's Friday. Get home, switch off school mode completely.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">~5:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Home — Pizza Movie Night 🍕</h4>
+            <p>That's the plan. No homework, no workout pressure, no obligations. Full reset night. Eat, watch something, decompress from the week.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">AFTER</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes (after pizza)</h4>
+            <p>Quick rinse after dinner so Saturday morning starts clean. Takes 5 min.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">11:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Aim for Bed</h4>
+            <p>Weekend, so a little later is fine. Don't go too crazy — Saturday still has stuff in it.</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- WEDNESDAY -->
     <div class="week-panel" id="week-wed">
-      <div class="card warn" style="margin-bottom:14px;"><h4>&#9889; Wednesday Schedule</h4><p>Late start &mdash; school begins at 8:50 instead of 8:20. Bus is at 7:55 instead of 7:25. Day still ends at 3:05. Formation is only about 15 minutes &mdash; treat it as a quick review or single small task, not a full homework block.</p></div>
+      <div class="card warn" style="margin-bottom:14px;">
+        <h4>⚡ Wednesday Schedule</h4>
+        <p>Late start — school begins at 8:50 instead of 8:20. Bus is at 7:55 instead of 7:25. Day still ends at 3:05. Formation is only about 15 minutes — treat it as a quick review or single small task, not a full homework block.</p>
+      </div>
       <div class="timeline">
-        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up &mdash; Same Time</h4><p>Don't sleep in just because school starts late. Consistent wake time is the foundation of good sleep.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Same morning anchor as always. Feed the cats, 60-second How We Feel check-in while they eat.</p></div></div>
-        <div class="tl-row"><div class="tl-time">6:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Protect the streak. Wednesday morning has the most breathing room &mdash; use it.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Use the Extra Time &mdash; Breakfast + Homework</h4><p>You've got about 50 extra minutes before the bus. Eat a proper breakfast, knock out any homework due today, or just decompress.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:55</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>Bus is at 7:55 on Wednesdays. Globo on the ride in.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">8:50</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes Begin</h4><p>5 periods, slightly compressed. Day ends at 3:05 same as every other day.</p></div></div>
-        <div class="tl-row muted"><div class="tl-time">MID-DAY</div><div class="tl-dot"></div><div class="tl-content"><h4>Formation &mdash; ~15 Minutes</h4><p>Too short for a full assignment. Use it to review notes, check what's due this week, or start something small.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Wait for Mom</h4><p>Use this time productively &mdash; finish any remaining homework, review notes, or get ahead on something due later in the week.</p></div></div>
-        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Decompress + Feed Cats</h4><p>30 min to eat, chill, reset. Feed Lincoln and Batman their evening meal.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework Block</h4><p>Wednesday formation is short so this block matters. Give it a solid hour &mdash; finish everything so Thursday is clean.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Workout (Evening)</h4><p>20&ndash;30 min bodyweight session. Follow the push/pull/legs split.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Care Routine</h4><p>Shower, then evening skin and care routine. See Care Routine section for the full order.</p></div></div>
-        <div class="tl-row chore-color"><div class="tl-time">8:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Quick wash after dinner. 5&ndash;10 minutes. Done before free time.</p></div></div>
-        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Time</h4><p>Gaming, music, whatever. You've earned it.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">9:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wind Down &mdash; Podcast On</h4><p>Phone face down. Story podcast. Dim the lights.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">9:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Apple Journal &mdash; 2 Minutes</h4><p>One or two sentences. Close the loop on the day.</p></div></div>
-        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>8+ hours. Same target every night.</p></div></div>
+        <div class="tl-row">
+          <div class="tl-time">6:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wake Up — Same Time</h4>
+            <p>Don't sleep in just because school starts late. Consistent wake time is the foundation of good sleep.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">6:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Feed Lincoln & Batman → How We Feel</h4>
+            <p>Same morning anchor as always. Feed the cats, 60-second How We Feel check-in while they eat.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">6:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Busuu — Spanish (5–10 min)</h4>
+            <p>Protect the streak. Wednesday morning has the most breathing room — use it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">7:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Use the Extra Time — Breakfast + Homework</h4>
+            <p>You've got about 50 extra minutes before the bus. Eat a proper breakfast, knock out any homework due today, or just decompress. Easiest morning of the week.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:55</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Bus → Globo</h4>
+            <p>Bus is at 7:55 on Wednesdays — later than the rest of the week. Globo on the ride in.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">8:50</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Classes Begin</h4>
+            <p>5 periods, slightly compressed. Day ends at 3:05 same as every other day.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">MID-DAY</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Formation — ~15 Minutes</h4>
+            <p>Too short for a full assignment. Use it to review notes, check what's due this week, or start something small.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">3:05</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>School Ends — Work While You Wait</h4>
+            <p>Use this time productively — finish any remaining homework, review notes, or get ahead on something due later this week.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">5:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Home — Decompress + Feed Cats</h4>
+            <p>30 min to eat, chill, reset. Feed Lincoln and Batman their evening meal.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">5:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Homework Block</h4>
+            <p>Wednesday formation is short so this block matters. Give it a solid hour — finish everything so Thursday is clean.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">7:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Workout (Evening)</h4>
+            <p>20–30 min bodyweight session. Follow the push/pull/legs split.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Shower + Care Routine</h4>
+            <p>Shower, then evening skin and care routine. See Care Routine section for the full order.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">8:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes</h4>
+            <p>Quick clean after dinner. 5–10 min. Then the evening is fully yours.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">8:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Free Time</h4>
+            <p>Gaming, music, whatever. You've earned it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">9:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wind Down — Podcast On</h4>
+            <p>Phone face down. Story podcast. Dim the lights.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">9:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Apple Journal — 2 Minutes</h4>
+            <p>One or two sentences. Close the loop on the day.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lights Out</h4>
+            <p>8+ hours. Same target every night.</p>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- TUESDAY -->
     <div class="week-panel" id="week-tth">
-      <div class="card" style="margin-bottom:14px;"><h4>Tuesday &mdash; No Formation</h4><p>No formation on Tuesday. Straight school day, 8:20&ndash;3:05. Use the wait for mom time productively, then evening block is your main homework window.</p></div>
+      <div class="card" style="margin-bottom:14px;">
+        <h4>Tuesday — No Formation</h4>
+        <p>No formation on Tuesday. Straight school day, 8:20–3:05. Use the wait for mom time productively, then evening block is your main homework window since there was no mid-day break.</p>
+      </div>
       <div class="timeline">
-        <div class="tl-row"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wake Up</h4><p>Same morning routine. Water, face wash, food before bus.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">6:35</div><div class="tl-dot"></div><div class="tl-content"><h4>Feed Lincoln &amp; Batman &rarr; How We Feel</h4><p>Morning anchor. Feed cats, 60-second check-in, done.</p></div></div>
-        <div class="tl-row"><div class="tl-time">6:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Busuu &mdash; Spanish (5&ndash;10 min)</h4><p>Protect the streak before you leave.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:25</div><div class="tl-dot"></div><div class="tl-content"><h4>Bus &rarr; Globo</h4><p>Globo on the ride in. Passive learning, no pressure.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">8:20</div><div class="tl-dot"></div><div class="tl-content"><h4>Classes &mdash; No Formation Break</h4><p>Straight through to 3:05. Stay on top of notes &mdash; no mid-day catch-up today.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">3:05</div><div class="tl-dot"></div><div class="tl-content"><h4>School Ends &mdash; Work While You Wait</h4><p>Mom gets off at 4:30 so you've got time to kill. Use it &mdash; start your homework now so the evening block is shorter. Even 30&ndash;45 minutes here makes a real difference on Tuesdays.</p></div></div>
-        <div class="tl-row"><div class="tl-time">5:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Home &mdash; Decompress + Feed Cats</h4><p>30 min to eat, reset, feed Lincoln and Batman.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">5:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework &mdash; Finish the Rest</h4><p>You started during wait time &mdash; finish it now. Tuesday has no formation so this is your most important homework block of the week.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Workout</h4><p>20&ndash;30 min. Don't skip &mdash; Tuesday is Cardio + Core day.</p></div></div>
-        <div class="tl-row"><div class="tl-time">7:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Care Routine</h4><p>Shower after workout, then evening skin routine.</p></div></div>
-        <div class="tl-row chore-color"><div class="tl-time">8:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Rinse and wash what's from dinner. Quick, then you're free.</p></div></div>
-        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Free Time</h4><p>Gaming, music, whatever. Earned it.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">9:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Wind Down &mdash; Podcast On</h4><p>Phone face down, story podcast, dim lights.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">9:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Apple Journal &mdash; 2 Minutes</h4><p>One or two sentences. Close the loop.</p></div></div>
-        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>Stay consistent even on long days.</p></div></div>
+        <div class="tl-row">
+          <div class="tl-time">6:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wake Up</h4>
+            <p>Same morning routine. Water, face wash, food before bus.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">6:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Feed Lincoln & Batman → How We Feel</h4>
+            <p>Morning anchor. Feed cats, 60-second check-in, done.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">6:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Busuu — Spanish (5–10 min)</h4>
+            <p>Protect the streak before you leave.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:25</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Bus → Globo</h4>
+            <p>Globo on the ride in. Passive learning, no pressure.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">8:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Classes — No Formation Break</h4>
+            <p>Straight through to 3:05. Stay on top of notes — no mid-day catch-up today.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">3:05</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>School Ends — Work While You Wait</h4>
+            <p>Mom gets off at 4:30 so you've got time. Use it — start your homework now so the evening block is shorter. Even 30–45 minutes here makes a real difference on Tuesdays.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">5:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Home — Decompress + Feed Cats</h4>
+            <p>30 min to eat, reset, feed Lincoln and Batman.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">5:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Homework — Finish the Rest</h4>
+            <p>You started during wait time — finish it now. Tuesday has no formation so this is your most important homework block of the week.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">7:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Workout</h4>
+            <p>20–30 min. Don't skip — Tuesday is Cardio + Core day.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">7:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Shower + Care Routine</h4>
+            <p>Shower after workout, then evening skin routine. See Care Routine section.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">8:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes</h4>
+            <p>Quick clean after dinner. 5–10 min, then the evening is yours.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">8:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Free Time</h4>
+            <p>Gaming, music, whatever. Earned it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">9:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wind Down — Podcast On</h4>
+            <p>Phone face down, story podcast, dim lights.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">9:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Apple Journal — 2 Minutes</h4>
+            <p>One or two sentences. Close the loop.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lights Out</h4>
+            <p>Stay consistent even on long days.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="note"><h5>Formation Strategy &mdash; The Real Deal</h5><p>Mon, Thu, Fri you have 40 min &mdash; that's enough for one solid assignment or two small ones. Use it every time, no exceptions. Wednesday's 15 min is just for quick stuff. Tuesday has nothing, so the evening block is your only shot. Plan accordingly.</p></div>
+    <div class="note">
+      <h5>Formation Strategy — The Real Deal</h5>
+      <p>Mon, Thu, Fri you have 40 min — that's enough for one solid assignment or two small ones. Use it every time, no exceptions. Wednesday's 15 min is just for quick stuff. Tuesday has nothing, so the evening block is your only shot. Plan accordingly.</p>
+    </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- HARLEQUINS -->
+  <!-- ===== HARLEQUINS ===== -->
   <div class="section" id="harlequins">
     <div class="section-header">
       <div class="section-title">Harlequins Season</div>
-      <span class="section-tag tag-school">Fall &amp; Spring</span>
+      <span class="section-tag tag-school">Fall & Spring</span>
     </div>
-    <div class="section-sub">Rehearsal weeks, tech week, and show weekends &mdash; each handled differently</div>
+    <div class="section-sub">Rehearsal weeks, tech week, and show weekends — each handled differently</div>
+
     <div class="tab-bar">
       <button class="tab-btn active" onclick="switchTab('harlequins', 'rehearsal')">Rehearsal Nights</button>
       <button class="tab-btn" onclick="switchTab('harlequins', 'tech')">Tech Week</button>
       <button class="tab-btn" onclick="switchTab('harlequins', 'show')">Show Weekend</button>
     </div>
+
     <div class="tab-panel active" id="harlequins-rehearsal">
-      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">Mon &amp; Thu &middot; 3:30&ndash;6:30 &middot; Home ~7pm &middot; 2&ndash;3 months</div>
+      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">Mon & Thu · 3:30–6:30 · Home ~7pm · 2–3 months</div>
       <div class="timeline">
-        <div class="tl-row"><div class="tl-time">3:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Rehearsal at Breen Center &mdash; Crew &amp; Props</h4><p>Right across the street. You're running crew and props &mdash; set pieces, prop tracking, stage setup. Stay on top of what's needed before it's asked for.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">6:30</div><div class="tl-dot"></div><div class="tl-content"><h4>Rehearsal Ends</h4><p>Home around 6:50&ndash;7. Eat something if you haven't.</p></div></div>
-        <div class="tl-row warn-color"><div class="tl-time">7:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Homework (shortened block)</h4><p>45 min max. Prioritize what's due tomorrow first. Use formation blocks to pre-emptively get ahead.</p></div></div>
-        <div class="tl-row alt-color"><div class="tl-time">7:45</div><div class="tl-dot"></div><div class="tl-content"><h4>Light Workout or Walk</h4><p>On rehearsal nights, go easy &mdash; 15 min walk outside or a quick core circuit. Don't skip entirely.</p></div></div>
-        <div class="tl-row chore-color"><div class="tl-time">8:10</div><div class="tl-dot"></div><div class="tl-content"><h4>Dishes</h4><p>Quick rinse of whatever's from dinner. 5 minutes on rehearsal nights &mdash; keep it fast.</p></div></div>
-        <div class="tl-row"><div class="tl-time">8:15</div><div class="tl-dot"></div><div class="tl-content"><h4>Shower + Skin + Wind Down</h4><p>Keep it tight so you hit 10pm.</p></div></div>
-        <div class="tl-row muted"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-content"><h4>Lights Out</h4><p>Rehearsal days are long &mdash; sleep is recovery.</p></div></div>
+        <div class="tl-row">
+          <div class="tl-time">3:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Rehearsal at Breen Center — Crew & Props</h4>
+            <p>Right across the street. You're running crew and props so your job shifts with each rehearsal — set pieces, prop tracking, stage setup. Stay on top of what's needed before it's asked for.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">6:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Rehearsal Ends</h4>
+            <p>Home around 6:50–7. Eat something if you haven't.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">7:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Homework (shortened block)</h4>
+            <p>45 min max. Prioritize what's due tomorrow first. Use formation blocks to pre-emptively get ahead.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">7:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Light Workout or Walk</h4>
+            <p>On rehearsal nights, go easy — 15 min walk outside or a quick core circuit. Don't skip entirely.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">8:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Shower + Skin + Wind Down</h4>
+            <p>Keep it tight so you hit 10pm.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">8:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes (quick)</h4>
+            <p>Even on long rehearsal nights — 5 min rinse and stack. Keeps the kitchen from getting out of hand.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lights Out</h4>
+            <p>Rehearsal days are long — sleep is recovery.</p>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="tab-panel" id="harlequins-tech">
-      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">3:30&ndash;9pm &middot;
+      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">3:30–9pm · Every day that week · Survival mode</div>
+      <div class="card warn">
+        <h4>⚠️ Tech Week Reality Check</h4>
+        <p>This week is intense. The goal isn't optimization — it's surviving without completely falling apart. Lower the bar on workouts, protect your sleep as much as possible, and eat real food.</p>
+      </div>
+      <br>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">3:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Tech Rehearsal</h4>
+            <p>Full crew mode. You're on until 9ish — bring a snack, stay hydrated.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">9:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Home — Eat & Wind Down Fast</h4>
+            <p>Eat something real. Plain chicken, rice, bread — something with substance. Skip the junk.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">9:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Quick Homework Only</h4>
+            <p>Only what's absolutely due tomorrow. Lean hard on formation blocks during tech week.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">9:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Skin Routine + Bed</h4>
+            <p>Don't skip the face wash. 2 minutes. Then sleep.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">10:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lights Out — No Exceptions</h4>
+            <p>Tech week already wrecks your sleep. Don't make it worse. Workout resumes after the show.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="harlequins-show">
+      <div class="section-sub" style="margin-top:-10px; margin-bottom:14px;">1 weekend for plays · 2 weekends for musicals</div>
+      <div class="card highlight">
+        <h4>🎭 Show Days — You Made It Happen</h4>
+        <p>As crew and props, you're the reason the show runs. The audience doesn't see you but none of it works without you. Don't stress the routine on show days — stay fed, stay hydrated, keep your props list tight, distribute those Twizzlers backstage, and enjoy it. Back on schedule the Monday after closing night.</p>
+      </div>
+      <br>
+      <div class="card-row">
+        <div class="card">
+          <h4>Show Day Morning</h4>
+          <ul>
+            <li>Eat a proper breakfast</li>
+            <li>Drink water — your voice and energy depend on it</li>
+            <li>Lay out everything you need the night before</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Post-Show Night</h4>
+          <ul>
+            <li>Celebrate — you earned it</li>
+            <li>Eat real food, not just junk</li>
+            <li>Try to sleep before midnight</li>
+            <li>Skin routine still applies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== SIBN ===== -->
+  <div class="section" id="sibn">
+    <div class="section-header">
+      <div class="section-title">SIBN Game Nights</div>
+      <span class="section-tag tag-school">Sporadic</span>
+    </div>
+    <div class="section-sub">Varsity football, basketball, hockey, volleyball — usually ends 7–9pm</div>
+
+    <div class="card">
+      <h4>Football / Earlier Games (done by 7–7:30)</h4>
+      <ul>
+        <li>Home by 7:30 — treat it like a normal school night from there</li>
+        <li>Homework block 7:30–8:30, then workout or skip and walk instead</li>
+        <li>Dishes after dinner, then still hit lights out by 10:30 at the latest</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Basketball / Volleyball / Hockey (ends 8–9pm)</h4>
+      <ul>
+        <li>Home by 9 — skip the full workout, do a 10-min core circuit or just walk</li>
+        <li>Eat something, do skin routine, quick dishes, get to bed</li>
+        <li>Prioritize sleep over working out on these nights — you'll make it up</li>
+        <li>Use formation blocks earlier that day to handle homework</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h5>SIBN + Harlequins Collision</h5>
+      <p>If a SIBN game falls on a Mon or Thu during Harlequins season, it's a lot. On those days: homework gets done at school during formation, workouts are skipped entirely, and you just make sure to eat and sleep. One rough day doesn't break progress.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== WEEKEND ===== -->
+  <div class="section" id="weekend">
+    <div class="section-header">
+      <div class="section-title">Weekend Routine</div>
+      <span class="section-tag tag-weekend">Sat & Sun</span>
+    </div>
+    <div class="section-sub">More flexible — but still structured enough to keep momentum</div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('weekend', 'sat')">Saturday</button>
+      <button class="tab-btn" onclick="switchTab('weekend', 'sun')">Sunday Reset</button>
+    </div>
+
+    <div class="tab-panel active" id="weekend-sat">
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">8:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wake Up (natural)</h4>
+            <p>No alarm if possible. Let your body rest. Glass of water when you wake up.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">9:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Breakfast + Morning Routine</h4>
+            <p>Face wash, moisturize, eat something real before doing anything else.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Outdoor Cardio</h4>
+            <p>Hit Big Creek trail — walk, run, or bike depending on the day and weather. Saturday is your best outdoor day.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">11:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Free Time / Family / Whatever</h4>
+            <p>Rest of the morning is yours. Don't over-structure it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">2:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Homework (if anything is due Monday)</h4>
+            <p>Get it done Saturday afternoon — Sunday you'll thank yourself.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">5:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Full Body Workout</h4>
+            <p>Saturday is your full body circuit day. More time, no rush.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">6:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Shower + Dinner + Evening</h4>
+            <p>Chill evening. Gaming, shows, music — you've done the work.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">7:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes</h4>
+            <p>After dinner — quick rinse and clean. Keeps Saturday feeling clean going into Sunday.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">11:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Aim for Bed</h4>
+            <p>Weekend sleep in is fine, but don't blow up your sleep schedule entirely.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="weekend-sun">
+      <div class="card highlight" style="margin-bottom:14px;">
+        <h4>🔄 Sunday = Reset + Prep Day</h4>
+        <p>Sunday isn't a rest day — it's your launch pad for the week. Room, laundry, trash, weekly review, meal prep. Do these consistently and Monday morning starts differently.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">9:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Wake Up</h4>
+            <p>Sunday is full rest from working out. Your body needs it.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">9:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Morning Routine + Breakfast</h4>
+            <p>Same as always — water, face wash, food.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">10:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Optional Walk</h4>
+            <p>If it's nice, hit the trail for a casual walk. No pressure, no pace goals.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Weekly Laundry — School + Week Clothes</h4>
+            <p>Throw in your load now so it has time to finish before evening. Wash everything you'll need for the week — school clothes, gym stuff, socks, all of it. Swap to dryer when it's done. Fold and put away before bed, not tomorrow.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">1:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Room Reset — 10 Minutes</h4>
+            <p>Clothes off the floor, desk clear, bed made. Do this every Sunday so Monday morning starts in a clean space. A clean room going into the week genuinely changes your headspace.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">1:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Week Prep</h4>
+            <p>Look at what's due this week. Pack bag, lay out clothes for Monday, quick mental reset. 20 minutes max.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">2:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Free Afternoon</h4>
+            <p>Fully yours. Recharge before the week. Check on laundry as needed.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">5:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Dishes + Evening Reset</h4>
+            <p>Clean up from the day. Kitchen tidy before the evening wind-down begins.</p>
+          </div>
+        </div>
+        <div class="tl-row chore-color">
+          <div class="tl-time">6:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Trash Cans to the Curb 🗑️</h4>
+            <p>Every Sunday evening — take the trash cans out to the curb for Monday pickup. Takes 2 minutes. Do it while it's still light out so you don't forget.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">7:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Weekly Review — 10 Minutes</h4>
+            <p>The 5 questions. How We Feel weekly check-in. Apple Journal. See the Weekly Review section. This is how you go into Monday with intention instead of just reacting.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Bed — Back on School Schedule</h4>
+            <p>Sunday night sleep matters most. Sets the tone for the whole week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== BREAKS ===== -->
+  <div class="section" id="breaks">
+    <div class="section-header">
+      <div class="section-title">Break Routines</div>
+      <span class="section-tag tag-break">Summer · Winter · Spring</span>
+    </div>
+    <div class="section-sub">Structure loosens — but doesn't disappear</div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('breaks', 'summer')">Summer</button>
+      <button class="tab-btn" onclick="switchTab('breaks', 'winter')">Winter</button>
+      <button class="tab-btn" onclick="switchTab('breaks', 'spring')">Spring</button>
+    </div>
+
+    <div class="tab-panel active" id="breaks-summer">
+      <div class="break-grid">
+        <div class="card highlight">
+          <h4>Summer is your biggest opportunity</h4>
+          <p>No school, no fixed schedule. This is when you can make the most visible progress — if you don't let the days just slip away. Keep a loose structure so momentum doesn't die.</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time">8:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Wake Up (don't push past 9)</h4>
+              <p>Sleeping in is fine — sleeping in until noon every day kills your routine.</p>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">9:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Morning Routine + Breakfast</h4>
+              <p>Water, face wash, real breakfast. Same as always.</p>
+            </div>
+          </div>
+          <div class="tl-row alt-color">
+            <div class="tl-time">10:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Outdoor Cardio</h4>
+              <p>Best time to go before it gets too hot. Bike, run, or walk at Big Creek. Mix it up to keep it interesting.</p>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">11:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Free Morning</h4>
+              <p>Chill, game, hang out — this is summer.</p>
+            </div>
+          </div>
+          <div class="tl-row alt-color">
+            <div class="tl-time">5:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Workout</h4>
+              <p>Evening bodyweight session. Cooler outside by now too if you want to do it on the trail.</p>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">6:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Shower + Dinner + Evening</h4>
+              <p>Long evenings are the best part of summer. Enjoy them.</p>
+            </div>
+          </div>
+          <div class="tl-row chore-color">
+            <div class="tl-time">7:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Dishes</h4>
+              <p>After dinner every day — quick wash after each meal, no pile-up.</p>
+            </div>
+          </div>
+          <div class="tl-row muted">
+            <div class="tl-time">11:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Aim for Bed</h4>
+              <p>You can push later in summer but don't let it flip entirely or back-to-school will wreck you.</p>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          <h5>Summer Sundays Still Apply</h5>
+          <p>Even in summer, Sunday is still reset day. Laundry, trash to curb, room tidy, weekly review. Takes under an hour total and keeps you from losing all structure over the break.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="breaks-winter">
+      <div class="break-grid">
+        <div class="card">
+          <h4>❄️ Winter Break — Maintain, Don't Grind</h4>
+          <p>It's cold, it's dark early, motivation dips. The goal isn't progress — it's maintenance. Keep working out inside, keep eating decent, keep sleeping on schedule so January doesn't destroy you.</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time">9:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Wake Up</h4>
+              <p>Don't let it creep past 9:30. Light exposure in the morning helps your mood in winter.</p>
+            </div>
+          </div>
+          <div class="tl-row alt-color">
+            <div class="tl-time">10:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Workout — Indoors</h4>
+              <p>Too cold for outdoor cardio most days. Do your bodyweight session inside instead.</p>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">11:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Free Day</h4>
+              <p>Holiday stuff, family, gaming, whatever. Enjoy the break.</p>
+            </div>
+          </div>
+          <div class="tl-row chore-color">
+            <div class="tl-time">AFTER<br>DINNER</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Dishes — Daily</h4>
+              <p>Even on break days. Quick rinse and clean after dinner. Don't let the kitchen pile up over the holidays.</p>
+            </div>
+          </div>
+          <div class="tl-row muted">
+            <div class="tl-time">10:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Bed</h4>
+              <p>Keep a consistent sleep time even over winter break — harder to reset in January if you don't.</p>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          <h5>Winter Sunday Still = Reset Day</h5>
+          <p>Trash to curb Sunday evening, laundry on Sunday, room tidy. Keeps you from hitting January completely derailed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="breaks-spring">
+      <div class="break-grid">
+        <div class="card">
+          <h4>🌱 Spring Break — Transition Mode</h4>
+          <p>Weather is getting better, Harlequins musical is likely around this time. Use spring break to get outside more and build momentum heading into the final stretch of the school year.</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-time">8:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Wake Up</h4>
+              <p>Spring mornings are great — don't waste them sleeping until noon.</p>
+            </div>
+          </div>
+          <div class="tl-row alt-color">
+            <div class="tl-time">9:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Outdoor Cardio — Trail</h4>
+              <p>Best time of year to be on the Big Creek trail. Run, bike, or walk. Aim for at least 30 min.</p>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">11:00</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Free Time</h4>
+              <p>Relax, recharge before the last push of the school year.</p>
+            </div>
+          </div>
+          <div class="tl-row alt-color">
+            <div class="tl-time">5:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Evening Workout</h4>
+              <p>Full session. Longer days mean more energy in the evening.</p>
+            </div>
+          </div>
+          <div class="tl-row chore-color">
+            <div class="tl-time">AFTER<br>DINNER</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Dishes — Daily</h4>
+              <p>Quick clean after every dinner. Keeps the break days feeling clean and in order.</p>
+            </div>
+          </div>
+          <div class="tl-row muted">
+            <div class="tl-time">10:30</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <h4>Bed</h4>
+              <p>Don't stray too far from school schedule — you're going back soon.</p>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          <h5>Spring Sunday Still = Reset Day</h5>
+          <p>Laundry, trash to curb, room tidy. Same as every other week.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== WORKOUTS ===== -->
+  <div class="section" id="workouts">
+    <div class="section-header">
+      <div class="section-title">Workout Plan</div>
+      <span class="section-tag tag-workout">No Equipment</span>
+    </div>
+    <div class="section-sub">Full bodyweight program — everything you need, nothing you don't have</div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('workouts', 'split')">Weekly Split</button>
+      <button class="tab-btn" onclick="switchTab('workouts', 'push')">Push Day</button>
+      <button class="tab-btn" onclick="switchTab('workouts', 'pull')">Pull Day</button>
+      <button class="tab-btn" onclick="switchTab('workouts', 'legs')">Legs Day</button>
+      <button class="tab-btn" onclick="switchTab('workouts', 'cardio')">Cardio + Core</button>
+    </div>
+
+    <div class="tab-panel active" id="workouts-split">
+      <div class="card highlight" style="margin-bottom:14px;">
+        <h4>How This Works — Rounds Explained</h4>
+        <p>Each workout is <strong>3 rounds of the same exercises</strong> — you do all the exercises in the list once, that's round 1. Then rest 60 seconds and repeat the exact same exercises for round 2, then round 3. You're not picking different exercises each round. Start at the lower rep count listed and add reps week by week as it gets easier. You should feel challenged but not destroyed — if you can't finish a set, drop the reps. If it's too easy, add reps or slow down the movement. Takes 20–30 min per session.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">MON</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Push Day — Chest, Shoulders, Triceps</h4>
+            <p>Pushups, pike pushups, tricep dips, shoulder taps, plank hold</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">TUE</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Cardio + Core</h4>
+            <p>High knees, mountain climbers, plank, crunches, leg raises</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">WED</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Pull Day — Back, Biceps</h4>
+            <p>Doorframe rows, Superman holds, reverse snow angels, towel curls</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">THU</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Rest / Active Recovery</h4>
+            <p>Walk, light stretch, or full rest. Muscles grow on rest days.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">FRI</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Legs Day — Quads, Glutes, Calves</h4>
+            <p>Squats, lunges, glute bridges, wall sit, calf raises</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">SAT</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Full Body Circuit</h4>
+            <p>Mix of all the above — burpees, pushups, squats, plank. Go by feel. Longer session if you have time.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">SUN</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Full Rest</h4>
+            <p>Non-negotiable. Sleep, eat, recover.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <h5>Harlequins Nights (Mon/Thu)</h5>
+        <p>On rehearsal nights skip the full session — do a 10–15 min walk or a quick core circuit when you get home. Don't skip entirely, but don't burn yourself out after a 3-hour rehearsal either.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="workouts-push">
+      <div class="card" style="margin-bottom:14px;">
+        <h4>Push Day — Chest, Shoulders & Triceps</h4>
+        <p>3 rounds. Rest 60 sec between rounds. ~20 minutes total.</p>
+      </div>
+      <div class="card">
+        <h4>1. Standard Pushups</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10–15</li>
+          <li><strong>How:</strong> Hands shoulder-width apart, body in a straight line from head to heels. Lower chest to just above the floor, push back up. Don't let hips sag or shoot up.</li>
+          <li><strong>Too hard?</strong> Do them on your knees until you build strength</li>
+          <li><strong>Too easy?</strong> Slow down the lowering phase — 3 seconds down, 1 second up</li>
+          <li><strong>Build to:</strong> 3 × 20 reps, then add slow negatives or try decline pushups (feet elevated)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>2. Pike Pushups</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 8–12</li>
+          <li><strong>How:</strong> Start in a downward dog position (hips high, body in an inverted V). Bend elbows and lower your head toward the floor, then push back up. Hits shoulders hard.</li>
+          <li><strong>Feel it in:</strong> Front and side deltoids</li>
+          <li><strong>Build to:</strong> 3 × 15 reps, then try elevating your feet on a chair for more shoulder load</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>3. Tricep Dips (Chair)</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10–12</li>
+          <li><strong>How:</strong> Sit on the edge of a sturdy chair, hands gripping the edge beside your hips. Slide off the seat and lower yourself down by bending your elbows to 90°, then push back up. Keep your back close to the chair.</li>
+          <li><strong>Feel it in:</strong> Back of your arms (triceps)</li>
+          <li><strong>Build to:</strong> 3 × 15 reps, then try straightening your legs out further to increase the load</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>4. Shoulder Taps</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 20 taps (10 each side)</li>
+          <li><strong>How:</strong> Get into a pushup position. Without rotating your hips, lift one hand and tap the opposite shoulder, then alternate. Keep your core tight — the goal is to minimize side-to-side movement.</li>
+          <li><strong>Feel it in:</strong> Shoulders, core stability</li>
+          <li><strong>Build to:</strong> 3 × 30 taps with zero hip rotation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>5. Plank Hold</h4>
+        <ul>
+          <li><strong>Time:</strong> 3 × 30–45 seconds</li>
+          <li><strong>How:</strong> Forearms on the floor, body straight from head to heels. Squeeze your core like you're bracing for a punch. Don't let your lower back arch or hips drop.</li>
+          <li><strong>Build to:</strong> 60 seconds per set over 4–6 weeks, then try side planks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="workouts-pull">
+      <div class="card" style="margin-bottom:14px;">
+        <h4>Pull Day — Back & Biceps</h4>
+        <p>3 rounds. Rest 60 sec between rounds. ~20 minutes total. Pull days are harder without equipment — these are your best no-equipment options.</p>
+      </div>
+      <div class="card">
+        <h4>1. Doorframe Rows</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 8–12</li>
+          <li><strong>How:</strong> Stand in a doorframe and grip both sides at about chest height. Lean back so your body is at an angle (like a reverse pushup), arms extended. Pull your chest toward the doorframe by squeezing your shoulder blades together, then slowly lower back. The more you lean back, the harder it is.</li>
+          <li><strong>Feel it in:</strong> Upper back, rear shoulders, biceps</li>
+          <li><strong>Build to:</strong> 3 × 15 reps, then lean back further to increase the angle and difficulty</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>2. Superman Holds</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10–12, hold 2 sec at top</li>
+          <li><strong>How:</strong> Lie face down on the floor, arms extended in front of you. Simultaneously lift your arms, chest, and legs off the ground as high as you can. Hold for 2 seconds, lower slowly. Don't use momentum — squeeze your back muscles.</li>
+          <li><strong>Feel it in:</strong> Lower back, rear shoulders, glutes</li>
+          <li><strong>Build to:</strong> 3 × 15 reps with a 3-second hold at the top</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>3. Reverse Snow Angels</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 12–15</li>
+          <li><strong>How:</strong> Lie face down, arms at your sides. Lift your arms off the ground and sweep them up overhead (like a snow angel but in reverse and off the ground). Keep arms straight and off the floor the whole time.</li>
+          <li><strong>Feel it in:</strong> Upper and mid back, rear deltoids</li>
+          <li><strong>Build to:</strong> 3 × 20 reps while holding each end position for 1 second</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>4. Towel / Backpack Curls</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10–15</li>
+          <li><strong>How:</strong> Fill a backpack with books or water bottles for weight. Hold the straps and do a standard bicep curl motion. Or loop a towel under a door and grip both ends to do a pull motion. Not perfect, but it works.</li>
+          <li><strong>Feel it in:</strong> Biceps</li>
+          <li><strong>Build to:</strong> 3 × 15 reps, then add more weight to the backpack</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>5. Dead Bug</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10 each side</li>
+          <li><strong>How:</strong> Lie on your back, arms straight up, knees at 90° in the air. Slowly lower one arm overhead while extending the opposite leg toward the floor — don't let your back arch. Return and switch sides. Looks easy, isn't.</li>
+          <li><strong>Feel it in:</strong> Deep core, coordination</li>
+          <li><strong>Build to:</strong> 3 × 15 each side with a slower, more controlled movement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="workouts-legs">
+      <div class="card" style="margin-bottom:14px;">
+        <h4>Legs Day — Quads, Glutes & Calves</h4>
+        <p>3 rounds. Rest 60 sec between rounds. ~20 minutes. Leg workouts are brutal with bodyweight — don't underestimate these.</p>
+      </div>
+      <div class="card">
+        <h4>1. Bodyweight Squats</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 15–20</li>
+          <li><strong>How:</strong> Feet shoulder-width apart, toes slightly out. Send hips back and down like you're sitting into a chair. Keep your chest up, knees tracking over your toes. Go until thighs are parallel to the floor (or as low as comfortable), then drive through your heels back up.</li>
+          <li><strong>Feel it in:</strong> Quads, glutes, hamstrings</li>
+          <li><strong>Build to:</strong> 3 × 25 reps, then try jump squats or slow 4-second descent squats</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>2. Reverse Lunges</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10 each leg</li>
+          <li><strong>How:</strong> Stand tall. Step one foot back and lower your back knee toward the floor (don't slam it). Front knee stays at 90°, chest up. Push through your front heel to return. Reverse lunges are easier on the knees than forward lunges.</li>
+          <li><strong>Feel it in:</strong> Quads, glutes, balance</li>
+          <li><strong>Build to:</strong> 3 × 15 each leg, then try walking lunges or holding something heavy</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>3. Glute Bridges</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 15–20, hold 1 sec at top</li>
+          <li><strong>How:</strong> Lie on your back, knees bent, feet flat on floor hip-width apart. Drive through your heels to lift your hips until your body forms a straight line from shoulders to knees. Squeeze your glutes hard at the top, then lower slowly.</li>
+          <li><strong>Feel it in:</strong> Glutes, hamstrings, lower back</li>
+          <li><strong>Build to:</strong> 3 × 25 reps, then try single-leg glute bridges (one leg extended)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>4. Wall Sit</h4>
+        <ul>
+          <li><strong>Time:</strong> 3 × 30–45 seconds</li>
+          <li><strong>How:</strong> Back flat against a wall, slide down until thighs are parallel to the floor (like sitting in an invisible chair). Hold. Arms can rest on thighs or extend forward. It will burn — that's normal.</li>
+          <li><strong>Build to:</strong> 60 seconds per set, then 90 seconds</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>5. Calf Raises</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 20–25</li>
+          <li><strong>How:</strong> Stand with feet hip-width apart. Rise up onto your toes as high as you can, hold 1 second at the top, then lower slowly. Do these on a step edge (heel hanging off) for greater range of motion if available.</li>
+          <li><strong>Feel it in:</strong> Calves</li>
+          <li><strong>Build to:</strong> 3 × 30 reps, then try single-leg calf raises</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="workouts-cardio">
+      <div class="card" style="margin-bottom:14px;">
+        <h4>Cardio + Core Day</h4>
+        <p>2–3 rounds. Minimal rest between exercises (20–30 sec), 90 sec rest between rounds. Gets your heart rate up and builds core strength at the same time. ~20 minutes.</p>
+      </div>
+      <div class="card">
+        <h4>1. High Knees</h4>
+        <ul>
+          <li><strong>Time:</strong> 3 × 30 seconds</li>
+          <li><strong>How:</strong> Run in place driving your knees up to hip height as fast as you can. Pump your arms. Land lightly on the balls of your feet. This is your warm-up and cardio rolled into one.</li>
+          <li><strong>Build to:</strong> 3 × 45 seconds at full pace</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>2. Mountain Climbers</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 20 (10 each leg)</li>
+          <li><strong>How:</strong> Start in a pushup position. Drive one knee toward your chest, then quickly switch legs like you're running horizontally. Keep your hips level — don't let them bounce up. The faster you go, the more cardio it becomes.</li>
+          <li><strong>Feel it in:</strong> Core, hip flexors, shoulders</li>
+          <li><strong>Build to:</strong> 3 × 30 reps at a faster pace</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>3. Crunches</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 15–20</li>
+          <li><strong>How:</strong> Lie on your back, knees bent, feet flat. Hands behind your head (don't pull your neck). Curl your shoulders off the floor by contracting your abs — you don't need to come all the way up. Lower slowly. The lowering is where most of the work happens.</li>
+          <li><strong>Build to:</strong> 3 × 25 reps, then try bicycle crunches for more difficulty</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>4. Leg Raises</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 10–12</li>
+          <li><strong>How:</strong> Lie flat on your back, legs straight. Press your lower back into the floor. Slowly raise both legs to 90°, then lower them back down without letting them touch the floor. If your back arches, bend your knees slightly.</li>
+          <li><strong>Feel it in:</strong> Lower abs, hip flexors</li>
+          <li><strong>Build to:</strong> 3 × 15 reps with fully straight legs the whole way</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>5. Burpees</h4>
+        <ul>
+          <li><strong>Reps:</strong> 3 × 8–10</li>
+          <li><strong>How:</strong> Stand → squat down and place hands on floor → jump or step feet back into a pushup position → do one pushup → jump or step feet forward → jump up with arms overhead. That's one rep. It's hard. Do them at whatever pace you can maintain.</li>
+          <li><strong>This is your finisher</strong> — do these last in the circuit</li>
+          <li><strong>Build to:</strong> 3 × 15 reps at a consistent pace without stopping</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h5>No Jump Alternative</h5>
+        <p>If you're working out late at night and don't want to make noise, swap high knees for slow mountain climbers, and swap burpees for a plank + squat combo. Same workout, just quieter.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== MEALS ===== -->
+  <div class="section" id="meals">
+    <div class="section-header">
+      <div class="section-title">Meal Plan</div>
+      <span class="section-tag tag-food">Picky-Eater Friendly</span>
+    </div>
+    <div class="section-sub">Built around what you actually eat — plain, simple, no sauces or toppings</div>
+
+    <div class="meal-grid">
+      <div class="meal-card">
+        <div class="meal-label breakfast">BREAK&shy;FAST</div>
+        <div class="meal-options">
+          <h5>Pick One</h5>
+          <div class="meal-option"><strong>Scrambled eggs + toast</strong> — protein + carbs, soft texture, dead simple</div>
+          <div class="meal-option"><strong>Plain oatmeal + apple slices</strong> — smooth, filling, easy to make</div>
+          <div class="meal-option"><strong>Bread + eggs</strong> — if time is tight before the bus</div>
+          <div class="meal-option"><strong>Banana (ripe)</strong> — grab and go. Try the spotty ones — sweeter and softer than green</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label lunch">LUNCH</div>
+        <div class="meal-options">
+          <h5>School Lunch Options</h5>
+          <div class="meal-option"><strong>Plain chicken + rice</strong> — if the cafeteria has it, this is your best option</div>
+          <div class="meal-option"><strong>Plain pasta</strong> — carbs for afternoon energy</div>
+          <div class="meal-option"><strong>Bread roll + side</strong> — at minimum, eat something real</div>
+          <div class="meal-option"><strong>Pack from home</strong> — rice + chicken in a container is easy to prep the night before</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label dinner">DINNER</div>
+        <div class="meal-options">
+          <h5>Rotation of 4</h5>
+          <div class="meal-option"><strong>Baked plain chicken + white rice</strong> — your power meal. High protein, easy to make</div>
+          <div class="meal-option"><strong>Plain pasta + chicken</strong> — protein + carb combo, soft textures</div>
+          <div class="meal-option"><strong>Baked potato + chicken</strong> — switch up the carb source</div>
+          <div class="meal-option"><strong>Chicken + bread rolls</strong> — simple, works on busy nights</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label snack">SNACKS</div>
+        <div class="meal-options">
+          <h5>Throughout the Day</h5>
+          <div class="meal-option"><strong>Apple slices</strong> — your go-to. Crunchy, sweet, filling</div>
+          <div class="meal-option"><strong>Banana</strong> — muscle fuel. Eat before a workout for energy</div>
+          <div class="meal-option"><strong>Plain bread</strong> — works in a pinch</div>
+          <div class="meal-option"><strong>Water</strong> — technically not a snack but drink more of it</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>The Banana Thing</h5>
+      <p>You said you avoid bananas for no real reason — worth challenging that. A ripe banana (yellow with brown spots) is one of the best pre-workout snacks you can have. Natural sugar for energy, potassium to prevent cramps, soft texture. Try eating one before your evening workout for a week and see how you feel.</p>
+    </div>
+
+    <div class="divider" style="margin: 28px 0;"></div>
+
+    <div class="section-title" style="font-size:22px; margin-bottom:6px;">Meals To Try</div>
+    <div class="section-sub">New options based on what you already like — soft, plain, no weird textures or toppings</div>
+
+    <div class="meal-grid">
+      <div class="meal-card">
+        <div class="meal-label breakfast" style="font-size:15px; min-width:70px;">EGGS<br>DIFF<br>WAYS</div>
+        <div class="meal-options">
+          <h5>Beyond Scrambled</h5>
+          <div class="meal-option"><strong>Soft boiled eggs</strong> — runny yolk, soft white. Eat with toast. Takes 6 min in boiling water.</div>
+          <div class="meal-option"><strong>Fried egg (no flip)</strong> — sunny side up, plain. Cook on low heat so the white stays soft, not rubbery.</div>
+          <div class="meal-option"><strong>Egg in a hole</strong> — cut a circle out of bread, crack an egg in it, cook like a fried egg. Soft, simple, looks cool.</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label lunch" style="font-size:15px; min-width:70px;">PASTA<br>VARI<br>ANTS</div>
+        <div class="meal-options">
+          <h5>Plain but Better</h5>
+          <div class="meal-option"><strong>Buttered pasta</strong> — plain pasta + a little butter + salt. Soft, rich, zero complexity. Classic comfort food.</div>
+          <div class="meal-option"><strong>Pasta + chicken</strong> — chop or shred plain baked chicken and mix into buttered pasta. High protein, soft texture.</div>
+          <div class="meal-option"><strong>Pasta + mild shredded cheese</strong> — mozzarella melts into it smooth. No sharp flavors, just soft and cheesy.</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label dinner" style="font-size:15px; min-width:70px;">POTATO<br>WAYS</div>
+        <div class="meal-options">
+          <h5>More Than Fries</h5>
+          <div class="meal-option"><strong>Mashed potatoes (plain)</strong> — boil potatoes, mash with butter and a little salt. Super soft, filling, great with chicken.</div>
+          <div class="meal-option"><strong>Baked potato plain</strong> — microwave for 5 min, eat with butter only. Fluffy inside, easy.</div>
+          <div class="meal-option"><strong>Roasted potato chunks</strong> — cubed potatoes, olive oil, salt, oven at 425°F for 25 min. Crispy outside, soft inside. No seasoning needed beyond salt.</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label snack" style="font-size:15px; min-width:70px;">EASY<br>WIN<br>SNACKS</div>
+        <div class="meal-options">
+          <h5>Worth Trying</h5>
+          <div class="meal-option"><strong>Plain rice cakes</strong> — light, crunchy, basically tasteless in a good way. Good between meals.</div>
+          <div class="meal-option"><strong>Plain crackers</strong> — Ritz or saltines. Easy texture, pairs well with anything mild.</div>
+          <div class="meal-option"><strong>Yogurt (plain or vanilla)</strong> — smooth texture, high protein. Greek yogurt plain is thick and filling. Try vanilla if plain is too bland.</div>
+          <div class="meal-option"><strong>Cheese cubes / string cheese</strong> — mild mozzarella or mild cheddar. Chewy, simple, good protein snack.</div>
+        </div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-label breakfast" style="color: var(--accent2); font-size:15px; min-width:70px;">WORTH<br>A<br>SHOT</div>
+        <div class="meal-options">
+          <h5>Gentle Introductions — Low Risk</h5>
+          <div class="meal-option"><strong>Plain oatmeal with honey</strong> — smooth, warm, soft. Honey adds subtle sweetness without overpowering. No texture surprises.</div>
+          <div class="meal-option"><strong>Corn on the cob (plain)</strong> — you already eat corn. Fresh corn is sweeter and softer than canned. Butter + salt only.</div>
+          <div class="meal-option"><strong>Plain chicken tenders homemade</strong> — bread plain chicken in breadcrumbs, bake at 400°F. Crispy outside, soft inside. No spice needed — just salt.</div>
+          <div class="meal-option"><strong>Grilled cheese (no extras)</strong> — bread + mild cheese, butter on the outside. Crispy and melty. About as safe as food gets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== OUTDOOR ===== -->
+  <div class="section" id="outdoor">
+    <div class="section-header">
+      <div class="section-title">Outdoor Routes</div>
+      <span class="section-tag tag-outdoor">Brooklyn, OH</span>
+    </div>
+    <div class="section-sub">Your home base is Big Creek Reservation — right next door</div>
+
+    <div class="route-grid">
+      <div class="route-card">
+        <div class="route-icon">🚶</div>
+        <div class="route-info">
+          <h4>Easy Walk — Big Creek Reservation</h4>
+          <p>Start from your house, enter the trail at the nearest access point. Follow the paved path along the creek. Go as far as feels good, turn around. 20–40 min depending on pace. Great for recovery days or when you don't feel like working out but still want to move.</p>
+          <div class="route-tags">
+            <span class="route-tag">Walk</span>
+            <span class="route-tag">Recovery</span>
+            <span class="route-tag">Any weather</span>
+          </div>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-icon">🏃</div>
+        <div class="route-info">
+          <h4>Run Route — Big Creek Trail</h4>
+          <p>Same trail, faster pace. Start easy — don't sprint out of the gate. Aim for 10–15 min out and back to start. Build to 20 min continuous running over 4–6 weeks. The creek path is flat enough to be beginner friendly.</p>
+          <div class="route-tags">
+            <span class="route-tag run">Run</span>
+            <span class="route-tag">Cardio</span>
+            <span class="route-tag">Build Over Time</span>
+          </div>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-icon">🚴</div>
+        <div class="route-info">
+          <h4>Bike Route — Big Creek Parkway</h4>
+          <p>Head south from home onto the Big Creek Parkway — it follows the creek and has a solid multipurpose trail. Good for 30–60 min rides depending on how far you go. Flat sections with some gentle terrain. A proper bike workout without needing to go anywhere complicated.</p>
+          <div class="route-tags">
+            <span class="route-tag bike">Bike</span>
+            <span class="route-tag">Weekend</span>
+            <span class="route-tag">30–60 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="route-card">
+        <div class="route-icon">🚴</div>
+        <div class="route-info">
+          <h4>Longer Bike — West Creek Reservation</h4>
+          <p>A bit further out but worth it for weekends when you have time. Paved and dirt trails for all levels. Great for biking with varied terrain. Save this for when you want a proper adventure day.</p>
+          <div class="route-tags">
+            <span class="route-tag bike">Bike</span>
+            <span class="route-tag">Weekend Adventure</span>
+            <span class="route-tag">Longer Ride</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>Weather Rule</h5>
+      <p>Outdoor cardio is weather-dependent — that's fine. If it's raining or miserable, do your bodyweight workout inside instead. Don't skip entirely just because you can't go outside. When it's nice, always prioritize the trail over the indoor workout. Fresh air and sunlight do more than people give them credit for.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== CARE ROUTINE ===== -->
+  <div class="section" id="care">
+    <div class="section-header">
+      <div class="section-title">Care Routine</div>
+      <span class="section-tag tag-weekend">Skin · Shaving · Teeth</span>
+    </div>
+    <div class="section-sub">Built around your combination skin, eczema, and prescription products — no harsh ingredients</div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('care', 'skincare')">Morning & Evening</button>
+      <button class="tab-btn" onclick="switchTab('care', 'shaving')">Shaving</button>
+      <button class="tab-btn" onclick="switchTab('care', 'teeth')">Teeth</button>
+      <button class="tab-btn" onclick="switchTab('care', 'products')">Products List</button>
+    </div>
+
+    <div class="tab-panel active" id="care-skincare">
+      <div class="card warn" style="margin-bottom:12px;">
+        <h4>⚠️ Eczema + Combination Skin Rules</h4>
+        <p>Your skin needs fragrance-free, alcohol-free, and dye-free products. Fragrance is the #1 eczema trigger. "Unscented" is not the same as fragrance-free. Anything with alcohols or perfume in the ingredient list is a skip.</p>
+      </div>
+      <div class="card highlight" style="margin-bottom:12px;">
+        <h4>💊 Prescription + Fluoxetine Notes</h4>
+        <p>Hydrocortisone 2.5% goes on lips first — always before anything else. Tacrolimus 0.1% goes around the eye area first — thin layer, let it absorb 5 min. Tacrolimus can cause temporary burning at first, that fades. Fluoxetine can increase sun sensitivity, so SPF on outdoor days is worth adding. Take fluoxetine at the same time every morning.</p>
+      </div>
+      <div class="section-title" style="font-size:20px; margin: 20px 0 6px;">🌅 Morning Routine</div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">STEP 1</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Rinse face with lukewarm water</h4>
+            <p>Just water — your skin isn't dirty when you wake up. Hot water triggers eczema flares. Lukewarm only, always.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">STEP 2</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Hydrocortisone 2.5% (lips) + Tacrolimus 0.1% (eye area)</h4>
+            <p>Apply both prescription products first on their spots. Pat gently — never rub the eye area. Let absorb 2–3 minutes before moving on.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">STEP 3</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lubriderm Daily Moisturizer (face + body)</h4>
+            <p>Apply while skin is still slightly damp — locks in hydration. Pay extra attention to elbows and any eczema spots on your arms.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">STEP 4</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>SPF — outdoor days only</h4>
+            <p>If you're going outside for cardio or it's summer. Optional on regular school days unless it's sunny and you're waiting outside.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-title" style="font-size:20px; margin: 20px 0 6px;">🚿 Evening — Shower First, Then Care Routine</div>
+      <div class="card" style="margin-bottom:10px;">
+        <h4>In the Shower (5–10 min, lukewarm only)</h4>
+        <ul>
+          <li><strong>Hair first</strong> — Head & Shoulders shampoo. Use your purple silicone scalp scrubber to work it in. Rinse so runoff doesn't sit on your face and body.</li>
+          <li><strong>Body</strong> — Irish Spring for now (swap to Vanicream when it runs out). Use your silicone body scrubber — gentle circles, avoid active eczema spots, just hands there.</li>
+          <li><strong>Face</strong> — wash at the sink after you get out, not in the shower stream. The pressure and heat is too much for eczema skin.</li>
+          <li><strong>Dry</strong> — pat dry, don't rub. Leave skin slightly damp before moisturizing. Separate towel for face only.</li>
+        </ul>
+      </div>
+      <div class="section-title" style="font-size:18px; margin: 14px 0 6px;">After Shower — Care Routine</div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">STEP 1</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lubriderm — body while still damp</h4>
+            <p>Apply Lubriderm Daily Moisturizer to your body immediately after toweling off — within 3 minutes. Focus on elbows and eczema-prone arms.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">STEP 2</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Face wash at sink — CeraVe Hydrating Cleanser</h4>
+            <p>Lukewarm water, hands only — no cloth on face. Massage in gently, rinse fully, pat dry with your dedicated face towel. Wash that towel every 3–4 days.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">STEP 3</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Hydrocortisone 2.5% (lips) + Tacrolimus 0.1% (eye area)</h4>
+            <p>Apply both prescription products again. Night is when your skin repairs itself — this step is especially important. Let absorb 2–3 minutes.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">STEP 4</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Lubriderm — face while slightly damp</h4>
+            <p>Apply Lubriderm to your face while still slightly damp from the face wash. Go heavier at night than in the morning — your skin absorbs more while you sleep.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">STEP 5</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>CVS Petroleum Jelly — lips before bed</h4>
+            <p>Thin layer of petroleum jelly over your lips after everything else has absorbed. Seals it all in while you sleep.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <h5>Eczema Flare Protocol</h5>
+        <p>If a spot flares — red, itchy, or scaly — don't scrub it, don't try new products on it, don't skip moisturizer. Apply your prescription cream as directed, then layer petroleum jelly over top to seal it. Avoid hot showers. If it's not improving after 3–4 days, that's a doctor conversation, not a product swap.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="care-shaving">
+      <div class="card highlight" style="margin-bottom:12px;">
+        <h4>Starting From Zero — What to Know First</h4>
+        <p>You've got mostly upper lip and chin growth right now, which is actually the easiest place to start. Recommendation: start with a <strong>Gillette Mach 3</strong> or <strong>Gillette SkinGuard</strong> cartridge razor. The SkinGuard is specifically designed for sensitive skin — it has a guard between the blades that reduces irritation, which matters a lot with eczema. Don't go straight to a safety razor — cartridge first, learn the technique, upgrade later if you want.</p>
+      </div>
+      <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">What You Need</div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>Shopping List — Shaving</h4>
+        <ul>
+          <li><strong>Gillette SkinGuard razor</strong> — sensitive skin specific, great for beginners</li>
+          <li><strong>EOS Shave Cream (fragrance-free)</strong> or <strong>Cremo Original Shave Cream</strong> — both are gentle, no alcohol, no fragrance. Avoid foam cans — they're drying and bad for eczema.</li>
+          <li><strong>Aftershave balm — NOT splash</strong> — splashes have alcohol and will destroy eczema skin. Get <strong>Nivea Men Sensitive Post Shave Balm</strong> — fragrance-free, calming, designed for sensitive skin.</li>
+          <li><strong>Clean face towel</strong> — pat dry before shaving, never rub</li>
+        </ul>
+      </div>
+      <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">How to Shave — Step by Step</div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">PREP</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Soften the Hair First</h4>
+            <p>Shave after your shower — the warm water and steam soften the hair follicles and makes the razor glide easier. Never shave on completely dry skin.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">APPLY</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Apply Shave Cream</h4>
+            <p>A pea-sized amount of shave cream, worked into the area with your fingers. Let it sit for 30 seconds before you start.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">SHAVE</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Short Strokes, With the Grain</h4>
+            <p>Always shave <em>with</em> the grain (the direction the hair grows). Use short, light strokes — don't press hard. Let the razor do the work. Rinse the blade after every 2–3 strokes.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">AVOID</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Don't Go Against the Grain (yet)</h4>
+            <p>Going against the grain gives a closer shave but dramatically increases razor burn and ingrown hairs — especially bad with eczema. Master with-the-grain first.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">RINSE</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Rinse with Cold Water</h4>
+            <p>Cold water closes the pores and calms the skin after shaving. Pat completely dry with a clean towel.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">AFTER</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Apply Aftershave Balm — Then Moisturizer</h4>
+            <p>Pat a small amount of Nivea Sensitive balm over the shaved areas. Let it absorb a minute, then apply your regular face moisturizer over everything.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">BLADE</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Replace Blades Regularly</h4>
+            <p>With light facial hair, a cartridge should last 4–6 shaves. If it starts pulling instead of gliding, swap it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <h5>How Often to Shave</h5>
+        <p>With mostly upper lip and chin growth right now, you probably only need to shave every 3–5 days. Don't shave every day — your skin needs time to recover, especially with eczema.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="care-teeth">
+      <div class="card warn" style="margin-bottom:12px;">
+        <h4>Why Crest Can Be a Problem</h4>
+        <p>Many Crest products contain sodium lauryl sulfate (SLS) and artificial dyes — SLS causes micro-irritation in the mouth and can actually make teeth more porous and prone to staining over time. Switching toothpaste alone won't whiten overnight, but it stops actively working against you.</p>
+      </div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>Better Toothpaste Options</h4>
+        <ul>
+          <li><strong>Sensodyne Pronamel</strong> — SLS-free, strengthens enamel, gentle whitening without harsh abrasives. Good daily driver.</li>
+          <li><strong>Tom's of Maine Antiplaque & Whitening</strong> — SLS-free, no artificial dyes, natural ingredients.</li>
+          <li><strong>Risewell Hydroxyapatite Toothpaste</strong> — newer option, uses hydroxyapatite to remineralize and whiten. More expensive but effective.</li>
+          <li><strong>Avoid</strong> — anything with "whitening strips technology," charcoal toothpastes, or anything with blue/red dye.</li>
+        </ul>
+      </div>
+      <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">Full Teeth Routine</div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-time">MORN</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Brush — 2 Minutes</h4>
+            <p>Use a soft-bristle toothbrush. Small circular motions, 30 seconds per quadrant. Don't press hard — gentle is more effective and less damaging. Brush tongue too.</p>
+          </div>
+        </div>
+        <div class="tl-row alt-color">
+          <div class="tl-time">MORN</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Don't Rinse with Water After</h4>
+            <p>Sounds weird but rinsing immediately washes away the active ingredients. Spit out the toothpaste but don't rinse for at least 30 minutes. Makes a real difference.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-time">NIGHT</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Floss First, Then Brush</h4>
+            <p>Floss before brushing so you loosen stuff between teeth and then brush it away. Once a day is enough.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">YELLOW</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>On the Yellowing</h4>
+            <p>Light yellowing at your age is usually surface staining — totally fixable with consistent brushing and the right toothpaste. Avoid dark drinks without rinsing after. If after 2–3 months of better toothpaste it's not improving, a dentist can do a basic cleaning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="care-products">
+      <div class="section-sub" style="margin-bottom:16px;">What you own, what to buy, what to swap — all in one place</div>
+      <div class="card highlight" style="margin-bottom:12px;">
+        <h4>✅ What You Already Have</h4>
+        <ul>
+          <li><strong>CeraVe Hydrating Facial Cleanser</strong> — ✅ Perfect. Keep it. Morning and night.</li>
+          <li><strong>Lubriderm Daily Moisturizer (fragrance-free)</strong> — ✅ Great for body. Use after shower while skin is damp.</li>
+          <li><strong>CVS Petroleum Jelly (100% pure)</strong> — ✅ Use on lips after hydrocortisone absorbs, and on eczema flares.</li>
+          <li><strong>Hydrocortisone 2.5% ointment</strong> — ✅ Lips. Morning and night, apply first before anything else.</li>
+          <li><strong>Tacrolimus 0.1% ointment</strong> — ✅ Eye area. Apply first, thin layer, let absorb 5 min before moisturizer.</li>
+          <li><strong>Fluoxetine 20mg</strong> — ✅ Every morning, same time. Water first, food optional.</li>
+          <li><strong>Oral-B electric toothbrush (swappable head)</strong> — ✅ Keep it. Swap the head every 3 months and switch toothpaste.</li>
+          <li><strong>Degree Adventure deodorant</strong> — ⚠️ Has fragrance. Fine for now, but swap to Dove Men+Care Sensitive if you get underarm irritation.</li>
+          <li><strong>Irish Spring body wash</strong> — ⚠️ Has fragrance and sulfates. Finish the bottle, don't rebuy. Replace with Vanicream.</li>
+          <li><strong>Head & Shoulders 2-in-1 Almond & Coconut</strong> — ⚠️ Fine if you have dandruff. If not, swap when empty to a fragrance-free shampoo.</li>
+          <li><strong>Crest 3D White</strong> — ❌ Replace with Sensodyne Pronamel ASAP.</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>🛒 Buy Now — Priority</h4>
+        <ul>
+          <li><strong><a href="https://www.amazon.com/Gillette-SkinGuard-Sensitive-Handle-Refills/dp/B07K6K99Z4" style="color:var(--accent);">Gillette SkinGuard Razor</a></strong> (Amazon) — ~$10. Handle + 2 refills. Sensitive skin specific.</li>
+          <li><strong><a href="https://www.target.com/p/cremo-original-shave-cream-6-fl-oz/-/A-16205561" style="color:var(--accent);">Cremo Original Shave Cream</a></strong> (Target) — ~$8. No foam, no fragrance, 90-day supply.</li>
+          <li><strong><a href="https://www.target.com/p/nivea-men-soothing-post-shave-balm-for-sensitive-skin-3-3-fl-oz/-/A-11031116" style="color:var(--accent);">Nivea Men Sensitive Post Shave Balm</a></strong> (Target) — ~$7. Alcohol-free, eczema-safe.</li>
+          <li><strong><a href="https://www.target.com/p/sensodyne-pronamel-gentle-whitening-toothpaste-4oz/-/A-13356878" style="color:var(--accent);">Sensodyne Pronamel Gentle Whitening</a></strong> (Target) — ~$7. SLS-free, enamel repair.</li>
+          <li><strong>Floss picks</strong> — any drugstore, ~$4.</li>
+          <li><strong>Soft face washcloth</strong> — any Target, ~$3–4. Dedicated face-only towel.</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>🛒 Buy When Irish Spring Runs Out</h4>
+        <ul>
+          <li><strong><a href="https://www.target.com/p/vanicream-gentle-body-wash-unscented-12-fl-oz/-/A-84697206" style="color:var(--accent);">Vanicream Gentle Body Wash</a></strong> (Target) — ~$10. Fragrance-free, eczema-safe. Your permanent swap.</li>
+          <li><strong><a href="https://www.amazon.com/INNERNEED-Food-grade-Silicone-Cleansing-Exfoliating/dp/B09J7YJHXB" style="color:var(--accent);">INNERNEED Silicone Body Scrubber</a></strong> (Amazon) — ~$7.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== PHONE & APPS ===== -->
+  <div class="section" id="phone">
+    <div class="section-header">
+      <div class="section-title">Phone & Apps</div>
+      <span class="section-tag tag-school">Intentional Stack</span>
+    </div>
+    <div class="section-sub">Every app earns its place — streak-based, free, no paywalls</div>
+
+    <div class="card highlight" style="margin-bottom:12px;">
+      <h4>Your Stack</h4>
+      <ul>
+        <li><strong>Busuu</strong> — Spanish. Daily streak. 5–10 min every morning.</li>
+        <li><strong>Globo</strong> — Keep it. Use it whenever, especially on the bus.</li>
+        <li><strong>How We Feel</strong> — Mood check-in. Free, no paywall, built with Yale. 60 seconds.</li>
+        <li><strong>Apple Journal</strong> — 2 min before bed. Already have it, just need the habit back.</li>
+        <li><strong>Podcasts (story-based)</strong> — Woe.Begone, Magnus Archives, Grey Rooms etc. Evening wind-down tool.</li>
+      </ul>
+    </div>
+
+    <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">Daily App Schedule</div>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-time">MORN</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Feed Lincoln & Batman → How We Feel check-in</h4>
+          <p>Cats are your morning anchor. Feed them, then open How We Feel. 60 seconds. Just tap what you're feeling. Done.</p>
+        </div>
+      </div>
+      <div class="tl-row alt-color">
+        <div class="tl-time">MORN</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Busuu — Spanish (5–10 min)</h4>
+          <p>Right after breakfast, before you leave. This is your streak. Protect it.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">BUS</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Globo — passive learning on the go</h4>
+          <p>Bus ride is 15 min of dead time. Globo fits perfectly here. No pressure, just explore.</p>
+        </div>
+      </div>
+      <div class="tl-row muted">
+        <div class="tl-time">DAY</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Formation — homework first, phone second</h4>
+          <p>If homework is done and you have leftover formation time, Globo or Busuu review. Not social media.</p>
+        </div>
+      </div>
+      <div class="tl-row warn-color">
+        <div class="tl-time">WIND DOWN</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Podcast instead of scrolling</h4>
+          <p>9:30pm — put the phone face down, put a story podcast on. Woe.Begone, Grey Rooms, whatever you're into. Lights dim. This replaces doom scrolling and actually helps your brain wind down.</p>
+        </div>
+      </div>
+      <div class="tl-row alt-color">
+        <div class="tl-time">NIGHT</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Apple Journal — 2 minutes</h4>
+          <p>Right before sleep. One or two sentences. What happened today, how you feel, one thing tomorrow. Close the loop on the day.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>The Streak Rule</h5>
+      <p>You know streaks motivate you — use that. But build your identity around the habit, not the number. A broken streak isn't failure, it's just a Tuesday. The goal is that missing a day feels weird, not that you're terrified of losing a number. Busuu streak + How We Feel check-in streak are your two to protect most.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== MENTAL HEALTH ===== -->
+  <div class="section" id="mentalhealth">
+    <div class="section-header">
+      <div class="section-title">Mental Health</div>
+      <span class="section-tag tag-break">Solo Processing</span>
+    </div>
+    <div class="section-sub">No therapy, no talking about it — just real tools that actually work on your own</div>
+
+    <div class="card" style="margin-bottom:12px;">
+      <h4>On Pushing Through</h4>
+      <p>Pushing through isn't always wrong — sometimes you just have to. But when it's your only move, stuff builds up quietly until it's heavy. The goal isn't to stop pushing through. It's to give yourself small release valves so the pressure doesn't accumulate into something bigger.</p>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>🎵 Music as a Tool</h4>
+        <ul>
+          <li>Match music to mood first — don't fight what you're feeling</li>
+          <li>Sad or heavy? Let it land. Don't skip to happy stuff immediately.</li>
+          <li>After 10–15 min, shift the energy gradually upward</li>
+          <li>This is emotional processing, not wallowing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🎙️ Podcasts as a Tool</h4>
+        <ul>
+          <li>Story podcasts pull your brain out of loops</li>
+          <li>When you're stuck in your head, a good narrative redirects focus</li>
+          <li>Works better than music for anxiety spirals specifically</li>
+          <li>Woe.Begone, Grey Rooms — you already know what works</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <h4>📱 How We Feel — Your Private Outlet</h4>
+      <ul>
+        <li>You don't have to talk to anyone. The app is just you and your phone.</li>
+        <li>The 144-emotion wheel helps you name things you can't put into words — and naming something genuinely reduces its intensity</li>
+        <li>After a few weeks of check-ins it shows you patterns — when you feel worst, what triggers it, what helps</li>
+        <li>Weekly review on Sunday night ties it all together</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <h4>🏃 Movement as a Mood Reset</h4>
+      <ul>
+        <li>When you're in your head and can't shake it — move. Walk, run, bike, even just do the workout.</li>
+        <li>Physical movement burns off the stress hormones that make anxiety feel physical.</li>
+        <li>The Big Creek trail specifically — being outside in green space has a measurable calming effect. Use it when you're struggling, not just on schedule.</li>
+      </ul>
+    </div>
+
+    <div class="card highlight" style="margin-bottom:10px;">
+      <h4>The 2-Minute Journal Trick</h4>
+      <ul>
+        <li>When something is sitting heavy and you can't talk about it — write it down, just for yourself</li>
+        <li>Apple Journal, private, never has to be read again</li>
+        <li>Write what happened, write how it made you feel, write what you wish was different</li>
+        <li>Close the app. You don't have to solve it. Just getting it out of your head and onto a page reduces the loop</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <h5>On the Anxiety Specifically</h5>
+      <p>Fluoxetine handles the baseline, but anxiety that holds you back socially is worth working on actively too. The glow up you're building — the workouts, the routine, the appearance stuff — all of it compounds into confidence over time. But the fastest short-term tool is exposure: small, low-stakes social moments done consistently. Harlequins crew is your best existing resource for this.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== STYLE ===== -->
+  <div class="section" id="style">
+    <div class="section-header">
+      <div class="section-title">Style Guide</div>
+      <span class="section-tag tag-food">Starting From Zero</span>
+    </div>
+    <div class="section-sub">You care but don't know where to start — here's exactly where to start</div>
+
+    <div class="card highlight" style="margin-bottom:12px;">
+      <h4>The One Rule That Overrides Everything</h4>
+      <p>Fit beats brand, always. A $15 well-fitting tee from Target looks better than a $80 baggy designer shirt. At your age, budget, and stage — fit is the entire game.</p>
+    </div>
+
+    <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">Build This First — The Foundation</div>
+    <div class="card" style="margin-bottom:8px;">
+      <h4>The Basics You Actually Need</h4>
+      <ul>
+        <li><strong>3–4 plain fitted tees</strong> — white, black, grey, navy. No logos. These go with everything.</li>
+        <li><strong>1–2 pairs of well-fitting jeans</strong> — straight or slim fit. Dark wash is most versatile.</li>
+        <li><strong>1 clean pair of sneakers</strong> — white or neutral. Keep them clean. Dirty shoes kill an otherwise good outfit.</li>
+        <li><strong>1 hoodie or crewneck</strong> — plain, no loud graphics. Neutral color.</li>
+        <li><strong>Clean socks and underwear</strong> — sounds obvious, part of the foundation.</li>
+      </ul>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>Where to Shop Cheap</h4>
+        <ul>
+          <li><strong>Uniqlo</strong> — best quality basics for the price</li>
+          <li><strong>Target (All in Motion / Goodfellow)</strong> — decent basics, affordable</li>
+          <li><strong>ThredUp / Poshmark</strong> — secondhand, huge selection, very cheap</li>
+          <li><strong>Goodwill / thrift</strong> — Cleveland has solid thrift stores</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>What to Avoid for Now</h4>
+        <ul>
+          <li>Anything with huge logos or loud graphics</li>
+          <li>Baggy everything — one oversized piece max per outfit</li>
+          <li>Buying trends — basics are timeless, trends expire</li>
+          <li>Spending money you don't have on clothes to impress people</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>The Long Game</h5>
+      <p>Right now with no income, the move is to maintain what you have cleanly and wait. When the job comes in, the first clothing purchase should be 2–3 basic tees that fit well — not one expensive piece. Build the foundation before the statement. And once the workouts start showing results, your existing clothes will start fitting differently anyway.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== SLEEP ===== -->
+  <div class="section" id="sleep">
+    <div class="section-header">
+      <div class="section-title">Sleep</div>
+      <span class="section-tag tag-outdoor">Fix the Foundation</span>
+    </div>
+    <div class="section-sub">Yours is all over the place — here's how to fix it without overhauling your life</div>
+
+    <div class="card warn" style="margin-bottom:12px;">
+      <h4>Why This Matters More Than Any Other Section</h4>
+      <p>Bad sleep affects everything else in this document. Workouts don't recover properly. Skin looks worse. Anxiety is worse. Mood is worse. Fluoxetine works better with consistent sleep. Growth hormone releases during deep sleep. Fixing sleep is the highest ROI change you can make — and it costs nothing.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:8px;">
+      <h4>The Core Fix — Same Wake Time Every Day</h4>
+      <ul>
+        <li>Pick one wake time and don't move it — even weekends. 6:30am on school days, 8:30am max on weekends.</li>
+        <li>Your body's sleep drive builds based on how long you've been awake. Consistent wake time regulates everything else automatically over 2–3 weeks.</li>
+        <li>Bedtime will naturally fall into place once wake time is locked.</li>
+      </ul>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>Things That Help</h4>
+        <ul>
+          <li>Same wake time daily</li>
+          <li>Dark room — blackout curtains if possible</li>
+          <li>Cool temperature</li>
+          <li>Story podcast at low volume instead of scrolling</li>
+          <li>No bright overhead lights after 9pm — use a lamp</li>
+          <li>Fluoxetine in the morning, not at night</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Things That Hurt</h4>
+        <ul>
+          <li>Scrolling in bed with bright screen</li>
+          <li>Sleeping in past 8:30 on weekends</li>
+          <li>Caffeine after 3pm</li>
+          <li>Naps longer than 20 min</li>
+          <li>Bright overhead light at 10pm</li>
+          <li>Gaming until you pass out</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>When Sleep Is Still Bad</h5>
+      <p>Sometimes anxiety makes sleep hard even when you do everything right. If you're lying awake for more than 20–30 minutes, get up and do something calm in dim light — don't lie there fighting it. Read, listen to a podcast sitting up, do light stretching. Go back to bed when you feel sleepy.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== ROOM ===== -->
+  <div class="section" id="room">
+    <div class="section-header">
+      <div class="section-title">Room & Space</div>
+      <span class="section-tag tag-weekend">Your Environment</span>
+    </div>
+    <div class="section-sub">Your space affects your mood more than you think — especially when home has tension</div>
+
+    <div class="card highlight" style="margin-bottom:12px;">
+      <h4>Your Room is Your Sanctuary</h4>
+      <p>When the rest of the house feels heavy, your room should feel like yours. That means clean, organized enough to not add stress, and set up in a way that supports the things in this document — sleep, workouts, wind-down, learning.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:8px;">
+      <h4>The 10-Minute Daily Reset</h4>
+      <ul>
+        <li>Every night before your wind-down, spend 10 minutes putting things back</li>
+        <li>Clothes off the floor — hamper or hung up, not the chair</li>
+        <li>Desk clear enough to use if needed</li>
+        <li>Bed made — even loosely. A made bed changes how a room feels instantly.</li>
+        <li>That's it. 10 minutes prevents the 3-hour deep clean spiral.</li>
+      </ul>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>Setup for Sleep</h4>
+        <ul>
+          <li>Blackout curtains or something covering windows</li>
+          <li>Phone charger away from the bed if possible</li>
+          <li>Lamp instead of overhead at night</li>
+          <li>Cool, not warm</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Setup for Focus</h4>
+        <ul>
+          <li>Clear desk surface before homework</li>
+          <li>Phone in another spot while studying</li>
+          <li>Good enough lighting — not dim, not harsh</li>
+          <li>One space for work, one for chill if possible</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>When Home Feels Heavy</h5>
+      <p>You can't always control the energy in the rest of the house. What you can control is your room. When tension is high — close the door, put on your headphones, do your routine. The routine itself becomes the anchor.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== SOCIAL ===== -->
+  <div class="section" id="social">
+    <div class="section-header">
+      <div class="section-title">Social Skills</div>
+      <span class="section-tag tag-break">Low Pressure, Real Results</span>
+    </div>
+    <div class="section-sub">Anxiety holds you back — here's how to work around it without forcing anything</div>
+
+    <div class="card" style="margin-bottom:12px;">
+      <h4>The Reality</h4>
+      <p>You're mostly solo with a few close people, anxiety holds you back socially, and you know it. That self-awareness is actually the starting point — most people don't even get that far. The goal isn't to become outgoing overnight. It's to slowly expand your comfort zone from places you're already in, with people you already kind of know.</p>
+    </div>
+
+    <div class="card highlight" style="margin-bottom:10px;">
+      <h4>🎭 Harlequins is Your Best Resource — Use It</h4>
+      <ul>
+        <li>You already show up. You already have shared context — the show, the crew, the chaos of tech week.</li>
+        <li>Shared experiences are the foundation of friendship. You have that built in.</li>
+        <li>The Twizzlers tradition you started? That's a social move. People remember that. Build on it.</li>
+        <li>Talk to one new crew member per rehearsal. Just one. About anything.</li>
+        <li>You don't need to be the loudest person in the room — you need to be consistent and present.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <h4>Low-Stakes Social Reps</h4>
+      <ul>
+        <li><strong>Ask one question per day</strong> — to anyone. A classmate, a teacher, a person at a store. Just one.</li>
+        <li><strong>Respond, don't just react</strong> — when someone says something to you, give a full sentence back instead of a one-word answer.</li>
+        <li><strong>Be interested, not interesting</strong> — people like people who ask about them.</li>
+        <li><strong>Eye contact + first name</strong> — use someone's name once in a conversation. Small thing, huge impact.</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <h5>The Long Game</h5>
+      <p>Confidence socially comes from accumulated small wins, not one big moment. Every time you initiate a conversation and it goes okay, your brain updates its threat assessment slightly. Over months, the anxiety around social situations genuinely reduces. Start small. Harlequins first. One person at a time.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== WEEKLY REVIEW ===== -->
+  <div class="section" id="weekly">
+    <div class="section-header">
+      <div class="section-title">Weekly Review</div>
+      <span class="section-tag tag-school">Every Sunday · 10 Min</span>
+    </div>
+    <div class="section-sub">The bow that ties everything together — don't skip this one</div>
+
+    <div class="card highlight" style="margin-bottom:12px;">
+      <h4>Why This Works</h4>
+      <p>Every other section in this document is about doing things. The weekly review is about noticing what's actually happening. Without it, weeks blur together and you can't tell if things are improving or not. 10 minutes on Sunday night changes that.</p>
+    </div>
+
+    <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">The 5 Questions</div>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-time">ONE</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>What actually went well this week?</h4>
+          <p>Even small stuff. Stuck to a workout. Had a good conversation. Ate well one day. Finished homework before midnight. Write it down — your brain is wired to notice what went wrong, not what went right.</p>
+        </div>
+      </div>
+      <div class="tl-row alt-color">
+        <div class="tl-time">TWO</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>What didn't go the way I wanted?</h4>
+          <p>Not to beat yourself up — just to notice. Skipped workouts? Slept badly? Avoided something you should've done? Name it without judgment and move on.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">THREE</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Did I stick to my routine?</h4>
+          <p>Quick scan. Workouts, sleep, skin, Busuu streak, How We Feel check-ins, dishes done, laundry on Sunday, trash out. Not looking for perfection — looking for patterns.</p>
+        </div>
+      </div>
+      <div class="tl-row warn-color">
+        <div class="tl-time">FOUR</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>What's coming up next week?</h4>
+          <p>Harlequins rehearsal? SIBN game? Test or assignment due? Look at the week ahead for 2 minutes. Knowing what's coming means you can plan around it instead of reacting to it.</p>
+        </div>
+      </div>
+      <div class="tl-row alt-color">
+        <div class="tl-time">FIVE</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>How am I feeling going into the week?</h4>
+          <p>Open How We Feel. Do your Sunday check-in. Look at your weekly review in the app — it'll show patterns from your daily check-ins. That's it. You're done.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <h5>Where to Do It</h5>
+      <p>Apple Journal for the five questions. Then open How We Feel for the weekly review feature. Sunday evening, after dinner, before your wind-down. The whole thing takes 10 minutes and sets the tone for every Monday morning.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== SIDE QUESTS ===== -->
+  <div class="section" id="sidequests">
+    <div class="section-header">
+      <div class="section-title">Side Quests</div>
+      <span class="section-tag tag-workout">Work On When You Can</span>
+    </div>
+    <div class="section-sub">Not part of the daily routine — but worth making progress on during free time</div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('sidequests', 'driving')">Driving</button>
+      <button class="tab-btn" onclick="switchTab('sidequests', 'job')">Job Hunting</button>
+      <button class="tab-btn" onclick="switchTab('sidequests', 'money')">Money Basics</button>
+    </div>
+
+    <div class="tab-panel active" id="sidequests-driving">
+      <div class="card highlight" style="margin-bottom:12px;">
+        <h4>Ohio Learner's Permit — Start Here</h4>
+        <ul>
+          <li>You must be 15½ to get your permit in Ohio</li>
+          <li>Pass a written knowledge test at the BMV — 40 questions, need 75% to pass</li>
+          <li>Study free: search "Ohio BMV practice test" and use the official or DMV.org version</li>
+          <li>Once you have your permit, you need <strong>50 hours of practice driving</strong> (10 must be at night)</li>
+          <li>Must hold permit for at least 6 months before testing for license</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:10px;">
+        <h4>Practice Hour Tracker</h4>
+        <ul>
+          <li>Ohio requires you to log hours on a form — keep a note in Apple Journal each time you drive</li>
+          <li>Date, time of day, duration, who was with you</li>
+          <li>Ask your mom for regular practice sessions — even 20 min around the neighborhood counts</li>
+          <li>Start in empty parking lots. Seriously. Everyone does.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>What to Focus on First</h4>
+        <ul>
+          <li><strong>Week 1–2:</strong> Steering, braking smoothly, parking lot turns</li>
+          <li><strong>Week 3–4:</strong> Residential streets, stop signs, speed awareness</li>
+          <li><strong>Month 2+:</strong> Main roads, traffic, merging, highway eventually</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="sidequests-job">
+      <div class="card highlight" style="margin-bottom:12px;">
+        <h4>Realistic at 16, No Fast Food</h4>
+        <p>Ohio work permit required at 16 — your school can issue one. Most places that hire 16-year-olds want availability of 15–20 hrs/week. With Harlequins and SIBN, that means weekends and some weekday evenings outside of rehearsal season.</p>
+      </div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>🎬 Movie Theater</h4>
+        <ul>
+          <li>AMC, Regal, local theaters — all regularly hire 16+</li>
+          <li>Perks: free movies, flexible scheduling, social environment</li>
+          <li>Apply in person if possible — shows initiative</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>📚 Library / Rec Center</h4>
+        <ul>
+          <li>Cuyahoga County Public Library system hires teens — check <strong>cuyahogalibrary.org/jobs</strong></li>
+          <li>Brooklyn Recreation Center — check city of Brooklyn Ohio website for seasonal openings</li>
+          <li>Quieter, lower stress, more flexible than retail</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:10px;">
+        <h4>💻 Creative / Tech Adjacent</h4>
+        <ul>
+          <li>Your Photoshop and CSS work is a real skill — freelance small logo or graphic work</li>
+          <li>SIBN itself — does it pay anything, or lead to AV/tech opportunities?</li>
+          <li>Check local community theater orgs — your Harlequins crew experience is a legitimate resume line</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>How to Actually Apply</h4>
+        <ul>
+          <li>Simple resume: name, contact, school, any experience (Harlequins crew counts), skills</li>
+          <li>Apply online AND follow up in person within a week</li>
+          <li>Best time to apply: January–February and May–June (summer rush)</li>
+          <li>Mention availability clearly — employers hate guessing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="sidequests-money">
+      <div class="card warn" style="margin-bottom:12px;">
+        <h4>The Lesson Is Already Learned</h4>
+        <p>You already know what spending money on the wrong thing feels like. That's genuinely valuable — most people learn it way later. Here's the simple framework for when income comes in.</p>
+      </div>
+      <div class="card" style="margin-bottom:8px;">
+        <h4>The Split (when you get paid)</h4>
+        <ul>
+          <li><strong>50% — savings, untouchable.</strong> Separate it immediately. Don't look at it as spendable.</li>
+          <li><strong>30% — needs.</strong> Products from the care list, clothing basics, actual necessities.</li>
+          <li><strong>20% — whatever.</strong> Games, going out, things you want. Guilt-free, but only this slice.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Simple Rules</h4>
+        <ul>
+          <li>Never spend money on someone else's approval</li>
+          <li>Wait 48 hours before any purchase over $20 that isn't a necessity</li>
+          <li>Build toward one goal at a time</li>
+          <li>Saving even $20/paycheck compounds. By end of summer that's real money.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">LIAM'S FULL ROUTINE · BUILT IN BROOKLYN, OH · THIS IS YOUR YEAR</div>
+
+</div>
+
+<script>
+  // ── QUOTES ──
+  const QUOTES = [
+    { text: "You don't have to be great to start, but you have to start to be great.", author: "Zig Ziglar" },
+    { text: "Small steps in the right direction can turn out to be the biggest step of your life.", author: "Unknown" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+    { text: "Your future self is watching you right now through your memories.", author: "Aubrey de Grey" },
+    { text: "Don't wait for the perfect moment, take the moment and make it perfect.", author: "Unknown" },
+    { text: "You are braver than you believe, stronger than you seem, and smarter than you think.", author: "A.A. Milne" },
+    { text: "Discipline is choosing between what you want now and what you want most.", author: "Abraham Lincoln" },
+    { text: "Hard work beats talent when talent doesn't work hard.", author: "Tim Notke" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+    { text: "Great things never come from comfort zones.", author: "Unknown" },
+    { text: "Dream it. Wish it. Do it.", author: "Unknown" },
+    { text: "Success doesn't just find you. You have to go out and get it.", author: "Unknown" },
+    { text: "The harder you work for something, the greater you'll feel when you achieve it.", author: "Unknown" },
+    { text: "Don't stop when you're tired. Stop when you're done.", author: "Unknown" },
+    { text: "Wake up with determination. Go to bed with satisfaction.", author: "Unknown" },
+    { text: "Do something today that your future self will thank you for.", author: "Sean Patrick Flanery" },
+    { text: "Little things make big days.", author: "Unknown" },
+    { text: "It's going to be hard, but hard is not impossible.", author: "Unknown" },
+    { text: "Don't wish for it, work for it.", author: "Unknown" },
+    { text: "Strive for progress, not perfection.", author: "Unknown" },
+    { text: "The key to success is to focus on goals, not obstacles.", author: "Unknown" },
+    { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+    { text: "Act as if what you do makes a difference. It does.", author: "William James" },
+    { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar" },
+    { text: "Motivation is what gets you started. Habit is what keeps you going.", author: "Jim Ryun" },
+    { text: "You don't need a new plan for next year. You need a commitment for this week.", author: "Seth Godin" },
+    { text: "Either you run the day or the day runs you.", author: "Jim Rohn" },
+    { text: "Energy and persistence conquer all things.", author: "Benjamin Franklin" },
+    { text: "Opportunities don't happen. You create them.", author: "Chris Grosser" },
+    { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
+    { text: "You don't have to be perfect to be amazing.", author: "Unknown" },
+    { text: "Life is 10% what happens to you and 90% how you react to it.", author: "Charles R. Swindoll" },
+    { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+    { text: "Don't be afraid to give up the good to go for the great.", author: "John D. Rockefeller" },
+    { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" },
+    { text: "The difference between ordinary and extraordinary is that little extra.", author: "Jimmy Johnson" },
+    { text: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+    { text: "You are enough, and you have enough to begin.", author: "Unknown" },
+    { text: "Speak your truth even if your voice shakes.", author: "Maggie Kuhn" },
+    { text: "Fall seven times, stand up eight.", author: "Japanese Proverb" },
+    { text: "Comparison is the thief of joy.", author: "Theodore Roosevelt" },
+    { text: "You were born to be real, not to be perfect.", author: "Unknown" },
+    { text: "The comeback is always stronger than the setback.", author: "Unknown" },
+    { text: "Confidence is not 'they will like me.' Confidence is 'I'll be fine if they don't.'", author: "Unknown" },
+    { text: "Be the energy you want to attract.", author: "Unknown" },
+    { text: "Good things take time. Be patient.", author: "Unknown" },
+    { text: "Nothing will work unless you do.", author: "Maya Angelou" },
+    { text: "The pain you feel today is the strength you feel tomorrow.", author: "Unknown" },
+    { text: "One day or day one — you decide.", author: "Unknown" },
+    { text: "Prove them wrong in silence.", author: "Unknown" },
+    { text: "You're only one workout away from a good mood.", author: "Unknown" },
+    { text: "Make yourself proud.", author: "Unknown" },
+    { text: "Don't count the days, make the days count.", author: "Muhammad Ali" },
+    { text: "The road to success and the road to failure are almost exactly the same.", author: "Colin R. Davis" },
+    { text: "Champions keep playing until they get it right.", author: "Billie Jean King" },
+    { text: "Someone else is warming up for the role you gave up on.", author: "Unknown" },
+    { text: "If it matters to you, find a way.", author: "Unknown" },
+    { text: "You've survived 100% of your worst days.", author: "Unknown" },
+    { text: "Consistency beats intensity. Every time.", author: "Unknown" },
+    { text: "Your only competition is who you were yesterday.", author: "Unknown" },
+    { text: "The version of you that you're becoming is worth the discomfort.", author: "Unknown" },
+    { text: "Doubt kills more dreams than failure ever will.", author: "Suzy Kassem" },
+    { text: "You owe it to your future self to start now.", author: "Unknown" },
+    { text: "A year from now you'll wish you started today.", author: "Karen Lamb" },
+    { text: "Some days are harder than others. Those are the ones that build you.", author: "Unknown" },
+    { text: "Show up even when you don't feel like it. Especially then.", author: "Unknown" },
+    { text: "There's a version of you on the other side of this effort.", author: "Unknown" },
+    { text: "What you practice in private, you will be rewarded for in public.", author: "Tony Robbins" },
+    { text: "You can't go back and change the beginning, but you can start where you are and change the ending.", author: "C.S. Lewis" },
+    { text: "Be patient with yourself. Nothing in nature blooms all year.", author: "Unknown" },
+    { text: "Small consistent actions compound into massive change.", author: "Unknown" },
+    { text: "You don't rise to the level of your goals. You fall to the level of your systems.", author: "James Clear" },
+    { text: "Most people overestimate what they can do in a day but underestimate what they can do in a year.", author: "Unknown" },
+    { text: "You become what you repeatedly do.", author: "Sean Covey" },
+    { text: "Nobody cares how you feel. Everybody notices what you do.", author: "Unknown" },
+    { text: "Excuses will always be there for you. Opportunity won't.", author: "Unknown" },
+    { text: "The version of you that wins is the one that showed up.", author: "Unknown" },
+    { text: "Your potential is endless. Your limitations are only in your head.", author: "Unknown" },
+    { text: "If you're not willing to risk the unusual, you'll have to settle for the ordinary.", author: "Jim Rohn" },
+    { text: "Work hard in silence. Let success be your noise.", author: "Frank Ocean" },
+    { text: "You don't have to see the whole staircase. Just take the first step.", author: "Martin Luther King Jr." },
+    { text: "If you want to fly, you have to give up the things that weigh you down.", author: "Toni Morrison" },
+    { text: "Good is the enemy of great.", author: "Jim Collins" },
+    { text: "Everything you've ever wanted is on the other side of fear.", author: "George Addair" },
+    { text: "You were not made to fit in. You were made to stand out.", author: "Unknown" },
+    { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+    { text: "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.", author: "Roy T. Bennett" },
+    { text: "Hardship often prepares an ordinary person for an extraordinary destiny.", author: "C.S. Lewis" },
+    { text: "You didn't come this far to only come this far.", author: "Unknown" },
+    { text: "Clarity comes from action, not thought.", author: "Unknown" },
+    { text: "Think less. Do more.", author: "Unknown" },
+    { text: "Be so good they can't ignore you.", author: "Steve Martin" },
+    { text: "Your actions speak louder than your fears.", author: "Unknown" },
+    { text: "Today is where your future begins.", author: "Unknown" },
+    { text: "Don't let yesterday take up too much of today.", author: "Will Rogers" },
+    { text: "The best view comes after the hardest climb.", author: "Unknown" },
+    { text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", author: "Ralph Waldo Emerson" },
+    { text: "Strength doesn't come from what you can do. It comes from overcoming the things you thought you couldn't.", author: "Rikki Rogers" },
+    { text: "Sometimes the bravest thing you can do is keep going.", author: "Unknown" },
+    { text: "Be the person you needed when you were younger.", author: "Unknown" },
+    { text: "Don't let the noise of others' opinions drown out your own inner voice.", author: "Steve Jobs" },
+    { text: "You have to be odd to be number one.", author: "Dr. Seuss" },
+    { text: "A smooth sea never made a skilled sailor.", author: "Franklin D. Roosevelt" },
+    { text: "Your life is your message to the world. Make it inspiring.", author: "Lorrin L. Lee" },
+    { text: "Take risks. If you win, you'll be happy. If you lose, you'll be wise.", author: "Unknown" },
+    { text: "Better to live one year as a tiger than a hundred as a sheep.", author: "Madonna" },
+    { text: "Tough times never last, but tough people do.", author: "Robert H. Schuller" },
+    { text: "Courage doesn't mean you're not scared. It means you go anyway.", author: "Unknown" },
+    { text: "Some people want it to happen, some wish it would happen, others make it happen.", author: "Michael Jordan" },
+    { text: "There is no substitute for hard work.", author: "Thomas Edison" },
+    { text: "You have to expect things of yourself before you can do them.", author: "Michael Jordan" },
+    { text: "Stay hungry. Stay foolish.", author: "Steve Jobs" },
+    { text: "Done is better than perfect.", author: "Sheryl Sandberg" },
+    { text: "Don't let what you can't do stop you from doing what you can do.", author: "John Wooden" },
+    { text: "Keep going. Everything you need will come to you at the perfect time.", author: "Unknown" },
+    { text: "Believe in yourself. You are braver than you think.", author: "Unknown" },
+    { text: "Work until your idols become your rivals.", author: "Unknown" },
+    { text: "The grind is what separates you.", author: "Unknown" },
+    { text: "Everyone wants to eat but nobody wants to hunt.", author: "Unknown" },
+    { text: "You grow through what you go through.", author: "Unknown" },
+    { text: "Your character is built in the quiet moments when no one is watching.", author: "Unknown" },
+    { text: "Not all those who wander are lost.", author: "J.R.R. Tolkien" },
+    { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+    { text: "Go confidently in the direction of your dreams.", author: "Henry David Thoreau" },
+    { text: "Turn your wounds into wisdom.", author: "Oprah Winfrey" },
+    { text: "The secret of change is to focus all your energy not on fighting the old, but on building the new.", author: "Socrates" },
+    { text: "Every accomplishment starts with the decision to try.", author: "John F. Kennedy" },
+    { text: "I am not a product of my circumstances. I am a product of my decisions.", author: "Stephen Covey" },
+    { text: "The power of imagination makes us infinite.", author: "John Muir" },
+    { text: "Once you choose hope, anything is possible.", author: "Christopher Reeve" },
+    { text: "There is nothing noble in being superior to your fellow man; true nobility is being superior to your former self.", author: "Ernest Hemingway" },
+    { text: "If you can dream it, you can achieve it.", author: "Zig Ziglar" },
+    { text: "The best revenge is massive success.", author: "Frank Sinatra" },
+    { text: "Perfection is not attainable, but if we chase perfection we can catch excellence.", author: "Vince Lombardi" },
+    { text: "No one can make you feel inferior without your consent.", author: "Eleanor Roosevelt" },
+    { text: "Life is not measured by the number of breaths we take, but by the moments that take our breath away.", author: "Maya Angelou" },
+    { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela" },
+    { text: "In order to be irreplaceable, one must always be different.", author: "Coco Chanel" },
+    { text: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle" },
+    { text: "Spread love everywhere you go. Let no one ever come to you without leaving happier.", author: "Mother Teresa" },
+    { text: "When you reach the end of your rope, tie a knot in it and hang on.", author: "Franklin D. Roosevelt" },
+    { text: "Always remember that you are absolutely unique. Just like everyone else.", author: "Margaret Mead" },
+    { text: "Don't judge each day by the harvest you reap but by the seeds that you plant.", author: "Robert Louis Stevenson" },
+    { text: "The purpose of our lives is to be happy.", author: "Dalai Lama" },
+    { text: "Get busy living or get busy dying.", author: "Stephen King" },
+    { text: "You only live once, but if you do it right, once is enough.", author: "Mae West" },
+    { text: "Many of life's failures are people who did not realize how close they were to success when they gave up.", author: "Thomas Edison" },
+    { text: "You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.", author: "Dr. Seuss" },
+    { text: "If life were predictable it would cease to be life, and be without flavor.", author: "Eleanor Roosevelt" },
+    { text: "If you look at what you have in life, you'll always have more.", author: "Oprah Winfrey" },
+    { text: "If you want to live a happy life, tie it to a goal, not to people or things.", author: "Albert Einstein" },
+    { text: "Never let the fear of striking out keep you from playing the game.", author: "Babe Ruth" },
+    { text: "Money and success don't change people; they merely amplify what is already there.", author: "Will Smith" },
+    { text: "Your time is limited, so don't waste it living someone else's life.", author: "Steve Jobs" },
+    { text: "Not how long, but how well you have lived is the main thing.", author: "Seneca" },
+    { text: "In this life we cannot do great things. We can only do small things with great love.", author: "Mother Teresa" },
+    { text: "Whoever is happy will make others happy too.", author: "Anne Frank" },
+    { text: "Do not go where the path may lead, go instead where there is no path and leave a trail.", author: "Ralph Waldo Emerson" },
+    { text: "You will face many defeats in life, but never let yourself be defeated.", author: "Maya Angelou" },
+    { text: "The greatest pleasure in life is doing what people say you cannot do.", author: "Walter Bagehot" },
+    { text: "The only way out is through.", author: "Robert Frost" },
+    { text: "If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.", author: "Martin Luther King Jr." },
+    { text: "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
+    { text: "When you have a dream, you've got to grab it and never let go.", author: "Carol Burnett" },
+    { text: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.", author: "Maya Angelou" },
+    { text: "The most courageous act is still to think for yourself. Aloud.", author: "Coco Chanel" },
+    { text: "Do what you feel in your heart to be right — for you'll be criticized anyway.", author: "Eleanor Roosevelt" },
+    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+    { text: "We know what we are, but know not what we may be.", author: "William Shakespeare" },
+    { text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", author: "Ralph Waldo Emerson" },
+    { text: "You must be the change you wish to see in the world.", author: "Mahatma Gandhi" },
+    { text: "It is better to be hated for what you are than to be loved for what you are not.", author: "André Gide" },
+    { text: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama" },
+    { text: "Try to be a rainbow in someone else's cloud.", author: "Maya Angelou" },
+    { text: "What you do speaks so loudly that I cannot hear what you say.", author: "Ralph Waldo Emerson" },
+    { text: "No matter what people tell you, words and ideas can change the world.", author: "Robin Williams" },
+    { text: "Look deep into nature, and then you will understand everything better.", author: "Albert Einstein" },
+    { text: "The real test is not whether you avoid failure, because you won't. It's whether you let it harden you or shame you into inaction, or whether you learn from it.", author: "Barack Obama" },
+    { text: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson" },
+    { text: "Every strike brings me closer to the next home run.", author: "Babe Ruth" },
+    { text: "Efforts and courage are not enough without purpose and direction.", author: "John F. Kennedy" },
+    { text: "Nothing is impossible, the word itself says 'I'm possible!'", author: "Audrey Hepburn" },
+    { text: "Real change, enduring change, happens one step at a time.", author: "Ruth Bader Ginsburg" },
+    { text: "Leadership is not about being in charge. It's about taking care of those in your charge.", author: "Simon Sinek" },
+    { text: "Decide whether or not the goal is worth the risks involved. If it is, stop worrying.", author: "Amelia Earhart" },
+    { text: "There is no greater agony than bearing an untold story inside you.", author: "Maya Angelou" },
+    { text: "The most difficult thing is the decision to act, the rest is merely tenacity.", author: "Amelia Earhart" },
+    { text: "Don't be satisfied with stories, how things have gone with others. Unfold your own myth.", author: "Rumi" },
+    { text: "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.", author: "Rumi" },
+    { text: "Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.", author: "Rumi" },
+    { text: "Be like a tree and let the dead leaves drop.", author: "Rumi" },
+    { text: "Let yourself be silently drawn by the strange pull of what you really love. It will not lead you astray.", author: "Rumi" },
+    { text: "Raise your words, not voice. It is rain that grows flowers, not thunder.", author: "Rumi" },
+    { text: "Set your life on fire. Seek those who fan your flames.", author: "Rumi" },
+    { text: "Before you speak, let your words pass through three gates: Is it true? Is it necessary? Is it kind?", author: "Rumi" },
+    { text: "The wound is the place where the Light enters you.", author: "Rumi" },
+    { text: "Stop acting so small. You are the universe in ecstatic motion.", author: "Rumi" },
+    { text: "If you have built castles in the air, your work need not be lost; that is where they should be. Now put the foundations under them.", author: "Henry David Thoreau" },
+    { text: "You must do the thing you think you cannot do.", author: "Eleanor Roosevelt" },
+    { text: "Either write something worth reading or do something worth writing.", author: "Benjamin Franklin" },
+    { text: "Logic will get you from A to B. Imagination will take you everywhere.", author: "Albert Einstein" },
+    { text: "Creativity is intelligence having fun.", author: "Albert Einstein" },
+    { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+    { text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Aristotle" },
+    { text: "The unexamined life is not worth living.", author: "Socrates" },
+    { text: "He who has a why to live can bear almost any how.", author: "Friedrich Nietzsche" },
+    { text: "That which does not kill us, makes us stronger.", author: "Friedrich Nietzsche" },
+    { text: "God, grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference.", author: "Reinhold Niebuhr" },
+    { text: "Man cannot discover new oceans unless he has the courage to lose sight of the shore.", author: "André Gide" },
+    { text: "Twenty years from now you will be more disappointed by the things that you didn't do than by the ones you did do.", author: "Mark Twain" },
+    { text: "Two roads diverged in a wood, and I — I took the one less traveled by.", author: "Robert Frost" },
+    { text: "I am not what happened to me, I am what I choose to become.", author: "Carl Jung" },
+    { text: "Tell me, what is it you plan to do with your one wild and precious life?", author: "Mary Oliver" },
+    { text: "Not all those who wander are lost.", author: "J.R.R. Tolkien" },
+    { text: "Even the darkest night will end and the sun will rise.", author: "Victor Hugo" },
+    { text: "The world is a book, and those who do not travel read only one page.", author: "Saint Augustine" },
+    { text: "To live is the rarest thing in the world. Most people exist, that is all.", author: "Oscar Wilde" },
+    { text: "The most common form of despair is not being who you are.", author: "Søren Kierkegaard" },
+    { text: "Life shrinks or expands in proportion to one's courage.", author: "Anaïs Nin" },
+    { text: "Knowing yourself is the beginning of all wisdom.", author: "Aristotle" },
+    { text: "The soul that sees beauty may sometimes walk alone.", author: "Johann von Goethe" },
+    { text: "Wherever you are, be all there.", author: "Jim Elliot" },
+    { text: "You are more powerful than you know; you are beautiful just as you are.", author: "Melissa Etheridge" },
+    { text: "The biggest adventure you can ever take is to live the life of your dreams.", author: "Oprah Winfrey" },
+    { text: "Change your thoughts and you change your world.", author: "Norman Vincent Peale" },
+    { text: "The mind is everything. What you think you become.", author: "Buddha" },
+    { text: "Three things cannot be long hidden: the sun, the moon, and the truth.", author: "Buddha" },
+    { text: "Peace comes from within. Do not seek it without.", author: "Buddha" },
+    { text: "The journey of a thousand miles begins with one step.", author: "Lao Tzu" },
+    { text: "To the mind that is still, the whole universe surrenders.", author: "Lao Tzu" },
+    { text: "Knowing others is wisdom. Knowing yourself is enlightenment.", author: "Lao Tzu" },
+    { text: "A man who dares to waste one hour of time has not discovered the value of life.", author: "Charles Darwin" },
+    { text: "Live in the sunshine, swim the sea, drink the wild air.", author: "Ralph Waldo Emerson" },
+    { text: "Endure. Adapt. Overcome.", author: "Unknown" },
+    { text: "Build yourself up before the world tries to tear you down.", author: "Unknown" },
+    { text: "No one is coming to save you. But you can save yourself.", author: "Unknown" },
+    { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+    { text: "There are no shortcuts to any place worth going.", author: "Beverly Sills" },
+    { text: "Success is not final; failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+    { text: "The secret to getting things done is to act.", author: "Dante Alighieri" },
+    { text: "If you're going through hell, keep going.", author: "Winston Churchill" },
+    { text: "When something is important enough, you do it even if the odds are not in your favor.", author: "Elon Musk" },
+    { text: "You are your only real competition.", author: "Unknown" },
+    { text: "The quieter you become, the more you can hear.", author: "Ram Dass" },
+    { text: "Progress, not perfection.", author: "Unknown" },
+    { text: "Your past doesn't define you. Your choices do.", author: "Unknown" },
+    { text: "Difficult roads often lead to beautiful destinations.", author: "Unknown" },
+    { text: "The strongest people are not those who show strength in front of others, but those who win battles we know nothing about.", author: "Unknown" },
+    { text: "When you feel like quitting, think about why you started.", author: "Unknown" },
+    { text: "Every day is a second chance.", author: "Unknown" },
+    { text: "Don't think about what might go wrong. Think about what could go right.", author: "Unknown" },
+    { text: "You are only one decision away from a totally different life.", author: "Unknown" },
+    { text: "Surround yourself with those who see greatness in you, even when you don't see it in yourself.", author: "Unknown" },
+    { text: "The person you'll be in 5 years is based on the books you read and the people you surround yourself with today.", author: "Unknown" },
+    { text: "You can't start the next chapter of your life if you keep re-reading the last one.", author: "Unknown" },
+    { text: "It's not about having the time. It's about making the time.", author: "Unknown" },
+    { text: "Earn what you are.", author: "Unknown" },
+    { text: "You're not behind. You're on your own path.", author: "Unknown" }
+  ];
+
+  const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  let currentQuoteIdx = -1;
+
+  function getQuoteOfDay() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+    return dayOfYear % QUOTES.length;
+  }
+
+  function displayQuote(idx) {
+    const q = QUOTES[idx];
+    document.getElementById('quoteText').textContent = q.text;
+    document.getElementById('quoteAuthor').textContent = '— ' + q.author;
+    currentQuoteIdx = idx;
+  }
+
+  function newQuote() {
+    let idx;
+    do { idx = Math.floor(Math.random() * QUOTES.length); } while (idx === currentQuoteIdx);
+    displayQuote(idx);
+    const now = new Date();
+    document.getElementById('quoteDay').textContent = '';
+  }
+
+  function initQuote() {
+    const idx = getQuoteOfDay();
+    displayQuote(idx);
+    const now = new Date();
+    document.getElementById('quoteDay').textContent = `Daily quote · ${DAYS[now.getDay()]}, ${MONTHS[now.getMonth()]} ${now.getDate()}`;
+  }
+
+  // ── NAV SCROLL ──
+  function navScrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      const navHeight = document.querySelector('nav').offsetHeight;
+      const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+
+  // ── TAB SWITCHING ──
+  function switchTab(group, id) {
+    const section = document.getElementById(group);
+    const panels = section.querySelectorAll('.tab-panel');
+    const btns = section.querySelectorAll('.tab-btn');
+    panels.forEach(p => p.classList.remove('active'));
+    btns.forEach(b => b.classList.remove('active'));
+    document.getElementById(group + '-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function switchWeek(id, btn) {
+    document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('week-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.classList.contains('section')) {
+          const rows = entry.target.querySelectorAll('.tl-row');
+          rows.forEach((row, i) => {
+            setTimeout(() => row.classList.add('visible'), i * 60);
+          });
+        }
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // ── EDIT MODE ──
+  let editing = false;
+  const STORAGE_KEY = 'liam_routine_edits';
+
+  function toggleEdit() {
+    editing = !editing;
+    document.body.classList.toggle('editing', editing);
+    const btn = document.getElementById('editBtn');
+    btn.textContent = editing ? '💾 SAVE & EXIT' : '✏️ EDIT MODE';
+    btn.classList.toggle('active', editing);
+
+    if (editing) {
+      document.querySelectorAll('.tl-content h4, .tl-content p, .card h4, .card p, .card li, .meal-option, .note p, .section-sub, .route-info h4, .route-info p').forEach(el => {
+        el.contentEditable = 'true';
+        el.addEventListener('input', saveEdits);
+      });
+    } else {
+      document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+        el.contentEditable = 'false';
+      });
+      saveEdits();
+    }
+  }
+
+  function saveEdits() {
+    const edits = {};
+    document.querySelectorAll('[contenteditable]').forEach((el, i) => {
+      const key = el.dataset.editKey || (el.dataset.editKey = 'edit_' + i);
+      edits[key] = el.innerHTML;
+    });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(edits)); } catch(e) {}
+  }
+
+  function loadEdits() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const edits = JSON.parse(saved);
+      document.querySelectorAll('.tl-content h4, .tl-content p, .card h4, .card p, .card li, .meal-option, .note p, .section-sub, .route-info h4, .route-info p').forEach((el, i) => {
+        el.dataset.editKey = 'edit_' + i;
+        if (edits['edit_' + i] !== undefined) {
+          el.innerHTML = edits['edit_' + i];
+        }
+      });
+    } catch(e) {}
+  }
+
+  // ── COLLAPSIBLE SECTIONS ──
+  const COLLAPSE_KEY = 'liam_collapsed_sections';
+
+  function getCollapsed() {
+    try { return JSON.parse(localStorage.getItem(COLLAPSE_KEY) || '[]'); } catch(e) { return []; }
+  }
+
+  function saveCollapsed(ids) {
+    try { localStorage.setItem(COLLAPSE_KEY, JSON.stringify(ids)); } catch(e) {}
+  }
+
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.classList.toggle('collapsed');
+    const collapsed = getCollapsed();
+    if (section.classList.contains('collapsed')) {
+      if (!collapsed.includes(id)) collapsed.push(id);
+    } else {
+      const idx = collapsed.indexOf(id);
+      if (idx > -1) collapsed.splice(idx, 1);
+    }
+    saveCollapsed(collapsed);
+  }
+
+  function initCollapsible() {
+    const sections = document.querySelectorAll('.section[id]');
+    const collapsed = getCollapsed();
+
+    sections.forEach(section => {
+      const id = section.id;
+      const header = section.querySelector('.section-header');
+      if (!header) return;
+
+      const btn = document.createElement('button');
+      btn.className = 'collapse-btn';
+      btn.innerHTML = '▾';
+      btn.setAttribute('aria-label', 'Toggle section');
+      header.appendChild(btn);
+
+      const body = document.createElement('div');
+      body.className = 'section-body';
+      const children = Array.from(section.children).filter(c => c !== header);
+      children.forEach(c => body.appendChild(c));
+      section.appendChild(body);
+
+      if (collapsed.includes(id)) {
+        section.classList.add('collapsed');
+      }
+
+      header.addEventListener('click', () => toggleSection(id));
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    loadEdits();
+    initCollapsible();
+    initQuote();
+  });
+</script>
+
+</body>
+</html>
