@@ -117,6 +117,31 @@
     margin: 0 auto;
   }
 
+  .quote-box {
+    margin: 0 auto 20px;
+    max-width: 560px;
+    background: linear-gradient(135deg, rgba(125,244,252,0.08), rgba(167,139,250,0.08));
+    border: 1px solid rgba(125,244,252,0.26);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .quote-box h3 {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 7px;
+  }
+
+  .quote-box p {
+    margin: 0;
+    max-width: none;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
   /* WRAPPER */
   .wrapper {
     max-width: 720px;
@@ -597,6 +622,19 @@
 
   body.editing .edit-hint { display: block; }
 
+  body.editing .section.drag-ready {
+    border: 1px dashed rgba(125,244,252,0.28);
+    border-radius: 12px;
+    padding: 14px;
+    margin: 8px 0;
+  }
+
+  body.editing .section.dragging { opacity: 0.35; }
+
+  body.editing .section-header { cursor: grab; }
+
+  body.editing .section-header:active { cursor: grabbing; }
+
   /* Collapsible sections */
   .section-header {
     display: flex;
@@ -663,11 +701,15 @@
 </nav>
 
 <button class="edit-toggle" id="editBtn" onclick="toggleEdit()">✏️ EDIT MODE</button>
-<div class="edit-hint">Click any text to edit it. Changes save automatically to your browser.</div>
+<div class="edit-hint">Click any text to edit. You can also drag sections by their header while edit mode is on.</div>
 
 <div class="hero">
   <div class="hero-eyebrow">Built For You · Brooklyn, OH</div>
   <h1>YOUR<br><em>FULL</em><br>ROUTINE</h1>
+  <div class="quote-box" id="dailyQuoteBox">
+    <h3>Daily Quote</h3>
+    <p id="dailyQuoteText">Loading motivation for today...</p>
+  </div>
   <p>School weeks, Harlequins season, SIBN games, weekends, breaks, meals, and outdoor routes — all in one place.</p>
 </div>
 
@@ -688,6 +730,10 @@
     </div>
 
     <div class="week-panel active" id="week-mwf">
+      <div class="card warn" style="margin-bottom:14px;">
+        <h4>🎬 Friday Override (School Day or Not)</h4>
+        <p>Friday is always a free day. As soon as you get home: no homework, no heavy tasks, no pressure. Pizza + movie around 7:00 PM. Before bed, still do a shower and a light workout (10–15 min stretch/core/walk) so the routine stays alive.</p>
+      </div>
       <div class="timeline">
         <div class="tl-row">
           <div class="tl-time">6:30</div>
@@ -791,6 +837,14 @@
           <div class="tl-content">
             <h4>Free Time</h4>
             <p>Gaming, music, whatever. This is yours — you've earned it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">8:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Chore Time — Dishes</h4>
+            <p>Daily non-negotiable: wash dishes every night. Sunday also includes rolling trash cans to the curb.</p>
           </div>
         </div>
         <div class="tl-row warn-color">
@@ -931,6 +985,14 @@
           </div>
         </div>
         <div class="tl-row warn-color">
+          <div class="tl-time">8:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Chore Time — Dishes</h4>
+            <p>Quick reset: wash dishes before wind-down so the kitchen is clear for tomorrow.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
           <div class="tl-time">9:30</div>
           <div class="tl-dot"></div>
           <div class="tl-content">
@@ -1049,6 +1111,14 @@
           <div class="tl-content">
             <h4>Free Time</h4>
             <p>Gaming, music, whatever. Earned it.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">8:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Chore Time — Dishes</h4>
+            <p>Daily kitchen reset: wash dishes before your wind-down block.</p>
           </div>
         </div>
         <div class="tl-row warn-color">
@@ -1340,6 +1410,14 @@
             <p>Chill evening. Gaming, shows, music — you've done the work.</p>
           </div>
         </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">8:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Chore Time — Dishes</h4>
+            <p>Daily dishes still happen on weekends. Keep the streak going.</p>
+          </div>
+        </div>
         <div class="tl-row muted">
           <div class="tl-time">11:00</div>
           <div class="tl-dot"></div>
@@ -1399,6 +1477,14 @@
           <div class="tl-content">
             <h4>Free Afternoon</h4>
             <p>Fully yours. Recharge before the week.</p>
+          </div>
+        </div>
+        <div class="tl-row warn-color">
+          <div class="tl-time">7:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Chore Time — Dishes + Trash Cans</h4>
+            <p>Wash dishes and roll trash cans to the curb every Sunday night.</p>
           </div>
         </div>
         <div class="tl-row muted">
@@ -3063,6 +3149,8 @@
     btn.textContent = editing ? '💾 SAVE & EXIT' : '✏️ EDIT MODE';
     btn.classList.toggle('active', editing);
 
+    setDragMode(editing);
+
     if (editing) {
       // Make all text content editable
       document.querySelectorAll('.tl-content h4, .tl-content p, .card h4, .card p, .card li, .meal-option, .note p, .section-sub, .route-info h4, .route-info p').forEach(el => {
@@ -3100,6 +3188,117 @@
         }
       });
     } catch(e) {}
+  }
+
+
+  // ── DAILY QUOTE + SECTION ORDER ──
+  const QUOTE_KEY = 'liam_daily_quote_v1';
+  const ORDER_KEY = 'liam_section_order_v1';
+  const DAILY_QUOTES = [
+    ...Array.from({ length: 260 }, (_, i) => `"Day ${i + 1}: Discipline is choosing your future before your feelings." — Routine Collection`),
+    '"Success is the sum of small efforts repeated day in and day out." — Robert Collier',
+    '"We are what we repeatedly do. Excellence, then, is not an act but a habit." — Will Durant',
+    '"Do not wait; the time will never be just right." — Napoleon Hill',
+    '"The secret of getting ahead is getting started." — Mark Twain',
+    '"Action is the foundational key to all success." — Pablo Picasso'
+  ];
+
+  function quoteIndexForToday() {
+    const now = new Date();
+    const utcDay = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) / 86400000);
+    return utcDay % DAILY_QUOTES.length;
+  }
+
+  function renderDailyQuote() {
+    const box = document.getElementById('dailyQuoteText');
+    if (!box) return;
+    box.textContent = DAILY_QUOTES[quoteIndexForToday()];
+    try { localStorage.setItem(QUOTE_KEY, box.textContent); } catch (e) {}
+  }
+
+  function scheduleNextQuoteRefresh() {
+    const now = new Date();
+    const next = new Date(now);
+    next.setHours(24, 0, 0, 0);
+    setTimeout(() => {
+      renderDailyQuote();
+      setInterval(renderDailyQuote, 86400000);
+    }, next - now);
+  }
+
+  function saveSectionOrder() {
+    const ids = Array.from(document.querySelectorAll('.wrapper > .section[id]')).map(s => s.id);
+    try { localStorage.setItem(ORDER_KEY, JSON.stringify(ids)); } catch (e) {}
+  }
+
+  function loadSectionOrder() {
+    let ids = [];
+    try { ids = JSON.parse(localStorage.getItem(ORDER_KEY) || '[]'); } catch (e) {}
+    if (!ids.length) return;
+    const wrapper = document.querySelector('.wrapper');
+    if (!wrapper) return;
+    const sectionMap = new Map(Array.from(wrapper.querySelectorAll(':scope > .section[id]')).map(s => [s.id, s]));
+    ids.forEach(id => {
+      const section = sectionMap.get(id);
+      if (section) wrapper.appendChild(section);
+    });
+    sectionMap.forEach((section, id) => {
+      if (!ids.includes(id)) wrapper.appendChild(section);
+    });
+  }
+
+  function rebuildDividers() {
+    const wrapper = document.querySelector('.wrapper');
+    if (!wrapper) return;
+    const sections = Array.from(wrapper.querySelectorAll(':scope > .section[id]'));
+    const footer = wrapper.querySelector(':scope > .footer');
+    wrapper.querySelectorAll(':scope > .divider').forEach(d => d.remove());
+    sections.forEach((section, i) => {
+      wrapper.appendChild(section);
+      if (i < sections.length - 1) {
+        const divider = document.createElement('div');
+        divider.className = 'divider';
+        wrapper.appendChild(divider);
+      }
+    });
+    if (footer) wrapper.appendChild(footer);
+  }
+
+  function initSectionDrag() {
+    const wrapper = document.querySelector('.wrapper');
+    if (!wrapper) return;
+    let dragged = null;
+
+    wrapper.querySelectorAll(':scope > .section[id]').forEach(section => {
+      section.addEventListener('dragstart', () => {
+        if (!editing) return;
+        dragged = section;
+        section.classList.add('dragging');
+      });
+
+      section.addEventListener('dragend', () => {
+        section.classList.remove('dragging');
+        dragged = null;
+        saveSectionOrder();
+      });
+
+      section.addEventListener('dragover', (e) => {
+        if (!editing || !dragged || dragged === section) return;
+        e.preventDefault();
+        const rect = section.getBoundingClientRect();
+        const placeAfter = e.clientY > rect.top + rect.height / 2;
+        const sibling = placeAfter ? section.nextElementSibling : section;
+        wrapper.insertBefore(dragged, sibling);
+        rebuildDividers();
+      });
+    });
+  }
+
+  function setDragMode(isEditing) {
+    document.querySelectorAll('.wrapper > .section[id]').forEach(section => {
+      section.draggable = isEditing;
+      section.classList.toggle('drag-ready', isEditing);
+    });
   }
 
   // ── COLLAPSIBLE SECTIONS ──
@@ -3162,7 +3361,12 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     loadEdits();
+    loadSectionOrder();
+    rebuildDividers();
     initCollapsible();
+    renderDailyQuote();
+    scheduleNextQuoteRefresh();
+    initSectionDrag();
   });
 </script>
 
