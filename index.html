@@ -24,7 +24,9 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -48,6 +50,7 @@
     scrollbar-width: none;
   }
   nav::-webkit-scrollbar { display: none; }
+
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 18px;
@@ -59,6 +62,7 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
+
   nav a {
     color: var(--subtext);
     text-decoration: none;
@@ -74,76 +78,14 @@
   }
   nav a:hover { color: var(--accent); }
 
-  /* QUOTE CARD */
-  .quote-banner {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 24px 20px 0;
-  }
-  .quote-card {
-    background: linear-gradient(135deg, rgba(125,244,252,0.06) 0%, rgba(167,139,250,0.06) 100%);
-    border: 1px solid rgba(125,244,252,0.2);
-    border-radius: 16px;
-    padding: 22px 26px;
-    position: relative;
-    overflow: hidden;
-  }
-  .quote-card::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: 16px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 120px;
-    color: rgba(125,244,252,0.07);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .quote-text {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.65;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-  }
-  .quote-author {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .quote-refresh {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: 1px solid rgba(125,244,252,0.2);
-    border-radius: 8px;
-    color: var(--subtext);
-    font-size: 14px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .quote-refresh:hover { color: var(--accent); border-color: var(--accent); }
-  .quote-day {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
   /* HERO */
   .hero {
-    padding: 48px 24px 52px;
+    padding: 64px 24px 52px;
     max-width: 720px;
     margin: 0 auto;
     text-align: center;
   }
+
   .hero-eyebrow {
     font-size: 10px;
     letter-spacing: 4px;
@@ -152,6 +94,7 @@
     font-weight: 600;
     margin-bottom: 16px;
   }
+
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(60px, 14vw, 100px);
@@ -160,7 +103,12 @@
     color: #fff;
     margin-bottom: 20px;
   }
-  .hero h1 em { color: var(--accent); font-style: normal; }
+
+  .hero h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
   .hero p {
     font-size: 14px;
     color: var(--subtext);
@@ -170,16 +118,24 @@
   }
 
   /* WRAPPER */
-  .wrapper { max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }
+  .wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
 
   /* SECTION */
-  .section { margin-bottom: 56px; }
+  .section {
+    margin-bottom: 56px;
+  }
+
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 32px;
     letter-spacing: 1.5px;
     color: #fff;
   }
+
   .section-tag {
     font-size: 10px;
     letter-spacing: 2px;
@@ -189,28 +145,40 @@
     border-radius: 20px;
     flex-shrink: 0;
   }
+
   .tag-school { background: rgba(125,244,252,0.1); color: var(--accent); }
   .tag-weekend { background: rgba(167,139,250,0.1); color: var(--accent2); }
   .tag-break { background: rgba(244,114,182,0.1); color: var(--accent3); }
   .tag-food { background: rgba(96,165,250,0.1); color: var(--accent4); }
   .tag-outdoor { background: rgba(125,244,252,0.1); color: var(--accent); }
   .tag-workout { background: rgba(167,139,250,0.1); color: var(--accent2); }
+
   .section-sub {
     font-size: 12px;
     color: var(--subtext);
     margin-bottom: 20px;
     letter-spacing: 0.3px;
   }
-  .divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
 
   /* TIMELINE */
-  .timeline { display: grid; gap: 3px; }
+  .timeline {
+    display: grid;
+    gap: 3px;
+  }
+
   .tl-row {
     display: grid;
     grid-template-columns: 80px 1fr;
     gap: 0;
     position: relative;
   }
+
   .tl-time {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 15px;
@@ -221,10 +189,11 @@
     border-right: 1px solid var(--border2);
     line-height: 1.2;
   }
+
   .tl-row.muted .tl-time { color: var(--muted); }
   .tl-row.alt-color .tl-time { color: var(--accent2); }
   .tl-row.warn-color .tl-time { color: var(--accent3); }
-  .tl-row.chore-color .tl-time { color: var(--accent4); }
+
   .tl-dot {
     position: absolute;
     left: 80px;
@@ -236,13 +205,28 @@
     background: var(--accent);
     z-index: 1;
   }
+
   .tl-row.muted .tl-dot { background: var(--muted); }
   .tl-row.alt-color .tl-dot { background: var(--accent2); }
   .tl-row.warn-color .tl-dot { background: var(--accent3); }
-  .tl-row.chore-color .tl-dot { background: var(--accent4); }
-  .tl-content { padding: 10px 0 10px 20px; }
-  .tl-content h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-  .tl-content p { font-size: 12px; color: var(--subtext); line-height: 1.5; }
+
+  .tl-content {
+    padding: 10px 0 10px 20px;
+  }
+
+  .tl-content h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .tl-content p {
+    font-size: 12px;
+    color: var(--subtext);
+    line-height: 1.5;
+  }
+
   .tl-row.muted .tl-content h4 { color: var(--muted); }
 
   /* TABS */
@@ -255,6 +239,7 @@
     border-radius: 10px;
     border: 1px solid var(--border);
   }
+
   .tab-btn {
     flex: 1;
     padding: 8px 10px;
@@ -269,7 +254,12 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .tab-btn.active { background: var(--accent); color: #0d0d0d; }
+
+  .tab-btn.active {
+    background: var(--accent);
+    color: #0d0d0d;
+  }
+
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
@@ -281,20 +271,52 @@
     padding: 18px 20px;
     margin-bottom: 10px;
   }
-  .card h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-  .card p, .card li { font-size: 12px; color: var(--subtext); line-height: 1.6; }
+
+  .card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .card p, .card li {
+    font-size: 12px;
+    color: var(--subtext);
+    line-height: 1.6;
+  }
+
   .card ul { padding-left: 0; list-style: none; }
   .card ul li { padding: 2px 0; padding-left: 14px; position: relative; }
   .card ul li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 4px; }
-  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+  .card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
   .card-row .card { margin-bottom: 0; }
-  .card.highlight { border-color: rgba(125,244,252,0.25); background: rgba(125,244,252,0.04); }
+
+  .card.highlight {
+    border-color: rgba(125,244,252,0.25);
+    background: rgba(125,244,252,0.04);
+  }
+
   .card.highlight h4 { color: var(--accent); }
-  .card.warn { border-color: rgba(244,114,182,0.25); background: rgba(244,114,182,0.04); }
+
+  .card.warn {
+    border-color: rgba(244,114,182,0.25);
+    background: rgba(244,114,182,0.04);
+  }
   .card.warn h4 { color: var(--accent3); }
 
   /* MEAL GRID */
-  .meal-grid { display: grid; gap: 10px; }
+  .meal-grid {
+    display: grid;
+    gap: 10px;
+  }
+
   .meal-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -305,6 +327,7 @@
     gap: 16px;
     align-items: start;
   }
+
   .meal-label {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
@@ -312,10 +335,12 @@
     line-height: 1;
     padding-top: 2px;
   }
+
   .meal-label.breakfast { color: var(--accent3); }
   .meal-label.lunch { color: var(--accent2); }
   .meal-label.dinner { color: var(--accent); }
   .meal-label.snack { color: var(--accent4); }
+
   .meal-options h5 {
     font-size: 11px;
     letter-spacing: 1px;
@@ -324,6 +349,7 @@
     font-weight: 600;
     margin-bottom: 6px;
   }
+
   .meal-option {
     font-size: 12px;
     color: var(--subtext);
@@ -331,11 +357,20 @@
     border-bottom: 1px solid var(--border);
     line-height: 1.5;
   }
+
   .meal-option:last-child { border-bottom: none; }
-  .meal-option strong { color: var(--text); font-weight: 500; }
+
+  .meal-option strong {
+    color: var(--text);
+    font-weight: 500;
+  }
 
   /* ROUTE CARDS */
-  .route-grid { display: grid; gap: 10px; }
+  .route-grid {
+    display: grid;
+    gap: 10px;
+  }
+
   .route-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -345,10 +380,33 @@
     gap: 16px;
     align-items: flex-start;
   }
-  .route-icon { font-size: 24px; flex-shrink: 0; padding-top: 2px; }
-  .route-info h4 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
-  .route-info p { font-size: 12px; color: var(--subtext); line-height: 1.5; margin-bottom: 6px; }
-  .route-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .route-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .route-info h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .route-info p {
+    font-size: 12px;
+    color: var(--subtext);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .route-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
   .route-tag {
     font-size: 10px;
     font-weight: 600;
@@ -358,6 +416,7 @@
     background: rgba(200,245,66,0.1);
     color: var(--accent);
   }
+
   .route-tag.bike { background: rgba(66,245,200,0.1); color: var(--accent2); }
   .route-tag.run { background: rgba(245,163,66,0.1); color: var(--accent3); }
 
@@ -369,6 +428,7 @@
     padding: 18px 20px;
     margin-top: 16px;
   }
+
   .note h5 {
     font-size: 11px;
     letter-spacing: 1.5px;
@@ -377,10 +437,20 @@
     font-weight: 600;
     margin-bottom: 8px;
   }
-  .note p { font-size: 12px; color: var(--subtext); line-height: 1.7; }
+
+  .note p {
+    font-size: 12px;
+    color: var(--subtext);
+    line-height: 1.7;
+  }
 
   /* WEEK TOGGLE */
-  .week-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
+  .week-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
   .week-btn {
     padding: 6px 14px;
     background: var(--card);
@@ -394,35 +464,77 @@
     transition: all 0.2s;
     letter-spacing: 0.5px;
   }
-  .week-btn.active { background: var(--accent); color: #0d0d0d; border-color: var(--accent); }
+
+  .week-btn.active {
+    background: var(--accent);
+    color: #0d0d0d;
+    border-color: var(--accent);
+  }
+
   .week-panel { display: none; }
   .week-panel.active { display: block; }
 
   /* BREAK CARDS */
-  .break-grid { display: grid; gap: 10px; }
+  .break-grid {
+    display: grid;
+    gap: 10px;
+  }
 
   /* FOOTER */
-  .footer { text-align: center; padding: 40px 0 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
 
   /* Animations */
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
   .section {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.55s ease, transform 0.55s ease;
   }
-  .section.visible { opacity: 1; transform: translateY(0); }
-  .hero { animation: fadeIn 0.8s ease both; }
-  .quote-banner { animation: fadeIn 0.6s ease both; }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero {
+    animation: fadeIn 0.8s ease both;
+  }
+
   .tl-row {
     opacity: 0;
     transform: translateX(-10px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  .tl-row.visible { opacity: 1; transform: translateX(0); }
-  .card { transition: border-color 0.2s, transform 0.15s; }
-  .card:hover { border-color: #2a3050; transform: translateY(-1px); }
+
+  .tl-row.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .card {
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .card:hover {
+    border-color: #2a3050;
+    transform: translateY(-1px);
+  }
 
   /* Edit mode */
   .edit-toggle {
@@ -443,8 +555,17 @@
     box-shadow: 0 4px 24px rgba(167,139,250,0.4);
     transition: all 0.2s;
   }
-  .edit-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(167,139,250,0.5); }
-  .edit-toggle.active { background: var(--accent3); box-shadow: 0 4px 24px rgba(244,114,182,0.4); }
+
+  .edit-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(167,139,250,0.5);
+  }
+
+  .edit-toggle.active {
+    background: var(--accent3);
+    box-shadow: 0 4px 24px rgba(244,114,182,0.4);
+  }
+
   body.editing [contenteditable] {
     outline: 1px dashed rgba(167,139,250,0.4);
     border-radius: 4px;
@@ -452,7 +573,12 @@
     padding: 1px 3px;
     margin: -1px -3px;
   }
-  body.editing [contenteditable]:focus { outline: 1px solid var(--accent2); background: rgba(167,139,250,0.06); }
+
+  body.editing [contenteditable]:focus {
+    outline: 1px solid var(--accent2);
+    background: rgba(167,139,250,0.06);
+  }
+
   .edit-hint {
     position: fixed;
     bottom: 64px;
@@ -468,6 +594,7 @@
     max-width: 200px;
     line-height: 1.5;
   }
+
   body.editing .edit-hint { display: block; }
 
   /* Collapsible sections */
@@ -479,7 +606,9 @@
     cursor: pointer;
     user-select: none;
   }
+
   .section-header:hover .collapse-btn { color: var(--accent); }
+
   .collapse-btn {
     margin-left: auto;
     background: none;
@@ -492,14 +621,22 @@
     flex-shrink: 0;
     line-height: 1;
   }
-  .section.collapsed .collapse-btn { transform: rotate(-90deg); }
+
+  .section.collapsed .collapse-btn {
+    transform: rotate(-90deg);
+  }
+
   .section-body {
     overflow: hidden;
     transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
     max-height: 9999px;
     opacity: 1;
   }
-  .section.collapsed .section-body { max-height: 0 !important; opacity: 0; }
+
+  .section.collapsed .section-body {
+    max-height: 0 !important;
+    opacity: 0;
+  }
 </style>
 </head>
 <body>
@@ -528,7 +665,15 @@
 <button class="edit-toggle" id="editBtn" onclick="toggleEdit()">✏️ EDIT MODE</button>
 <div class="edit-hint">Click any text to edit it. Changes save automatically to your browser.</div>
 
-<!-- DAILY QUOTE -->
+<div class="hero">
+  <div class="hero-eyebrow">Built For You · Brooklyn, OH</div>
+  <h1>YOUR<br><em>FULL</em><br>ROUTINE</h1>
+  <p>School weeks, Harlequins season, SIBN games, weekends, breaks, meals, and outdoor routes — all in one place.</p>
+</div>
+
+<div class="wrapper">
+
+  <!-- DAILY QUOTE -->
 <div class="quote-banner">
   <div class="quote-card">
     <button class="quote-refresh" onclick="newQuote()" title="New quote">↻ NEW</button>
@@ -555,13 +700,11 @@
     <div class="section-sub">Standard week — no Harlequins, no SIBN game</div>
 
     <div class="week-tabs">
-      <button class="week-btn active" onclick="switchWeek('mwf', this)">Mon / Thu</button>
-      <button class="week-btn" onclick="switchWeek('fri', this)">Friday</button>
+      <button class="week-btn active" onclick="switchWeek('mwf', this)">Mon / Thu / Fri</button>
       <button class="week-btn" onclick="switchWeek('wed', this)">Wednesday</button>
-      <button class="week-btn" onclick="switchWeek('tth', this)">Tuesday</button>
+      <button class="week-btn" onclick="switchWeek('tth', this)">Tue</button>
     </div>
 
-    <!-- MON / THU -->
     <div class="week-panel active" id="week-mwf">
       <div class="timeline">
         <div class="tl-row">
@@ -660,16 +803,8 @@
             <p>Shower after workout, wash face, moisturize. Make it automatic.</p>
           </div>
         </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">8:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes</h4>
-            <p>Quick clean after dinner — rinse and wash any dishes from the evening. Takes 5–10 min. Don't let them pile up.</p>
-          </div>
-        </div>
         <div class="tl-row">
-          <div class="tl-time">8:15</div>
+          <div class="tl-time">8:00</div>
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Free Time</h4>
@@ -703,97 +838,6 @@
       </div>
     </div>
 
-    <!-- FRIDAY -->
-    <div class="week-panel" id="week-fri">
-      <div class="card highlight" style="margin-bottom:14px;">
-        <h4>🍕 Friday — Pizza Movie Night</h4>
-        <p>No work period after school on Fridays. You get home, it's pizza movie night, and the rest of the evening is yours. You earned it all week — take the full night off.</p>
-      </div>
-      <div class="timeline">
-        <div class="tl-row">
-          <div class="tl-time">6:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Wake Up</h4>
-            <p>Glass of water. Wash face, get dressed, eat something before leaving.</p>
-          </div>
-        </div>
-        <div class="tl-row alt-color">
-          <div class="tl-time">6:35</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Feed Lincoln & Batman → How We Feel</h4>
-            <p>Morning anchor. Feed the cats, 60-second check-in while they eat.</p>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-time">6:40</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Busuu — Spanish (5–10 min)</h4>
-            <p>Friday morning Busuu. Keep that streak alive going into the weekend.</p>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-time">7:25</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Bus → Globo</h4>
-            <p>Globo on the ride in. Last school day of the week — coast a little.</p>
-          </div>
-        </div>
-        <div class="tl-row alt-color">
-          <div class="tl-time">8:20</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Classes Begin</h4>
-            <p>5 periods. Friday energy is different — still show up and stay present.</p>
-          </div>
-        </div>
-        <div class="tl-row warn-color">
-          <div class="tl-time">MID-DAY</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Formation — 40 Minutes</h4>
-            <p>Use it. Knock out anything due Monday now so the weekend is fully free.</p>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-time">3:05</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>School Ends — Head Home</h4>
-            <p>No work period today. It's Friday. Get home, switch off school mode completely.</p>
-          </div>
-        </div>
-        <div class="tl-row alt-color">
-          <div class="tl-time">~5:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Home — Pizza Movie Night 🍕</h4>
-            <p>That's the plan. No homework, no workout pressure, no obligations. Full reset night. Eat, watch something, decompress from the week.</p>
-          </div>
-        </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">AFTER</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes (after pizza)</h4>
-            <p>Quick rinse after dinner so Saturday morning starts clean. Takes 5 min.</p>
-          </div>
-        </div>
-        <div class="tl-row muted">
-          <div class="tl-time">11:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Aim for Bed</h4>
-            <p>Weekend, so a little later is fine. Don't go too crazy — Saturday still has stuff in it.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- WEDNESDAY -->
     <div class="week-panel" id="week-wed">
       <div class="card warn" style="margin-bottom:14px;">
         <h4>⚡ Wednesday Schedule</h4>
@@ -829,7 +873,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Use the Extra Time — Breakfast + Homework</h4>
-            <p>You've got about 50 extra minutes before the bus. Eat a proper breakfast, knock out any homework due today, or just decompress. Easiest morning of the week.</p>
+            <p>You've got about 50 extra minutes before the bus. Eat a proper breakfast, knock out any homework due today, or just decompress. This is your easiest morning of the week.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -856,12 +900,12 @@
             <p>Too short for a full assignment. Use it to review notes, check what's due this week, or start something small.</p>
           </div>
         </div>
-        <div class="tl-row warn-color">
+        <div class="tl-row muted">
           <div class="tl-time">3:05</div>
           <div class="tl-dot"></div>
           <div class="tl-content">
-            <h4>School Ends — Work While You Wait</h4>
-            <p>Use this time productively — finish any remaining homework, review notes, or get ahead on something due later this week.</p>
+            <h4>School Ends — Wait for Mom</h4>
+            <p>Use this time productively — finish any remaining homework, review notes, or get ahead on something due later in the week. Don't just sit on your phone.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -896,16 +940,8 @@
             <p>Shower, then evening skin and care routine. See Care Routine section for the full order.</p>
           </div>
         </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">8:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes</h4>
-            <p>Quick clean after dinner. 5–10 min. Then the evening is fully yours.</p>
-          </div>
-        </div>
         <div class="tl-row">
-          <div class="tl-time">8:15</div>
+          <div class="tl-time">8:00</div>
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Free Time</h4>
@@ -939,7 +975,6 @@
       </div>
     </div>
 
-    <!-- TUESDAY -->
     <div class="week-panel" id="week-tth">
       <div class="card" style="margin-bottom:14px;">
         <h4>Tuesday — No Formation</h4>
@@ -991,7 +1026,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>School Ends — Work While You Wait</h4>
-            <p>Mom gets off at 4:30 so you've got time. Use it — start your homework now so the evening block is shorter. Even 30–45 minutes here makes a real difference on Tuesdays.</p>
+            <p>Mom gets off at 4:30 so you've got time to kill. Use it — start your homework now so the evening block is shorter. Even 30–45 minutes here makes a real difference on Tuesdays.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -1026,16 +1061,8 @@
             <p>Shower after workout, then evening skin routine. See Care Routine section.</p>
           </div>
         </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">8:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes</h4>
-            <p>Quick clean after dinner. 5–10 min, then the evening is yours.</p>
-          </div>
-        </div>
         <div class="tl-row">
-          <div class="tl-time">8:15</div>
+          <div class="tl-time">8:00</div>
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Free Time</h4>
@@ -1132,14 +1159,6 @@
           <div class="tl-content">
             <h4>Shower + Skin + Wind Down</h4>
             <p>Keep it tight so you hit 10pm.</p>
-          </div>
-        </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">8:45</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes (quick)</h4>
-            <p>Even on long rehearsal nights — 5 min rinse and stack. Keeps the kitchen from getting out of hand.</p>
           </div>
         </div>
         <div class="tl-row muted">
@@ -1248,14 +1267,14 @@
       <ul>
         <li>Home by 7:30 — treat it like a normal school night from there</li>
         <li>Homework block 7:30–8:30, then workout or skip and walk instead</li>
-        <li>Dishes after dinner, then still hit lights out by 10:30 at the latest</li>
+        <li>Still hit lights out by 10:30 at the latest</li>
       </ul>
     </div>
     <div class="card">
       <h4>Basketball / Volleyball / Hockey (ends 8–9pm)</h4>
       <ul>
         <li>Home by 9 — skip the full workout, do a 10-min core circuit or just walk</li>
-        <li>Eat something, do skin routine, quick dishes, get to bed</li>
+        <li>Eat something, do skin routine, get to bed</li>
         <li>Prioritize sleep over working out on these nights — you'll make it up</li>
         <li>Use formation blocks earlier that day to handle homework</li>
       </ul>
@@ -1278,7 +1297,7 @@
 
     <div class="tab-bar">
       <button class="tab-btn active" onclick="switchTab('weekend', 'sat')">Saturday</button>
-      <button class="tab-btn" onclick="switchTab('weekend', 'sun')">Sunday Reset</button>
+      <button class="tab-btn" onclick="switchTab('weekend', 'sun')">Sunday</button>
     </div>
 
     <div class="tab-panel active" id="weekend-sat">
@@ -1339,14 +1358,6 @@
             <p>Chill evening. Gaming, shows, music — you've done the work.</p>
           </div>
         </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">7:30</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes</h4>
-            <p>After dinner — quick rinse and clean. Keeps Saturday feeling clean going into Sunday.</p>
-          </div>
-        </div>
         <div class="tl-row muted">
           <div class="tl-time">11:00</div>
           <div class="tl-dot"></div>
@@ -1359,10 +1370,6 @@
     </div>
 
     <div class="tab-panel" id="weekend-sun">
-      <div class="card highlight" style="margin-bottom:14px;">
-        <h4>🔄 Sunday = Reset + Prep Day</h4>
-        <p>Sunday isn't a rest day — it's your launch pad for the week. Room, laundry, trash, weekly review, meal prep. Do these consistently and Monday morning starts differently.</p>
-      </div>
       <div class="timeline">
         <div class="tl-row">
           <div class="tl-time">9:00</div>
@@ -1388,14 +1395,6 @@
             <p>If it's nice, hit the trail for a casual walk. No pressure, no pace goals.</p>
           </div>
         </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">12:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Weekly Laundry — School + Week Clothes</h4>
-            <p>Throw in your load now so it has time to finish before evening. Wash everything you'll need for the week — school clothes, gym stuff, socks, all of it. Swap to dryer when it's done. Fold and put away before bed, not tomorrow.</p>
-          </div>
-        </div>
         <div class="tl-row warn-color">
           <div class="tl-time">1:00</div>
           <div class="tl-dot"></div>
@@ -1409,7 +1408,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Week Prep</h4>
-            <p>Look at what's due this week. Pack bag, lay out clothes for Monday, quick mental reset. 20 minutes max.</p>
+            <p>Look at what's due this week. Pack bag, lay out clothes, quick mental reset. 20 minutes max.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -1417,31 +1416,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Free Afternoon</h4>
-            <p>Fully yours. Recharge before the week. Check on laundry as needed.</p>
-          </div>
-        </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">5:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Dishes + Evening Reset</h4>
-            <p>Clean up from the day. Kitchen tidy before the evening wind-down begins.</p>
-          </div>
-        </div>
-        <div class="tl-row chore-color">
-          <div class="tl-time">6:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Trash Cans to the Curb 🗑️</h4>
-            <p>Every Sunday evening — take the trash cans out to the curb for Monday pickup. Takes 2 minutes. Do it while it's still light out so you don't forget.</p>
-          </div>
-        </div>
-        <div class="tl-row alt-color">
-          <div class="tl-time">7:00</div>
-          <div class="tl-dot"></div>
-          <div class="tl-content">
-            <h4>Weekly Review — 10 Minutes</h4>
-            <p>The 5 questions. How We Feel weekly check-in. Apple Journal. See the Weekly Review section. This is how you go into Monday with intention instead of just reacting.</p>
+            <p>Fully yours. Recharge before the week.</p>
           </div>
         </div>
         <div class="tl-row muted">
@@ -1527,14 +1502,6 @@
               <p>Long evenings are the best part of summer. Enjoy them.</p>
             </div>
           </div>
-          <div class="tl-row chore-color">
-            <div class="tl-time">7:00</div>
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <h4>Dishes</h4>
-              <p>After dinner every day — quick wash after each meal, no pile-up.</p>
-            </div>
-          </div>
           <div class="tl-row muted">
             <div class="tl-time">11:30</div>
             <div class="tl-dot"></div>
@@ -1543,10 +1510,6 @@
               <p>You can push later in summer but don't let it flip entirely or back-to-school will wreck you.</p>
             </div>
           </div>
-        </div>
-        <div class="note">
-          <h5>Summer Sundays Still Apply</h5>
-          <p>Even in summer, Sunday is still reset day. Laundry, trash to curb, room tidy, weekly review. Takes under an hour total and keeps you from losing all structure over the break.</p>
         </div>
       </div>
     </div>
@@ -1582,14 +1545,6 @@
               <p>Holiday stuff, family, gaming, whatever. Enjoy the break.</p>
             </div>
           </div>
-          <div class="tl-row chore-color">
-            <div class="tl-time">AFTER<br>DINNER</div>
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <h4>Dishes — Daily</h4>
-              <p>Even on break days. Quick rinse and clean after dinner. Don't let the kitchen pile up over the holidays.</p>
-            </div>
-          </div>
           <div class="tl-row muted">
             <div class="tl-time">10:30</div>
             <div class="tl-dot"></div>
@@ -1598,10 +1553,6 @@
               <p>Keep a consistent sleep time even over winter break — harder to reset in January if you don't.</p>
             </div>
           </div>
-        </div>
-        <div class="note">
-          <h5>Winter Sunday Still = Reset Day</h5>
-          <p>Trash to curb Sunday evening, laundry on Sunday, room tidy. Keeps you from hitting January completely derailed.</p>
         </div>
       </div>
     </div>
@@ -1645,14 +1596,6 @@
               <p>Full session. Longer days mean more energy in the evening.</p>
             </div>
           </div>
-          <div class="tl-row chore-color">
-            <div class="tl-time">AFTER<br>DINNER</div>
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <h4>Dishes — Daily</h4>
-              <p>Quick clean after every dinner. Keeps the break days feeling clean and in order.</p>
-            </div>
-          </div>
           <div class="tl-row muted">
             <div class="tl-time">10:30</div>
             <div class="tl-dot"></div>
@@ -1661,10 +1604,6 @@
               <p>Don't stray too far from school schedule — you're going back soon.</p>
             </div>
           </div>
-        </div>
-        <div class="note">
-          <h5>Spring Sunday Still = Reset Day</h5>
-          <p>Laundry, trash to curb, room tidy. Same as every other week.</p>
         </div>
       </div>
     </div>
@@ -1762,6 +1701,7 @@
         <h4>Push Day — Chest, Shoulders & Triceps</h4>
         <p>3 rounds. Rest 60 sec between rounds. ~20 minutes total.</p>
       </div>
+
       <div class="card">
         <h4>1. Standard Pushups</h4>
         <ul>
@@ -1814,6 +1754,7 @@
         <h4>Pull Day — Back & Biceps</h4>
         <p>3 rounds. Rest 60 sec between rounds. ~20 minutes total. Pull days are harder without equipment — these are your best no-equipment options.</p>
       </div>
+
       <div class="card">
         <h4>1. Doorframe Rows</h4>
         <ul>
@@ -1866,6 +1807,7 @@
         <h4>Legs Day — Quads, Glutes & Calves</h4>
         <p>3 rounds. Rest 60 sec between rounds. ~20 minutes. Leg workouts are brutal with bodyweight — don't underestimate these.</p>
       </div>
+
       <div class="card">
         <h4>1. Bodyweight Squats</h4>
         <ul>
@@ -1917,6 +1859,7 @@
         <h4>Cardio + Core Day</h4>
         <p>2–3 rounds. Minimal rest between exercises (20–30 sec), 90 sec rest between rounds. Gets your heart rate up and builds core strength at the same time. ~20 minutes.</p>
       </div>
+
       <div class="card">
         <h4>1. High Knees</h4>
         <ul>
@@ -1988,6 +1931,7 @@
           <div class="meal-option"><strong>Banana (ripe)</strong> — grab and go. Try the spotty ones — sweeter and softer than green</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label lunch">LUNCH</div>
         <div class="meal-options">
@@ -1998,6 +1942,7 @@
           <div class="meal-option"><strong>Pack from home</strong> — rice + chicken in a container is easy to prep the night before</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label dinner">DINNER</div>
         <div class="meal-options">
@@ -2008,6 +1953,7 @@
           <div class="meal-option"><strong>Chicken + bread rolls</strong> — simple, works on busy nights</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label snack">SNACKS</div>
         <div class="meal-options">
@@ -2040,6 +1986,7 @@
           <div class="meal-option"><strong>Egg in a hole</strong> — cut a circle out of bread, crack an egg in it, cook like a fried egg. Soft, simple, looks cool.</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label lunch" style="font-size:15px; min-width:70px;">PASTA<br>VARI<br>ANTS</div>
         <div class="meal-options">
@@ -2049,6 +1996,7 @@
           <div class="meal-option"><strong>Pasta + mild shredded cheese</strong> — mozzarella melts into it smooth. No sharp flavors, just soft and cheesy.</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label dinner" style="font-size:15px; min-width:70px;">POTATO<br>WAYS</div>
         <div class="meal-options">
@@ -2058,6 +2006,7 @@
           <div class="meal-option"><strong>Roasted potato chunks</strong> — cubed potatoes, olive oil, salt, oven at 425°F for 25 min. Crispy outside, soft inside. No seasoning needed beyond salt.</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label snack" style="font-size:15px; min-width:70px;">EASY<br>WIN<br>SNACKS</div>
         <div class="meal-options">
@@ -2068,6 +2017,7 @@
           <div class="meal-option"><strong>Cheese cubes / string cheese</strong> — mild mozzarella or mild cheddar. Chewy, simple, good protein snack.</div>
         </div>
       </div>
+
       <div class="meal-card">
         <div class="meal-label breakfast" style="color: var(--accent2); font-size:15px; min-width:70px;">WORTH<br>A<br>SHOT</div>
         <div class="meal-options">
@@ -2104,6 +2054,7 @@
           </div>
         </div>
       </div>
+
       <div class="route-card">
         <div class="route-icon">🏃</div>
         <div class="route-info">
@@ -2116,6 +2067,7 @@
           </div>
         </div>
       </div>
+
       <div class="route-card">
         <div class="route-icon">🚴</div>
         <div class="route-info">
@@ -2128,11 +2080,12 @@
           </div>
         </div>
       </div>
+
       <div class="route-card">
         <div class="route-icon">🚴</div>
         <div class="route-info">
           <h4>Longer Bike — West Creek Reservation</h4>
-          <p>A bit further out but worth it for weekends when you have time. Paved and dirt trails for all levels. Great for biking with varied terrain. Save this for when you want a proper adventure day.</p>
+          <p>A bit further out but worth it for weekends when you have time. Paved and dirt trails for all levels. Reviewers say it's great for biking with varied terrain. Save this for when you want a proper adventure day.</p>
           <div class="route-tags">
             <span class="route-tag bike">Bike</span>
             <span class="route-tag">Weekend Adventure</span>
@@ -2165,15 +2118,18 @@
       <button class="tab-btn" onclick="switchTab('care', 'products')">Products List</button>
     </div>
 
+    <!-- SKINCARE TAB -->
     <div class="tab-panel active" id="care-skincare">
       <div class="card warn" style="margin-bottom:12px;">
         <h4>⚠️ Eczema + Combination Skin Rules</h4>
         <p>Your skin needs fragrance-free, alcohol-free, and dye-free products. Fragrance is the #1 eczema trigger. "Unscented" is not the same as fragrance-free. Anything with alcohols or perfume in the ingredient list is a skip.</p>
       </div>
+
       <div class="card highlight" style="margin-bottom:12px;">
         <h4>💊 Prescription + Fluoxetine Notes</h4>
         <p>Hydrocortisone 2.5% goes on lips first — always before anything else. Tacrolimus 0.1% goes around the eye area first — thin layer, let it absorb 5 min. Tacrolimus can cause temporary burning at first, that fades. Fluoxetine can increase sun sensitivity, so SPF on outdoor days is worth adding. Take fluoxetine at the same time every morning.</p>
       </div>
+
       <div class="section-title" style="font-size:20px; margin: 20px 0 6px;">🌅 Morning Routine</div>
       <div class="timeline">
         <div class="tl-row">
@@ -2209,6 +2165,7 @@
           </div>
         </div>
       </div>
+
       <div class="section-title" style="font-size:20px; margin: 20px 0 6px;">🚿 Evening — Shower First, Then Care Routine</div>
       <div class="card" style="margin-bottom:10px;">
         <h4>In the Shower (5–10 min, lukewarm only)</h4>
@@ -2219,6 +2176,7 @@
           <li><strong>Dry</strong> — pat dry, don't rub. Leave skin slightly damp before moisturizing. Separate towel for face only.</li>
         </ul>
       </div>
+
       <div class="section-title" style="font-size:18px; margin: 14px 0 6px;">After Shower — Care Routine</div>
       <div class="timeline">
         <div class="tl-row">
@@ -2226,7 +2184,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Lubriderm — body while still damp</h4>
-            <p>Apply Lubriderm Daily Moisturizer to your body immediately after toweling off — within 3 minutes. Focus on elbows and eczema-prone arms.</p>
+            <p>Apply Lubriderm Daily Moisturizer to your body immediately after toweling off — within 3 minutes. Focus on elbows and eczema-prone arms. This "soak and seal" method locks in the most moisture.</p>
           </div>
         </div>
         <div class="tl-row alt-color">
@@ -2258,21 +2216,24 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>CVS Petroleum Jelly — lips before bed</h4>
-            <p>Thin layer of petroleum jelly over your lips after everything else has absorbed. Seals it all in while you sleep.</p>
+            <p>Thin layer of petroleum jelly over your lips after everything else has absorbed. Seals it all in while you sleep. Pure petrolatum, no fragrance, perfect for this.</p>
           </div>
         </div>
       </div>
+
       <div class="note">
         <h5>Eczema Flare Protocol</h5>
         <p>If a spot flares — red, itchy, or scaly — don't scrub it, don't try new products on it, don't skip moisturizer. Apply your prescription cream as directed, then layer petroleum jelly over top to seal it. Avoid hot showers. If it's not improving after 3–4 days, that's a doctor conversation, not a product swap.</p>
       </div>
     </div>
 
+    <!-- SHAVING TAB -->
     <div class="tab-panel" id="care-shaving">
       <div class="card highlight" style="margin-bottom:12px;">
         <h4>Starting From Zero — What to Know First</h4>
         <p>You've got mostly upper lip and chin growth right now, which is actually the easiest place to start. Recommendation: start with a <strong>Gillette Mach 3</strong> or <strong>Gillette SkinGuard</strong> cartridge razor. The SkinGuard is specifically designed for sensitive skin — it has a guard between the blades that reduces irritation, which matters a lot with eczema. Don't go straight to a safety razor — cartridge first, learn the technique, upgrade later if you want.</p>
       </div>
+
       <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">What You Need</div>
       <div class="card" style="margin-bottom:8px;">
         <h4>Shopping List — Shaving</h4>
@@ -2283,6 +2244,7 @@
           <li><strong>Clean face towel</strong> — pat dry before shaving, never rub</li>
         </ul>
       </div>
+
       <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">How to Shave — Step by Step</div>
       <div class="timeline">
         <div class="tl-row">
@@ -2290,7 +2252,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Soften the Hair First</h4>
-            <p>Shave after your shower — the warm water and steam soften the hair follicles and makes the razor glide easier. Never shave on completely dry skin.</p>
+            <p>Shave after your shower — the warm water and steam soften the hair follicles and makes the razor glide easier. Never shave on completely dry skin. If not shaving after a shower, splash warm water on your face for 30 seconds first.</p>
           </div>
         </div>
         <div class="tl-row alt-color">
@@ -2298,7 +2260,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Apply Shave Cream</h4>
-            <p>A pea-sized amount of shave cream, worked into the area with your fingers. Let it sit for 30 seconds before you start.</p>
+            <p>A pea-sized amount of shave cream, worked into the area with your fingers. You don't need a lot — just enough to coat the hair. Let it sit for 30 seconds before you start.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -2306,7 +2268,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Short Strokes, With the Grain</h4>
-            <p>Always shave <em>with</em> the grain (the direction the hair grows). Use short, light strokes — don't press hard. Let the razor do the work. Rinse the blade after every 2–3 strokes.</p>
+            <p>Always shave <em>with</em> the grain (the direction the hair grows) — usually downward on the upper lip, chin varies. Use short, light strokes — don't press hard. Let the razor do the work. Rinse the blade after every 2–3 strokes so it doesn't clog.</p>
           </div>
         </div>
         <div class="tl-row warn-color">
@@ -2314,7 +2276,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Don't Go Against the Grain (yet)</h4>
-            <p>Going against the grain gives a closer shave but dramatically increases razor burn and ingrown hairs — especially bad with eczema. Master with-the-grain first.</p>
+            <p>Going against the grain gives a closer shave but dramatically increases razor burn and ingrown hairs — especially bad with eczema. Master with-the-grain first. After a few months when you're comfortable, you can try across the grain for a closer result.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -2322,7 +2284,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Rinse with Cold Water</h4>
-            <p>Cold water closes the pores and calms the skin after shaving. Pat completely dry with a clean towel.</p>
+            <p>Cold water closes the pores and calms the skin after shaving. Rinse face fully, pat completely dry with a clean towel.</p>
           </div>
         </div>
         <div class="tl-row alt-color">
@@ -2330,7 +2292,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Apply Aftershave Balm — Then Moisturizer</h4>
-            <p>Pat a small amount of Nivea Sensitive balm over the shaved areas. Let it absorb a minute, then apply your regular face moisturizer over everything.</p>
+            <p>Pat a small amount of Nivea Sensitive balm over the shaved areas. Let it absorb a minute, then apply your regular face moisturizer over everything. Don't use your prescription eye cream right after shaving — give the skin 10–15 minutes to settle first.</p>
           </div>
         </div>
         <div class="tl-row muted">
@@ -2338,30 +2300,34 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Replace Blades Regularly</h4>
-            <p>With light facial hair, a cartridge should last 4–6 shaves. If it starts pulling instead of gliding, swap it.</p>
+            <p>A dull blade drags and causes way more irritation than a sharp one. With light facial hair, a cartridge should last 4–6 shaves. If it starts pulling instead of gliding, swap it. Don't try to stretch it.</p>
           </div>
         </div>
       </div>
+
       <div class="note">
         <h5>How Often to Shave</h5>
-        <p>With mostly upper lip and chin growth right now, you probably only need to shave every 3–5 days. Don't shave every day — your skin needs time to recover, especially with eczema.</p>
+        <p>With mostly upper lip and chin growth right now, you probably only need to shave every 3–5 days. Don't shave every day — your skin needs time to recover, especially with eczema. Shave when it starts looking untidy, not on a rigid schedule. As your hair gets thicker over time, the frequency will naturally increase.</p>
       </div>
     </div>
 
+    <!-- TEETH TAB -->
     <div class="tab-panel" id="care-teeth">
       <div class="card warn" style="margin-bottom:12px;">
         <h4>Why Crest Can Be a Problem</h4>
-        <p>Many Crest products contain sodium lauryl sulfate (SLS) and artificial dyes — SLS causes micro-irritation in the mouth and can actually make teeth more porous and prone to staining over time. Switching toothpaste alone won't whiten overnight, but it stops actively working against you.</p>
+        <p>Many Crest products contain sodium lauryl sulfate (SLS) and artificial dyes — SLS causes micro-irritation in the mouth and can actually make teeth more porous and prone to staining over time. The blue dye in some Crest varieties doesn't help either. Switching toothpaste alone won't whiten overnight, but it stops actively working against you.</p>
       </div>
+
       <div class="card" style="margin-bottom:8px;">
         <h4>Better Toothpaste Options</h4>
         <ul>
           <li><strong>Sensodyne Pronamel</strong> — SLS-free, strengthens enamel, gentle whitening without harsh abrasives. Good daily driver.</li>
-          <li><strong>Tom's of Maine Antiplaque & Whitening</strong> — SLS-free, no artificial dyes, natural ingredients.</li>
-          <li><strong>Risewell Hydroxyapatite Toothpaste</strong> — newer option, uses hydroxyapatite to remineralize and whiten. More expensive but effective.</li>
-          <li><strong>Avoid</strong> — anything with "whitening strips technology," charcoal toothpastes, or anything with blue/red dye.</li>
+          <li><strong>Tom's of Maine Antiplaque & Whitening (Peppermint)</strong> — SLS-free, no artificial dyes, natural ingredients. Mild taste.</li>
+          <li><strong>Risewell Hydroxyapatite Toothpaste</strong> — newer option, uses hydroxyapatite instead of fluoride to remineralize and whiten. More expensive but very effective for yellowing.</li>
+          <li><strong>Avoid</strong> — anything with "whitening strips technology," charcoal toothpastes (too abrasive for daily use), or anything with blue/red dye in it.</li>
         </ul>
       </div>
+
       <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">Full Teeth Routine</div>
       <div class="timeline">
         <div class="tl-row">
@@ -2369,7 +2335,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Brush — 2 Minutes</h4>
-            <p>Use a soft-bristle toothbrush. Small circular motions, 30 seconds per quadrant. Don't press hard — gentle is more effective and less damaging. Brush tongue too.</p>
+            <p>Use a soft-bristle toothbrush (medium or hard bristles damage enamel). Small circular motions, 30 seconds per quadrant. Don't press hard — gentle is more effective and less damaging. Brush tongue too.</p>
           </div>
         </div>
         <div class="tl-row alt-color">
@@ -2377,7 +2343,7 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Don't Rinse with Water After</h4>
-            <p>Sounds weird but rinsing immediately washes away the active ingredients. Spit out the toothpaste but don't rinse for at least 30 minutes. Makes a real difference.</p>
+            <p>Sounds weird but rinsing immediately washes away the fluoride/active ingredients before they can work. Spit out the toothpaste but don't rinse for at least 30 minutes. Takes getting used to but makes a real difference.</p>
           </div>
         </div>
         <div class="tl-row">
@@ -2385,7 +2351,15 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>Floss First, Then Brush</h4>
-            <p>Floss before brushing so you loosen stuff between teeth and then brush it away. Once a day is enough.</p>
+            <p>Floss before brushing so you loosen stuff between teeth and then brush it away. Use regular floss or a Floss pick — whatever you'll actually do consistently. Once a day is enough.</p>
+          </div>
+        </div>
+        <div class="tl-row muted">
+          <div class="tl-time">BONUS</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h4>Mouthwash (optional)</h4>
+            <p>If you want to add it — ACT Anticavity Fluoride Rinse, alcohol-free. Use it after brushing at night. Alcohol-based mouthwashes dry out your mouth which actually increases bacteria. Skip it entirely if you don't want to bother — brushing and flossing matters more.</p>
           </div>
         </div>
         <div class="tl-row warn-color">
@@ -2393,14 +2367,16 @@
           <div class="tl-dot"></div>
           <div class="tl-content">
             <h4>On the Yellowing</h4>
-            <p>Light yellowing at your age is usually surface staining — totally fixable with consistent brushing and the right toothpaste. Avoid dark drinks without rinsing after. If after 2–3 months of better toothpaste it's not improving, a dentist can do a basic cleaning.</p>
+            <p>Light yellowing at your age is usually surface staining — totally fixable with consistent brushing and the right toothpaste. Avoid dark drinks (soda, certain juices) without rinsing after. If after 2–3 months of better toothpaste it's not improving, a dentist can do a basic cleaning or whitening treatment. Don't use whitening strips — they're harsh and can worsen sensitivity, especially with eczema-prone skin (yes, it can affect mouth tissue too).</p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- PRODUCTS LIST TAB -->
     <div class="tab-panel" id="care-products">
       <div class="section-sub" style="margin-bottom:16px;">What you own, what to buy, what to swap — all in one place</div>
+
       <div class="card highlight" style="margin-bottom:12px;">
         <h4>✅ What You Already Have</h4>
         <ul>
@@ -2410,30 +2386,57 @@
           <li><strong>Hydrocortisone 2.5% ointment</strong> — ✅ Lips. Morning and night, apply first before anything else.</li>
           <li><strong>Tacrolimus 0.1% ointment</strong> — ✅ Eye area. Apply first, thin layer, let absorb 5 min before moisturizer.</li>
           <li><strong>Fluoxetine 20mg</strong> — ✅ Every morning, same time. Water first, food optional.</li>
-          <li><strong>Oral-B electric toothbrush (swappable head)</strong> — ✅ Keep it. Swap the head every 3 months and switch toothpaste.</li>
-          <li><strong>Degree Adventure deodorant</strong> — ⚠️ Has fragrance. Fine for now, but swap to Dove Men+Care Sensitive if you get underarm irritation.</li>
-          <li><strong>Irish Spring body wash</strong> — ⚠️ Has fragrance and sulfates. Finish the bottle, don't rebuy. Replace with Vanicream.</li>
-          <li><strong>Head & Shoulders 2-in-1 Almond & Coconut</strong> — ⚠️ Fine if you have dandruff. If not, swap when empty to a fragrance-free shampoo.</li>
-          <li><strong>Crest 3D White</strong> — ❌ Replace with Sensodyne Pronamel ASAP.</li>
+          <li><strong>Oral-B electric toothbrush (swappable head)</strong> — ✅ Keep it. Just swap the head every 3 months and switch toothpaste.</li>
+          <li><strong>Degree Adventure deodorant</strong> — ⚠️ Has fragrance. Fine for now, but if you ever get underarm irritation, swap to Dove Men+Care Sensitive (fragrance-free).</li>
+          <li><strong>Irish Spring body wash</strong> — ⚠️ Has fragrance and sulfates. Finish the bottle, don't rebuy. Replace with Vanicream below.</li>
+          <li><strong>Head & Shoulders 2-in-1 Almond & Coconut</strong> — ⚠️ Fine if you have dandruff/scalp issues. If not, swap when empty to a fragrance-free shampoo.</li>
+          <li><strong>Crest 3D White</strong> — ❌ Replace with Sensodyne Pronamel ASAP. SLS is working against you.</li>
         </ul>
       </div>
+
       <div class="card" style="margin-bottom:8px;">
         <h4>🛒 Buy Now — Priority</h4>
         <ul>
           <li><strong><a href="https://www.amazon.com/Gillette-SkinGuard-Sensitive-Handle-Refills/dp/B07K6K99Z4" style="color:var(--accent);">Gillette SkinGuard Razor</a></strong> (Amazon) — ~$10. Handle + 2 refills. Sensitive skin specific.</li>
           <li><strong><a href="https://www.target.com/p/cremo-original-shave-cream-6-fl-oz/-/A-16205561" style="color:var(--accent);">Cremo Original Shave Cream</a></strong> (Target) — ~$8. No foam, no fragrance, 90-day supply.</li>
           <li><strong><a href="https://www.target.com/p/nivea-men-soothing-post-shave-balm-for-sensitive-skin-3-3-fl-oz/-/A-11031116" style="color:var(--accent);">Nivea Men Sensitive Post Shave Balm</a></strong> (Target) — ~$7. Alcohol-free, eczema-safe.</li>
-          <li><strong><a href="https://www.target.com/p/sensodyne-pronamel-gentle-whitening-toothpaste-4oz/-/A-13356878" style="color:var(--accent);">Sensodyne Pronamel Gentle Whitening</a></strong> (Target) — ~$7. SLS-free, enamel repair.</li>
-          <li><strong>Floss picks</strong> — any drugstore, ~$4.</li>
-          <li><strong>Soft face washcloth</strong> — any Target, ~$3–4. Dedicated face-only towel.</li>
+          <li><strong><a href="https://www.target.com/p/sensodyne-pronamel-gentle-whitening-toothpaste-4oz/-/A-13356878" style="color:var(--accent);">Sensodyne Pronamel Gentle Whitening</a></strong> (Target) — ~$7. SLS-free, enamel repair, gentle whitening.</li>
+          <li><strong>Floss picks</strong> — any drugstore, ~$4. Get them. You'll actually use them vs string floss.</li>
+          <li><strong>Soft face washcloth</strong> — any Target, ~$3–4. Dedicated face-only towel. Keep it separate.</li>
         </ul>
       </div>
+
       <div class="card" style="margin-bottom:8px;">
         <h4>🛒 Buy When Irish Spring Runs Out</h4>
         <ul>
-          <li><strong><a href="https://www.target.com/p/vanicream-gentle-body-wash-unscented-12-fl-oz/-/A-84697206" style="color:var(--accent);">Vanicream Gentle Body Wash</a></strong> (Target) — ~$10. Fragrance-free, eczema-safe. Your permanent swap.</li>
-          <li><strong><a href="https://www.amazon.com/INNERNEED-Food-grade-Silicone-Cleansing-Exfoliating/dp/B09J7YJHXB" style="color:var(--accent);">INNERNEED Silicone Body Scrubber</a></strong> (Amazon) — ~$7.</li>
+          <li><strong><a href="https://www.target.com/p/vanicream-gentle-body-wash-unscented-12-fl-oz/-/A-84697206" style="color:var(--accent);">Vanicream Gentle Body Wash</a></strong> (Target) — ~$10. Fragrance-free, no dye, eczema-safe. Your permanent swap.</li>
+          <li><strong><a href="https://www.amazon.com/INNERNEED-Food-grade-Silicone-Cleansing-Exfoliating/dp/B09J7YJHXB" style="color:var(--accent);">INNERNEED Silicone Body Scrubber</a></strong> (Amazon) — ~$7. Food-grade silicone, gentle for sensitive skin, anti-bacterial, quick-dry. Way better than a loofah.</li>
         </ul>
+      </div>
+
+      <div class="card" style="margin-bottom:8px;">
+        <h4>💊 Prescriptions — Layering Order</h4>
+        <ul>
+          <li><strong>Hydrocortisone 2.5% (lips)</strong> — apply first on lips, let absorb 5 min, then petroleum jelly on top</li>
+          <li><strong>Tacrolimus 0.1% (eye area)</strong> — apply first on eye area, thin layer, let absorb 5 min, then Lubriderm/CeraVe over the rest of your face</li>
+          <li><strong>Fluoxetine 20mg</strong> — every morning, same time daily. Consistency matters more than whether you eat first.</li>
+          <li><strong>Note:</strong> Tacrolimus can cause temporary burning/stinging when first applied — totally normal, fades over weeks of use.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-bottom:8px;">
+        <h4>🔁 Swap When You Run Out</h4>
+        <ul>
+          <li><strong>Crest 3D White → Sensodyne Pronamel</strong> — do this now, don't wait</li>
+          <li><strong>Irish Spring → Vanicream Body Wash</strong> — finish the bottle first, then don't rebuy</li>
+          <li><strong>Head & Shoulders → Free & Clear or Vanicream Shampoo</strong> — only if you have no dandruff/scalp issues. If you do, keep H&S.</li>
+          <li><strong>Degree → Dove Men+Care Sensitive</strong> — only if you notice underarm irritation. Otherwise keep what you have.</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <h5>Total Shopping List Cost</h5>
+        <p>Priority items (shaving kit + toothpaste + floss + washcloth): ~$35. Add Vanicream body wash + silicone scrubber when Irish Spring runs out: ~$17 more. Everything else you already own. You're in good shape.</p>
       </div>
     </div>
   </div>
@@ -2466,7 +2469,7 @@
         <div class="tl-dot"></div>
         <div class="tl-content">
           <h4>Feed Lincoln & Batman → How We Feel check-in</h4>
-          <p>Cats are your morning anchor. Feed them, then open How We Feel. 60 seconds. Just tap what you're feeling. Done.</p>
+          <p>Cats are your morning anchor. Feed them, then while you wait for your meds to kick in, open How We Feel. 60 seconds. Just tap what you're feeling. Done.</p>
         </div>
       </div>
       <div class="tl-row alt-color">
@@ -2474,7 +2477,7 @@
         <div class="tl-dot"></div>
         <div class="tl-content">
           <h4>Busuu — Spanish (5–10 min)</h4>
-          <p>Right after breakfast, before you leave. This is your streak. Protect it.</p>
+          <p>Right after breakfast, before you leave. This is your streak. Protect it like Duolingo taught you to — except this one won't lock you out or guilt trip you with a paywall.</p>
         </div>
       </div>
       <div class="tl-row">
@@ -2506,7 +2509,7 @@
         <div class="tl-dot"></div>
         <div class="tl-content">
           <h4>Apple Journal — 2 minutes</h4>
-          <p>Right before sleep. One or two sentences. What happened today, how you feel, one thing tomorrow. Close the loop on the day.</p>
+          <p>Right before sleep. One or two sentences. What happened today, how you feel, one thing tomorrow. That's it. No essay. Just enough to close the loop on the day.</p>
         </div>
       </div>
     </div>
@@ -2567,7 +2570,7 @@
       <h4>🏃 Movement as a Mood Reset</h4>
       <ul>
         <li>When you're in your head and can't shake it — move. Walk, run, bike, even just do the workout.</li>
-        <li>Physical movement burns off the stress hormones that make anxiety feel physical.</li>
+        <li>This isn't "exercise makes you happy" generic advice. It's that physical movement burns off the stress hormones that make anxiety feel physical.</li>
         <li>The Big Creek trail specifically — being outside in green space has a measurable calming effect. Use it when you're struggling, not just on schedule.</li>
       </ul>
     </div>
@@ -2579,12 +2582,13 @@
         <li>Apple Journal, private, never has to be read again</li>
         <li>Write what happened, write how it made you feel, write what you wish was different</li>
         <li>Close the app. You don't have to solve it. Just getting it out of your head and onto a page reduces the loop</li>
+        <li>This is the closest thing to processing without talking that actually works</li>
       </ul>
     </div>
 
     <div class="note">
       <h5>On the Anxiety Specifically</h5>
-      <p>Fluoxetine handles the baseline, but anxiety that holds you back socially is worth working on actively too. The glow up you're building — the workouts, the routine, the appearance stuff — all of it compounds into confidence over time. But the fastest short-term tool is exposure: small, low-stakes social moments done consistently. Harlequins crew is your best existing resource for this.</p>
+      <p>Fluoxetine handles the baseline, but anxiety that holds you back socially is worth working on actively too. The glow up you're building — the workouts, the routine, the appearance stuff — all of it compounds into confidence over time. But the fastest short-term tool is exposure: small, low-stakes social moments done consistently. Harlequins crew is your best existing resource for this. More on that in the Social section.</p>
     </div>
   </div>
 
@@ -2600,7 +2604,7 @@
 
     <div class="card highlight" style="margin-bottom:12px;">
       <h4>The One Rule That Overrides Everything</h4>
-      <p>Fit beats brand, always. A $15 well-fitting tee from Target looks better than a $80 baggy designer shirt. At your age, budget, and stage — fit is the entire game.</p>
+      <p>Fit beats brand, always. A $15 well-fitting tee from Target looks better than a $80 baggy designer shirt. At your age, budget, and stage — fit is the entire game. Once you start working out and building muscle, fit becomes even more important because clothes will naturally start looking better on you.</p>
     </div>
 
     <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">Build This First — The Foundation</div>
@@ -2608,7 +2612,7 @@
       <h4>The Basics You Actually Need</h4>
       <ul>
         <li><strong>3–4 plain fitted tees</strong> — white, black, grey, navy. No logos. These go with everything.</li>
-        <li><strong>1–2 pairs of well-fitting jeans</strong> — straight or slim fit. Dark wash is most versatile.</li>
+        <li><strong>1–2 pairs of well-fitting jeans</strong> — straight or slim fit. Not skinny, not baggy. Dark wash is most versatile.</li>
         <li><strong>1 clean pair of sneakers</strong> — white or neutral. Keep them clean. Dirty shoes kill an otherwise good outfit.</li>
         <li><strong>1 hoodie or crewneck</strong> — plain, no loud graphics. Neutral color.</li>
         <li><strong>Clean socks and underwear</strong> — sounds obvious, part of the foundation.</li>
@@ -2619,10 +2623,10 @@
       <div class="card">
         <h4>Where to Shop Cheap</h4>
         <ul>
-          <li><strong>Uniqlo</strong> — best quality basics for the price</li>
+          <li><strong>Uniqlo</strong> — best quality basics for the price. Plain tees, joggers, hoodies.</li>
           <li><strong>Target (All in Motion / Goodfellow)</strong> — decent basics, affordable</li>
           <li><strong>ThredUp / Poshmark</strong> — secondhand, huge selection, very cheap</li>
-          <li><strong>Goodwill / thrift</strong> — Cleveland has solid thrift stores</li>
+          <li><strong>Goodwill / thrift</strong> — Cleveland has solid thrift stores. Great for experimenting.</li>
         </ul>
       </div>
       <div class="card">
@@ -2630,10 +2634,20 @@
         <ul>
           <li>Anything with huge logos or loud graphics</li>
           <li>Baggy everything — one oversized piece max per outfit</li>
-          <li>Buying trends — basics are timeless, trends expire</li>
+          <li>Buying trends — basics are timeless, trends are expensive and expire</li>
           <li>Spending money you don't have on clothes to impress people</li>
         </ul>
       </div>
+    </div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <h4>How to Actually Put Outfits Together</h4>
+      <ul>
+        <li><strong>Start with one statement piece</strong> — everything else neutral around it</li>
+        <li><strong>Match your shoe energy to your outfit energy</strong> — clean sneakers for casual, don't wear beat up shoes with a nice fit</li>
+        <li><strong>Tuck in occasionally</strong> — a half-tuck on a plain tee instantly looks more intentional</li>
+        <li><strong>Fit check before you leave</strong> — 10 seconds in the mirror. Does this look like I tried? If yes, go.</li>
+      </ul>
     </div>
 
     <div class="note">
@@ -2691,9 +2705,21 @@
       </div>
     </div>
 
+    <div class="card" style="margin-bottom:10px;">
+      <h4>The Wind-Down Stack (9:30pm)</h4>
+      <ul>
+        <li>Stop gaming / scrolling</li>
+        <li>Dim everything — switch to a lamp or phone night mode</li>
+        <li>Do your skin routine — the routine itself signals your brain that sleep is coming</li>
+        <li>Get into bed, put on a story podcast at low volume</li>
+        <li>Apple Journal — 2 sentences</li>
+        <li>Phone face down, podcast playing, lights off</li>
+      </ul>
+    </div>
+
     <div class="note">
       <h5>When Sleep Is Still Bad</h5>
-      <p>Sometimes anxiety makes sleep hard even when you do everything right. If you're lying awake for more than 20–30 minutes, get up and do something calm in dim light — don't lie there fighting it. Read, listen to a podcast sitting up, do light stretching. Go back to bed when you feel sleepy.</p>
+      <p>Sometimes anxiety makes sleep hard even when you do everything right. If you're lying awake for more than 20–30 minutes, get up and do something calm in dim light — don't lie there fighting it. Read, listen to a podcast sitting up, do light stretching. Go back to bed when you feel sleepy. Lying in bed anxious about not sleeping makes it worse. And mention it to whoever prescribes your fluoxetine — there are simple adjustments that can help.</p>
     </div>
   </div>
 
@@ -2709,7 +2735,7 @@
 
     <div class="card highlight" style="margin-bottom:12px;">
       <h4>Your Room is Your Sanctuary</h4>
-      <p>When the rest of the house feels heavy, your room should feel like yours. That means clean, organized enough to not add stress, and set up in a way that supports the things in this document — sleep, workouts, wind-down, learning.</p>
+      <p>When the rest of the house feels heavy, your room should feel like yours. That means clean, organized enough to not add stress, and set up in a way that supports the things in this document — sleep, workouts, wind-down, learning. You're almost done cleaning it already. The goal now is a simple maintenance system so it doesn't slide back.</p>
     </div>
 
     <div class="card" style="margin-bottom:8px;">
@@ -2746,7 +2772,7 @@
 
     <div class="note">
       <h5>When Home Feels Heavy</h5>
-      <p>You can't always control the energy in the rest of the house. What you can control is your room. When tension is high — close the door, put on your headphones, do your routine. The routine itself becomes the anchor.</p>
+      <p>You can't always control the energy in the rest of the house. What you can control is your room. When tension is high — close the door, put on your headphones, do your routine. The routine itself becomes the anchor. Workout, shower, skin, journal, podcast, sleep. That sequence is yours regardless of what's happening outside your door.</p>
     </div>
   </div>
 
@@ -2771,7 +2797,7 @@
         <li>You already show up. You already have shared context — the show, the crew, the chaos of tech week.</li>
         <li>Shared experiences are the foundation of friendship. You have that built in.</li>
         <li>The Twizzlers tradition you started? That's a social move. People remember that. Build on it.</li>
-        <li>Talk to one new crew member per rehearsal. Just one. About anything.</li>
+        <li>Talk to one new crew member per rehearsal. Just one. About the show, about props, about anything.</li>
         <li>You don't need to be the loudest person in the room — you need to be consistent and present.</li>
       </ul>
     </div>
@@ -2780,15 +2806,36 @@
       <h4>Low-Stakes Social Reps</h4>
       <ul>
         <li><strong>Ask one question per day</strong> — to anyone. A classmate, a teacher, a person at a store. Just one.</li>
-        <li><strong>Respond, don't just react</strong> — when someone says something to you, give a full sentence back instead of a one-word answer.</li>
-        <li><strong>Be interested, not interesting</strong> — people like people who ask about them.</li>
-        <li><strong>Eye contact + first name</strong> — use someone's name once in a conversation. Small thing, huge impact.</li>
+        <li><strong>Respond, don't just react</strong> — when someone says something to you, give a full sentence back instead of a one-word answer. Keeps conversation alive.</li>
+        <li><strong>Be interested, not interesting</strong> — people like people who ask about them. "What did you think of that?" goes further than trying to say something impressive.</li>
+        <li><strong>Eye contact + first name</strong> — use someone's name once in a conversation. Small thing, huge impact on how connected they feel.</li>
       </ul>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h4>What Anxiety Tells You (Wrong)</h4>
+        <ul>
+          <li>"Everyone noticed that"</li>
+          <li>"That was weird and they're judging me"</li>
+          <li>"I should've said something different"</li>
+          <li>"They don't actually want to talk to me"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>What's Actually True</h4>
+        <ul>
+          <li>People are mostly thinking about themselves</li>
+          <li>Awkward moments are forgotten in 30 seconds</li>
+          <li>Showing up consistently matters more than being smooth</li>
+          <li>Most people want connection too — they're just also nervous</li>
+        </ul>
+      </div>
     </div>
 
     <div class="note">
       <h5>The Long Game</h5>
-      <p>Confidence socially comes from accumulated small wins, not one big moment. Every time you initiate a conversation and it goes okay, your brain updates its threat assessment slightly. Over months, the anxiety around social situations genuinely reduces. Start small. Harlequins first. One person at a time.</p>
+      <p>Confidence socially comes from accumulated small wins, not one big moment. Every time you initiate a conversation and it goes okay, your brain updates its threat assessment slightly. Over months, the anxiety around social situations genuinely reduces — not because you "got over it" but because your brain has enough evidence that it's safe. That evidence only comes from showing up. Start small. Harlequins first. One person at a time.</p>
     </div>
   </div>
 
@@ -2804,7 +2851,7 @@
 
     <div class="card highlight" style="margin-bottom:12px;">
       <h4>Why This Works</h4>
-      <p>Every other section in this document is about doing things. The weekly review is about noticing what's actually happening. Without it, weeks blur together and you can't tell if things are improving or not. 10 minutes on Sunday night changes that.</p>
+      <p>Every other section in this document is about doing things. The weekly review is about noticing what's actually happening. Without it, weeks blur together and you can't tell if things are improving or not. 10 minutes on Sunday night changes that. How We Feel's weekly review handles the emotional pattern side automatically — you just need to answer five questions.</p>
     </div>
 
     <div class="section-title" style="font-size:20px; margin: 16px 0 6px;">The 5 Questions</div>
@@ -2830,7 +2877,7 @@
         <div class="tl-dot"></div>
         <div class="tl-content">
           <h4>Did I stick to my routine?</h4>
-          <p>Quick scan. Workouts, sleep, skin, Busuu streak, How We Feel check-ins, dishes done, laundry on Sunday, trash out. Not looking for perfection — looking for patterns.</p>
+          <p>Quick scan. Workouts, sleep, skin, Busuu streak, How We Feel check-ins, formation homework, cat feeding. Not looking for perfection — looking for patterns. Consistently skipping the same thing means something needs to change.</p>
         </div>
       </div>
       <div class="tl-row warn-color">
@@ -2853,7 +2900,7 @@
 
     <div class="note">
       <h5>Where to Do It</h5>
-      <p>Apple Journal for the five questions. Then open How We Feel for the weekly review feature. Sunday evening, after dinner, before your wind-down. The whole thing takes 10 minutes and sets the tone for every Monday morning.</p>
+      <p>Apple Journal for the five questions — type or voice memo, doesn't matter. Then open How We Feel for the weekly review feature. Sunday evening, after dinner, before your wind-down. The whole thing takes 10 minutes and sets the tone for every Monday morning for the rest of your life if you stick with it.</p>
     </div>
   </div>
 
@@ -2879,15 +2926,15 @@
         <ul>
           <li>You must be 15½ to get your permit in Ohio</li>
           <li>Pass a written knowledge test at the BMV — 40 questions, need 75% to pass</li>
-          <li>Study free: search "Ohio BMV practice test" and use the official or DMV.org version</li>
-          <li>Once you have your permit, you need <strong>50 hours of practice driving</strong> (10 must be at night)</li>
+          <li>Study free at <strong>Ohio BMV Practice Test</strong> online — search "Ohio BMV practice test" and use the official or DMV.org version</li>
+          <li>Once you have your permit, you need <strong>50 hours of practice driving</strong> (10 must be at night) before your road test</li>
           <li>Must hold permit for at least 6 months before testing for license</li>
         </ul>
       </div>
       <div class="card" style="margin-bottom:10px;">
         <h4>Practice Hour Tracker</h4>
         <ul>
-          <li>Ohio requires you to log hours on a form — keep a note in Apple Journal each time you drive</li>
+          <li>Ohio requires you to log hours on a form — keep a note in Apple Journal or a Notes app each time you drive</li>
           <li>Date, time of day, duration, who was with you</li>
           <li>Ask your mom for regular practice sessions — even 20 min around the neighborhood counts</li>
           <li>Start in empty parking lots. Seriously. Everyone does.</li>
@@ -2899,6 +2946,7 @@
           <li><strong>Week 1–2:</strong> Steering, braking smoothly, parking lot turns</li>
           <li><strong>Week 3–4:</strong> Residential streets, stop signs, speed awareness</li>
           <li><strong>Month 2+:</strong> Main roads, traffic, merging, highway eventually</li>
+          <li>Don't rush to highways — confidence on surface streets first</li>
         </ul>
       </div>
     </div>
@@ -2913,22 +2961,24 @@
         <ul>
           <li>AMC, Regal, local theaters — all regularly hire 16+</li>
           <li>Perks: free movies, flexible scheduling, social environment</li>
+          <li>Closest to you: <strong>Regal Great Lakes</strong> in Midlothian or <strong>AMC Tiedeman</strong> area — search online for current openings</li>
           <li>Apply in person if possible — shows initiative</li>
         </ul>
       </div>
       <div class="card" style="margin-bottom:8px;">
         <h4>📚 Library / Rec Center</h4>
         <ul>
-          <li>Cuyahoga County Public Library system hires teens — check <strong>cuyahogalibrary.org/jobs</strong></li>
+          <li>Cuyahoga County Public Library system hires teens regularly — check <strong>cuyahogalibrary.org/jobs</strong></li>
           <li>Brooklyn Recreation Center — check city of Brooklyn Ohio website for seasonal openings</li>
           <li>Quieter, lower stress, more flexible than retail</li>
+          <li>Good fit for someone who's more introverted</li>
         </ul>
       </div>
       <div class="card" style="margin-bottom:10px;">
         <h4>💻 Creative / Tech Adjacent</h4>
         <ul>
-          <li>Your Photoshop and CSS work is a real skill — freelance small logo or graphic work</li>
-          <li>SIBN itself — does it pay anything, or lead to AV/tech opportunities?</li>
+          <li>Your Photoshop and CSS work is a real skill — freelance small logo or graphic work for local businesses or people at school</li>
+          <li>SIBN itself — does it pay anything, or lead to AV/tech opportunities in the school or community?</li>
           <li>Check local community theater orgs — your Harlequins crew experience is a legitimate resume line</li>
         </ul>
       </div>
@@ -2937,8 +2987,9 @@
         <ul>
           <li>Simple resume: name, contact, school, any experience (Harlequins crew counts), skills</li>
           <li>Apply online AND follow up in person within a week</li>
-          <li>Best time to apply: January–February and May–June (summer rush)</li>
+          <li>Best time to apply: January–February (post-holiday hiring) and May–June (summer rush)</li>
           <li>Mention availability clearly — employers hate guessing</li>
+          <li>Don't wait until you desperately need money. Start now.</li>
         </ul>
       </div>
     </div>
@@ -2959,9 +3010,9 @@
       <div class="card">
         <h4>Simple Rules</h4>
         <ul>
-          <li>Never spend money on someone else's approval</li>
+          <li>Never spend money on someone else's approval — learned that one already</li>
           <li>Wait 48 hours before any purchase over $20 that isn't a necessity</li>
-          <li>Build toward one goal at a time</li>
+          <li>Build toward one goal at a time — care products first, then clothing basics, then fun stuff</li>
           <li>Saving even $20/paycheck compounds. By end of summer that's real money.</li>
         </ul>
       </div>
@@ -3272,7 +3323,7 @@
     const now = new Date();
     document.getElementById('quoteDay').textContent = `Daily quote · ${DAYS[now.getDay()]}, ${MONTHS[now.getMonth()]} ${now.getDate()}`;
   }
-
+  
   // ── NAV SCROLL ──
   function navScrollTo(id) {
     const el = document.getElementById(id);
@@ -3306,6 +3357,7 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        // Stagger timeline rows inside sections
         if (entry.target.classList.contains('section')) {
           const rows = entry.target.querySelectorAll('.tl-row');
           rows.forEach((row, i) => {
@@ -3330,11 +3382,13 @@
     btn.classList.toggle('active', editing);
 
     if (editing) {
+      // Make all text content editable
       document.querySelectorAll('.tl-content h4, .tl-content p, .card h4, .card p, .card li, .meal-option, .note p, .section-sub, .route-info h4, .route-info p').forEach(el => {
         el.contentEditable = 'true';
         el.addEventListener('input', saveEdits);
       });
     } else {
+      // Remove editable
       document.querySelectorAll('[contenteditable="true"]').forEach(el => {
         el.contentEditable = 'false';
       });
@@ -3356,6 +3410,7 @@
       const saved = localStorage.getItem(STORAGE_KEY);
       if (!saved) return;
       const edits = JSON.parse(saved);
+      // Assign keys first pass
       document.querySelectorAll('.tl-content h4, .tl-content p, .card h4, .card p, .card li, .meal-option, .note p, .section-sub, .route-info h4, .route-info p').forEach((el, i) => {
         el.dataset.editKey = 'edit_' + i;
         if (edits['edit_' + i] !== undefined) {
@@ -3399,22 +3454,26 @@
       const header = section.querySelector('.section-header');
       if (!header) return;
 
+      // Add collapse button to header
       const btn = document.createElement('button');
       btn.className = 'collapse-btn';
       btn.innerHTML = '▾';
       btn.setAttribute('aria-label', 'Toggle section');
       header.appendChild(btn);
 
+      // Wrap everything after the header in section-body
       const body = document.createElement('div');
       body.className = 'section-body';
       const children = Array.from(section.children).filter(c => c !== header);
       children.forEach(c => body.appendChild(c));
       section.appendChild(body);
 
+      // Restore collapsed state
       if (collapsed.includes(id)) {
         section.classList.add('collapsed');
       }
 
+      // Click handler on header
       header.addEventListener('click', () => toggleSection(id));
     });
   }
@@ -3422,7 +3481,6 @@
   window.addEventListener('DOMContentLoaded', () => {
     loadEdits();
     initCollapsible();
-    initQuote();
   });
 </script>
 
